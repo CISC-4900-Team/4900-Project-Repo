@@ -1,4 +1,9 @@
-<?php $activePage = basename($_SERVER['PHP_SELF'], ".php"); ?>
+<?php
+    $activePage = basename($_SERVER['PHP_SELF'], ".php");
+	require('dbinfo.inc.php');
+	//session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
