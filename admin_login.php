@@ -14,19 +14,18 @@
             <div id="content">
                 <h1>Admin Login</h1>
                 <form action="">
-                   <!-- Email -->
-                   <div>
-                       <label for="email">Email:</label>
-                       <input type="email" name="email" id="email" placeholder="JohnDoe@gmail.com" required>
-                   </div>
-                   <div>
-                        <label for="password">Pass:</label>
-                        <input type="password" name="password" id="password" placeholder="**********">
-                   </div>
-                   <div>
-                        <label for="Company">Company ID:</label>
-                        <input type="password" name="password" id="password" placeholder="**********">
-                   </div>
+					<div>
+					    <label for="company_id">Company ID:</label>
+					    <input type="text" name="company_id" id="company_id" required>
+					</div>
+					<div>
+					   <label for="admin_id">Admin ID:</label>
+					   <input type="text" name="admin_id" id="admin_id" required>
+					</div>
+					<div>
+					    <label for="password">Password:</label>
+					    <input type="password" name="password" id="password" placeholder="**********" required>
+					</div>
                    <!-- submission -->
                    <input type="submit" value="Login">
                 </form>

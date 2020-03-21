@@ -14,19 +14,14 @@
             <div id="content">
                 <h1>Pharmacist Login</h1>
                 <form action="">
-                   <!-- Email -->
-                   <div>
-                       <label for="email">Email:</label>
-                       <input type="email" name="email" id="email" placeholder="JohnDoe@gmail.com" required>
-                   </div>
-                   <div>
-                        <label for="password">Pass:</label>
-                        <input type="password" name="password" id="password" placeholder="**********">
-                   </div>
-                   <div>
-                        <label for="Company">Company ID:</label>
-                        <input type="password" name="password" id="password" placeholder="**********">
-                  </div>
+                    <div>
+                        <label for="empl_id">Employee ID:</label>
+                        <input type="text" name="empl_id" id="empl_id" placeholder="Employee ID" required>
+                    </div>
+                    <div>
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password" placeholder="**********" required>
+                    </div>
                    <!-- submission -->
                    <input type="submit" value="Login">
                 </form>
