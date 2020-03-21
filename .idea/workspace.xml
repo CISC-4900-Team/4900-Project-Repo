@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d629cc9-cb6b-4426-a8d1-235c0d652c34" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/includes/dbinfo.inc.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/includes/register.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/54e6d829-0ac1-4e78-9421-be9ed64f743d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/54e6d829-0ac1-4e78-9421-be9ed64f743d.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/header.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/header.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager_registration.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pharm_registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/pharm_registration.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +97,7 @@
       <workItem from="1584575234607" duration="136000" />
       <workItem from="1584578722671" duration="1240000" />
       <workItem from="1584647255170" duration="12832000" />
+      <workItem from="1584813544364" duration="592000" />
     </task>
     <servers />
   </component>
@@ -157,9 +145,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="808" y="241" key="com.intellij.database.view.ui.DbObjectDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1584569171238" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1584647290143">
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1584813576413">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1584647290143" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1584813576413" />
   </component>
 </project>
