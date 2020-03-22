@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	$_SESSION['message'] = '';
+	$errors = array('email')
 
 	//Check if form is being submitted
 	if($_SERVER['REQUEST_METHOD'] == 'POST')

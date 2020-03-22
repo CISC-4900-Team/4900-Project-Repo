@@ -33,7 +33,7 @@
 
     if($checkPharmacyLicense->num_rows > 0)
     {
-        $_SESSION['message'] = 'This pharmacy already exists in the system. If you need help please contact support';
+        $_SESSION['errormsg'] = 'This pharmacy already exists in the system. If you need help please contact support';
         header("location: pharm_registration.php");
     }
     else //Check users table to see if manager email already exists in the system
@@ -41,7 +41,7 @@
         $checkUserEmail = $mysqli->query("SELECT * FROM users WHERE user_email = '$mgr_email'");
         if($checkUserEmail->num_rows > 0)
         {
-            $_SESSION['message'] = 'This user already exists in the system. If you need help please contact support';
+            $_SESSION['errormsg'] = 'This user already exists in the system. If you need help please contact support';
             header("location: pharm_registration.php");
         }
         else //If pharmacy doesnt exist in the system AND manager does not exist in the system
