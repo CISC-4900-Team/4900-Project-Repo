@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	$errors = array('email')
+	//$errors = array('email')
 
 	//Check if form is being submitted
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -15,8 +15,9 @@
 		}
 	}
 ?>
+
 <!-- Nav Include -->
-<?php  include('includes/header.inc.php'); ?>
+<?php  include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php' ?>
 
 <!-- Pharmacy Registration Page Style Sheet -->
 
@@ -28,6 +29,8 @@
 <!-- Manager Registration info - First Name, Last Name, Phone Number, Email, Password -->
 <div class="container">
 	<form name="pharm_reg_form" action="pharm_registration.php" method="post" autocomplete="off">
+		<h1>Join Equinox Systems</h1><br>
+		<p>Only registered and licensed pharmacies may signup with Equinox</p>
 		<h3>Pharmacy Information</h3>
 		<input type="text" name="pharm_license" placeholder="Pharmacy License Number" required><br>
 		<input type="text" name="pharm_name" placeholder="Pharmacy Name" required><br>
@@ -49,6 +52,6 @@
 		<input type="email" name="mgr_email" placeholder="Email" required><br>
 		<input type="password" name="password" placeholder="Password" required><br>
 		<input type="password" name="confirmpassword" placeholder="Confirm Password" required><br>
-		<button name="register">Register</button>
+		<button name="register">Join</button>
 	</form>
 </div>

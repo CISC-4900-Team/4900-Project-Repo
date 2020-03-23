@@ -1,7 +1,6 @@
 <?php
     $activePage = basename($_SERVER['PHP_SELF'], ".php");
 	require('dbinfo.inc.php');
-	//session_start();
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +32,7 @@
 				<li class="<?= ($activePage == 'help') ? 'active':''; ?>"><a href="#"><i class="fas fa-question-circle"></i>Help</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="<?= ($activePage == 'admin_login') ? 'active':''; ?>"><a href="admin_login.php"><i class="fas fa-user-cog"></i>Admin Login</a></li>
+				<!-- <li class="<?= ($activePage == 'admin_login') ? 'active':''; ?>"><a href="admin_login.php"><i class="fas fa-user-cog"></i>Admin Login</a></li> -->
 				<li class="<?= ($activePage == 'user_login') ? 'active':''; ?>"><a href="user_login.php"><i class="fas fa-user-plus"></i>User Login</a></li>
 			</ul>
 		</div>

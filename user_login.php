@@ -1,5 +1,16 @@
+<?php
+	//Check if form is being submitted
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+    	//Checking which button was pressed
+		if(isset($_POST['user_login']))
+		{
+		    require 'includes/user_authentication.php';
+		}
+    }
+?>
 <!-- Header Include -->
-<?php include('includes/header.inc.php'); ?>
+<?php  include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php' ?>
 
 <!-- User Login Page Style Sheet -->
 <link rel="stylesheet" href="stylesheets/user_login_style.css">
@@ -12,18 +23,25 @@
     <div class="row">
         <div class="col-lg-12">
             <div id="content">
-                <h1>Pharmacist Login</h1>
-                <form action="">
+                <h1>Login to Equinox</h1>
+                <form name="user_login" action="user_login.php" method="post" autocomplete="off">
+	                <div>
+		                <label for="company_id">Company ID:</label><br>
+		                <input type="text" name="company_id" id="company_id" placeholder="Company ID*" required>
+	                </div>
                     <div>
-                        <label for="empl_id">Employee ID:</label>
-                        <input type="text" name="empl_id" id="empl_id" placeholder="Employee ID" required>
+	                    <label for="user_id">User ID:</label><br>
+                        <input type="text" name="user_id" id="user_id" placeholder="Employee ID*" required>
                     </div>
                     <div>
-                        <label for="password">Password:</label>
-                        <input type="password" name="password" id="password" placeholder="**********" required>
+	                    <label for="password">Password:</label><br>
+                        <input type="password" name="password" id="password" placeholder="Password*" required>
                     </div>
+	                <input type="checkbox" id="save_cred" name="save_cred">
+	                <label for="save_cred">Save Credentials</label><br>
+	                <!-- TO DO: Forgot password/ID-->
                    <!-- submission -->
-                   <input type="submit" value="Login">
+	                <button name="user_login">Login</button>
                 </form>
             </div>
         </div>
