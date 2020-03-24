@@ -21,25 +21,19 @@
             //Check if password entered matches user's password in the database
             if(password_verify($password, $user['user_password']))
             {
+                session_start();
+
+                $_SESSION['employeeID'] = $user['user_id'];
+                $_SESSION['companyID'] = $user['pharmacy_id'];
+                $_SESSION['userType'] = $user['user_type'];
+
                 if($userType == 'Admin')
                 {
-                    session_start();
-
-                    $_SESSION['employeeID'] = $user['user_id'];
-                    $_SESSION['companyID'] = $user['pharmacy_id'];
-                    $_SESSION['userType'] = $user['user_type'];
-
                     header("location: admin_page.php?login=success");
                     exit();
                 }
                 else if($userType == 'User')
                 {
-                    session_start();
-
-                    $_SESSION['employeeID'] = $user['user_id'];
-                    $_SESSION['companyID'] = $user['pharmacy_id'];
-                    $_SESSION['userType'] = $user['user_type'];
-
                     header("location: user_page.php?login=success");
                     exit();
                 }

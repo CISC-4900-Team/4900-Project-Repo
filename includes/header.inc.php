@@ -1,6 +1,7 @@
 <?php
     $activePage = basename($_SERVER['PHP_SELF'], ".php");
-	require('dbinfo.inc.php');
+    session_start();
+    if(isset($_SESSION['logged_in']));
 ?>
 
 <!DOCTYPE html>
@@ -19,9 +20,6 @@
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
 				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
 			</button>
 			<a href="index.php" class="navbar-brand" ><i class="fas fa-prescription"></i>Equinox</a>
 		</div>
@@ -33,7 +31,8 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<!-- <li class="<?= ($activePage == 'admin_login') ? 'active':''; ?>"><a href="admin_login.php"><i class="fas fa-user-cog"></i>Admin Login</a></li> -->
-				<li class="<?= ($activePage == 'user_login') ? 'active':''; ?>"><a href="user_login.php"><i class="fas fa-user-plus"></i>User Login</a></li>
+				<li class="<?= ($activePage == 'login') ? 'active':''; ?>"><a href="user_login.php"><i class="fas fa-user-plus"></i>Login</a></li>
+				<li class="<?= ($activePage == 'logout') ? 'active':''; ?>"><a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
 			</ul>
 		</div>
 	</div>
