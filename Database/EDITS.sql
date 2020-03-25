@@ -1,0 +1,7 @@
+ -- SHOW TABLES;
+ -- DROP TABLE insurance;
+ -- SHOW TABLES;
+ -- select * from medication;
+ -- delete from medication where Medication_ID = 10135;
+ -- select * from medication;
+ -- select * from Patients;
