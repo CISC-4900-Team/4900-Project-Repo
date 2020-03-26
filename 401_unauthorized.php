@@ -1,18 +1,20 @@
 <!-- Nav Include -->
-<?php  #include('includes/header.inc.php'); ?>
-<?php  include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php' ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php'; ?>
 
 <!-- Index Page Style Sheet -->
-<link rel="stylesheet" href="stylesheets/user_page_style.css">
+<link rel="stylesheet" href="stylesheets/index_style.css">
 
 <!-- Title -->
-<title>User Homepage</title>
+<title>Unauthorized Access</title>
 <!-- center page -->
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
             <div id="content">
-                <h3>You're now logged into the user page</h3>
+                <h1>Error 401</h1>
+                <h2>Unauthorized Access</h2>
+                <hr>
+                <h3>If you need assistance please contact support, or join Equinox for access</h3>
             </div>
         </div>
     </div>

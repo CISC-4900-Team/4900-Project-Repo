@@ -14,41 +14,108 @@
 ?>
 
 <!-- Nav Include -->
-<?php  include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php' ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php' ?>
 
 <!-- Pharmacy Registration Page Style Sheet -->
+<link rel="stylesheet" href="stylesheets/registration_page_style.css">
 
 <!-- Title -->
 <title>Join Equinox</title>
 
-<!-- Required Information - Pharmacy name, address, city, state, zip, phone number -->
-<!-- Right below the pharmacy information will be the manager registration separated by line and header -->
-<!-- Manager Registration info - First Name, Last Name, Phone Number, Email, Password -->
+<!-- Registration form -->
 <div class="container">
-	<form name="pharm_reg_form" action="pharm_registration.php" method="post" autocomplete="off">
-		<h1>Join Equinox Systems</h1><br>
-		<p>Only registered and licensed pharmacies may signup with Equinox</p>
+	<div id="content">
+		<h1>Join Equinox</h1>
 		<h3>Pharmacy Information</h3>
-		<input type="text" name="pharm_license" placeholder="Pharmacy License Number" required><br>
-		<input type="text" name="pharm_name" placeholder="Pharmacy Name" required><br>
-		<input type="text" name="pharm_addr" placeholder="Pharmacy Address" required><br>
-		<input type="text" name="pharm_city" placeholder="City" required>
-		<input type="text" name="pharm_state" placeholder="State" required>
-		<input type="text" name="pharm_zip" placeholder="Zip Code" required><br>
-		<input type="text" name="pharm_phone" placeholder="Phone Number" required>
-		<input type="email" name="pharm_email" placeholder="Pharmacy Email" required>
-		<hr>
-		<h3>Manager Information</h3>
-		<input type="text" name="mgr_license" placeholder="Pharmacist License Number" required><br>
-		<input type="text" name="mgr_first" placeholder="First Name" required>
-		<input type="text" name="mgr_last" placeholder="Last Name" required><br>
-		<input type="text" name="mgr_address" placeholder="Address" required><br>
-		<input type="text" name="mgr_city" placeholder="City" required>
-		<input type="text" name="mgr_state" placeholder="State" required>
-		<input type="text" name="mgr_zip" placeholder="Zip Code" required><br>
-		<input type="email" name="mgr_email" placeholder="Email" required><br>
-		<input type="password" name="password" placeholder="Password" required><br>
-		<input type="password" name="confirmpassword" placeholder="Confirm Password" required><br>
-		<button name="register">Join</button>
-	</form>
+		<form name="pharm_reg_form" action="pharm_registration.php" method="post" autocomplete="off">
+			<div class="row">
+				<div class="form-group col-md-2" id="pharm-name">
+					<input type="text" name="pharm_name" placeholder="Pharmacy Name" required>
+				</div>
+				<div class="form-group col-md-2">
+					<input type="text" name="pharm_license" placeholder="Registration Number" required>
+				</div>
+			</div>
+			<div class="row" id="pharm-addr">
+				<div class="form-group col-md-2">
+					<input type="text" name="pharm_addr" placeholder="Address" required>
+				</div>
+			</div>
+			<div class="row" id="csz-row">
+				<div class="form-group col-md-2"  id="csz-city">
+					<input type="text" name="pharm_city" placeholder="City" required>
+				</div>
+				<div class="form-group col-md-2" id="csz-state">
+					<input type="text" name="pharm_state" placeholder="State" required>
+				</div>
+				<div class="form-group col-md-2" id="csz_zip">
+					<input type="text" name="pharm_zip" placeholder="Zip Code" required>
+				</div>
+			</div>
+			<div class="row" id="pharm-contact">
+				<div class="form-group col-md-2">
+					<input type="text" name="pharm_phone" placeholder="Phone Number" required>
+				</div>
+				<div class="form-group col-md-2">
+					<input type="email" name="pharm_email" placeholder="Email" required>
+				</div>
+			</div>
+			<hr>
+			<h3>Manager Registration</h3>
+			<div class="row" id="mgr-license">
+				<div class="form-group col-md-2">
+					<label for="pharm_addr">License Number</label>
+					<input type="text" name="mgr_license" required>
+				</div>
+			</div>
+			<div class="row" id="mgr-name">
+				<div class="form-group col-md-2">
+					<label for="mgr_first">First Name</label>
+					<input type="text" name="mgr_first" required>
+				</div>
+				<div class="form-group col-md-2">
+					<label for="mgr_last">Last Name</label>
+					<input type="text" name="mgr_last" required>
+				</div>
+			</div>
+			<div class="row" id="mgr-addr">
+				<div class="form-group col-md-2">
+					<label for="mgr_address">Address</label>
+					<input type="text" name="mgr_address" required>
+				</div>
+			</div>
+			<div class="row" id="mgr-csz-row">
+				<div class="form-group col-md-2"  id="csz-city">
+					<label for="pharm_city">City</label>
+					<input type="text" name="pharm_city" required>
+				</div>
+				<div class="form-group col-md-2" id="csz-state">
+					<label for="pharm_state">State</label>
+					<input type="text" name="pharm_state" required>
+				</div>
+				<div class="form-group col-md-2" id="csz_zip">
+					<label for="pharm_zip">Zip</label>
+					<input type="text" name="pharm_zip" equired>
+				</div>
+			</div>
+			<div class="row" id="mgr-email">
+				<div class="form-group col-md-2">
+					<label for="mgr_email">Email</label>
+					<input type="email" name="mgr_email" required>
+				</div>
+			</div>
+			<div class="row" id="mgr-name">
+				<div class="form-group col-md-2">
+					<label for="password">Password</label>
+					<input type="password" name="password" required>
+				</div>
+				<div class="form-group col-md-2">
+					<label for="confirmpassword">Confirm Password</label>
+					<input type="password" name="confirmpassword" required>
+				</div>
+			</div>
+			<button name="register">Join</button>
+		</form>
+	</div>
 </div>
+
