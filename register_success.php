@@ -1,6 +1,6 @@
 <!-- Nav Include -->
 <?php  #include('includes/header.inc.php'); ?>
-<?php  include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php' ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php' ?>
 
 <!-- Index Page Style Sheet -->
 <link rel="stylesheet" href="stylesheets/index_style.css">

@@ -1,9 +1,7 @@
 <?php
     $activePage = basename($_SERVER['PHP_SELF'], ".php");
     session_start();
-    if(isset($_SESSION['logged_in']));
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,24 +13,48 @@
 </head>
 <body>
 <!-- navBar -->
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
 				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
 			</button>
-			<a href="index.php" class="navbar-brand" ><i class="fas fa-prescription"></i>Equinox</a>
+			<?php
+                if(isset($_SESSION['loggedIn']))
+				{
+                    echo '<a href="http://localhost:63342/PharmaSystem/homepage/main_page.php" class="navbar-brand" ><i class="fas fa-prescription"></i>Equinox</a>';
+				}
+                else
+                {
+                	echo '<a href="http://localhost:63342/PharmaSystem/index.php" class="navbar-brand" ><i class="fas fa-prescription"></i>Equinox</a>';
+                }
+			?>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-nav-demo">
+
 			<ul class="nav navbar-nav">
-				<li class="<?= ($activePage == 'index') ? 'active':''; ?>"><a href="index.php"><i class="fas fa-home"></i>Home</a></li>
-				<li class="<?= ($activePage == 'pharm_registration') ? 'active':''; ?>"><a href="pharm_registration.php"><i class="fas fa-users"></i>Join</a></li>
-				<li class="<?= ($activePage == 'help') ? 'active':''; ?>"><a href="#"><i class="fas fa-question-circle"></i>Help</a></li>
+				<?php
+                    if(!isset($_SESSION['loggedIn']))
+					{
+						echo '<li class="<?= ($activePage == \'pharm_registration\') ? \'active\':\'\'; ?>"><a href="http://localhost:63342/PharmaSystem/pharm_registration.php"><i class="fas fa-users"></i>Join</a></li>';
+						echo '<li class="<?= ($activePage == \'help\') ? \'active\':\'\'; ?>"><a href="http://localhost:63342/PharmaSystem/help.php"><i class="fas fa-question-circle"></i>Help</a></li>';
+					}
+				?>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<!-- <li class="<?= ($activePage == 'admin_login') ? 'active':''; ?>"><a href="admin_login.php"><i class="fas fa-user-cog"></i>Admin Login</a></li> -->
-				<li class="<?= ($activePage == 'login') ? 'active':''; ?>"><a href="user_login.php"><i class="fas fa-user-plus"></i>Login</a></li>
-				<li class="<?= ($activePage == 'logout') ? 'active':''; ?>"><a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+				<?php
+					if(isset($_SESSION['loggedIn']))
+					{
+						echo '<li><a href="http://localhost:63342/PharmaSystem/includes/logout.inc.php"><i class="fas fa-sign-out-alt"></i>LOGOUT</a></li>';
+					}
+					else
+					{
+						echo '<li class="<?= ($activePage == \'login\') ? \'active\':\'\'; ?>"><a href="http://localhost:63342/PharmaSystem/user_login.php"><i class="fas fa-sign-in-alt"></i>LOGIN</a></li>';
+					}
+				?>
 			</ul>
 		</div>
 	</div>

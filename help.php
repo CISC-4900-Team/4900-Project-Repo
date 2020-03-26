@@ -1,21 +1,20 @@
 <!-- Nav Include -->
-<?php  #include('includes/header.inc.php'); ?>
-<?php  include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php' ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php'; ?>
 
 <!-- Index Page Style Sheet -->
-<link rel="stylesheet" href="stylesheets/admin_page_style.css">
+<link rel="stylesheet" href="stylesheets/index_style.css">
 
 <!-- Title -->
-<title>Admin Homepage</title>
+<title>Get Information</title>
 <!-- center page -->
 <div class="container">
-	<div class="row">
-		<div class="col-lg-12">
-			<div id="content">
-			<h3>You're now logged into the admin page</h3>
-			</div>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="content">
+                <h1>Help Page To Do</h1>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

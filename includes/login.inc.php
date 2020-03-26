@@ -26,10 +26,11 @@
                 $_SESSION['employeeID'] = $user['user_id'];
                 $_SESSION['companyID'] = $user['pharmacy_id'];
                 $_SESSION['userType'] = $user['user_type'];
+                $_SESSION['loggedIn'] = 'true';
 
                 if($userType == 'Admin')
                 {
-                    header("location: admin_page.php?login=success");
+                    header("location: homepage/main_page.php?login=success");
                     exit();
                 }
                 else if($userType == 'User')
