@@ -11,7 +11,10 @@
       <user-name>root</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema" qname="loginsystem" negative="1" />
+          <node kind="schema">
+            <name qname="patients" />
+            <name qname="registrar" />
+          </node>
         </introspection-scope>
       </schema-mapping>
     </data-source>

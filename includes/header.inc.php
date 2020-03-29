@@ -34,7 +34,6 @@
 			?>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-nav-demo">
-
 			<ul class="nav navbar-nav">
 				<?php
                     if(!isset($_SESSION['loggedIn']))
@@ -52,7 +51,7 @@
 					}
 					else
 					{
-						echo '<li class="<?= ($activePage == \'login\') ? \'active\':\'\'; ?>"><a href="http://localhost:63342/PharmaSystem/user_login.php"><i class="fas fa-sign-in-alt"></i>LOGIN</a></li>';
+						echo '<li class="<?= ($activePage == \'user_login\') ? \'active\':\'\'; ?>"><a href="http://localhost:63342/PharmaSystem/user_login.php"><i class="fas fa-sign-in-alt"></i>LOGIN</a></li>';
 					}
 				?>
 			</ul>
