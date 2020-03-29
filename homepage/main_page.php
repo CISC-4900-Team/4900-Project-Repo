@@ -6,20 +6,16 @@
     }
 	*/
 ?>
-
-<!-- Index Page Style Sheet -->
 <link rel="stylesheet" href="../stylesheets/admin_page_style.css">
-
-<!-- Title -->
 <title>Pharmacy Page</title>
 
-<div class="container" >
+<div class="container">
 	<h1>Main Page</h1>
 	<div class="row">
 		<!-- Patient Lookup  -->
 		<div id="Patient_Lookup" class="col-lg-6 col-sm-6">
 			<h4>Patient Lookup</h4>
-			<button class = "btn btn-dark"><a href="crud/patient_lookup.php">Patient Lookup</a></button>
+			<a href="crud/patient_lookup.php"><button class = "btn btn-dark">Patient Lookup</button></a>
 		</div>
 		<!-- Patient Lookup End  -->
 		<!-- Recent Patient Transactions -->
@@ -51,7 +47,7 @@
 			<h4>Technical Resources</h4>
 			<button class = "btn btn-dark">Resources</button>
 		</div>
-		<!-- Technical Resources  -->
-		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	</div>
+</div>
+
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.inc.php'; ?>

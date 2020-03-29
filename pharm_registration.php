@@ -1,3 +1,7 @@
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php' ?>
+<link rel="stylesheet" href="stylesheets/registration_page_style.css">
+<title>Join Equinox</title>
+
 <?php
 	//Check if form is being submitted
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -12,16 +16,6 @@
 		}
 	}
 ?>
-
-<!-- Nav Include -->
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php' ?>
-
-<!-- Pharmacy Registration Page Style Sheet -->
-<link rel="stylesheet" href="stylesheets/registration_page_style.css">
-
-<!-- Title -->
-<title>Join Equinox</title>
-
 <!-- Registration form -->
 <div class="container">
 	<div id="content">
@@ -86,16 +80,16 @@
 			</div>
 			<div class="row" id="mgr-csz-row">
 				<div class="form-group col-md-2"  id="csz-city">
-					<label for="pharm_city">City</label>
-					<input type="text" name="pharm_city" required>
+					<label for="mgr_city">City</label>
+					<input type="text" name="mgr_city" required>
 				</div>
 				<div class="form-group col-md-2" id="csz-state">
-					<label for="pharm_state">State</label>
-					<input type="text" name="pharm_state" required>
+					<label for="mgr_state">State</label>
+					<input type="text" name="mgr_state" required>
 				</div>
 				<div class="form-group col-md-2" id="csz_zip">
-					<label for="pharm_zip">Zip</label>
-					<input type="text" name="pharm_zip" equired>
+					<label for="mgr_zip">Zip</label>
+					<input type="text" name="mgr_zip" required>
 				</div>
 			</div>
 			<div class="row" id="mgr-email">
@@ -119,3 +113,4 @@
 	</div>
 </div>
 
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.inc.php'; ?>

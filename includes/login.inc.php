@@ -1,5 +1,5 @@
 <?php
-    include('dbinfo.inc.php');
+    include('registrarSchema.inc.php');
 
     $company_id = $mysqli->escape_string($_POST['company_id']);
     $user_id = $mysqli->escape_string($_POST['user_id']);
