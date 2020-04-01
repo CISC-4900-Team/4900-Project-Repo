@@ -12,8 +12,10 @@
       <schema-mapping>
         <introspection-scope>
           <node kind="schema">
+            <name qname="inventory" />
             <name qname="patients" />
             <name qname="registrar" />
+            <name qname="transactions" />
           </node>
         </introspection-scope>
       </schema-mapping>
