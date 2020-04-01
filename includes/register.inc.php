@@ -1,5 +1,5 @@
 <?php
-    include('registrarSchema.inc.php');
+    include('db_includes/registrarSchema.inc.php');
     //Getting pharmacy information from registration form
     //Using escape_string to prevent SQL injection
     $pharm_license = $mysqli->escape_string($_POST['pharm_license']);
@@ -51,14 +51,14 @@
 
             $sql = "INSERT INTO pharmacies (pharmacy_id, pharmacy_name, pharmacy_addr, city, state, zip, phone_number, pharmacy_email, pharmacy_license) 
                                 values ('$pharmacy_id', '$pharm_name', '$pharm_addr', '$pharm_city', '$pharm_state', '$pharm_zip', '$pharm_phone', '$pharm_email', '$pharm_license')";
-            mysqli_query($mysqli, $sql) or die('error');
+            mysqli_query($mysqli, $sql);
 
             $sql = "INSERT INTO users (user_id, user_email, user_password, pharmacy_id, user_first, user_last, address, city, state, zipcode, license_num, hash, user_type, phone_number, active) 
                                 values ('$user_id', '$mgr_email', '$mgr_pass', '$pharmacy_id', '$mgr_first', '$mgr_last', '$mgr_addr', '$mgr_city', '$mgr_state', '$mgr_zip', '$mgr_license', '$hash', 'Admin', '0000000000', 1)";
             mysqli_query($mysqli, $sql);
 
             echo 'Added pharmacy and manager successfully';
-            header("location: register_success.php");
+            header("location: ../register_success.php");
             exit();
         }
     }

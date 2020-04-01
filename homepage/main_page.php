@@ -15,7 +15,7 @@
 		<!-- Patient Lookup  -->
 		<div id="Patient_Lookup" class="col-lg-6 col-sm-6">
 			<h4>Patient Lookup</h4>
-			<a href="crud/patient_lookup.php"><button class = "btn btn-dark">Patient Lookup</button></a>
+			<a href="patients/patient_lookup.php"><button class = "btn btn-dark">Patient Lookup</button></a>
 		</div>
 		<!-- Patient Lookup End  -->
 		<!-- Recent Patient Transactions -->
@@ -25,18 +25,20 @@
 		</div>
 		<!-- Recent Patient Transactions End -->
 		<!-- Employee system usage -->
-		<div id="Emp_sys_usage" class="col-lg-6 col-sm-6">
+		<?php if($_SESSION['userType']=='Admin'): ?>
+	        <div id="Emp_sys_usage" class="col-lg-6 col-sm-6">
 			<h4>Employee system usage</h4>
 			<button class = "btn btn-dark">System Usage</button>
-		</div>
+			</div>
+		<?php endif; ?>
 		<!-- Employee system usage End -->
 		<!-- Inventory count  -->
 		<div id="Inv_count" class="col-lg-6 col-sm-6">
 			<h4>Inventory</h4>
-			<button class = "btn btn-dark">Inventory</button>
+			<a href="inventory/current_inventory.php"><button class = "btn btn-dark">Inventory</button></a>
 		</div>
 		<!-- Inventory count End -->
-		<!-- Daily Employee Schedules    -->
+		<!-- Daily Employee Schedules -->
 		<div id="Emp_Sch" class="col-lg-6 col-sm-6">
 			<h4>Daily Employee Schedules</h4>
 			<button class = "btn btn-dark">Schedule</button>

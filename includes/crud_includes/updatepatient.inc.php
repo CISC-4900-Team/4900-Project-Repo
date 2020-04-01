@@ -22,15 +22,12 @@
     $pcp_addr = $pSQLI->escape_string($_POST['pcp_addr']);
     $pcp_phone = $pSQLI->escape_string($_POST['pcp_phone']);
 
-    //Generate unique patient id
-    $pid = substr((uniqid(rand()) . 5), 3, 6);
+    $updateSQL = "UPDATE patient_info SET p_first = '$p_first', p_last = '$p_last', p_dob = '$p_dob', p_sex = '$p_sex', 
+                        p_addr = '$p_addr', p_city = '$p_city', p_state = '$p_state', p_zip = '$p_zip', p_phone = '$p_phone', 
+                        allergies = '$p_allergies',  insurer = '$p_insurer', primary_physician = '$pcp_name', 
+                        physician_addr = '$pcp_addr', physician_phone = '$pcp_phone' WHERE pid = $id";
 
-    //Assigning the patient their correct pharmacy ID
-    $pharmacyID = $_SESSION['companyID'];
+    mysqli_query($pSQLI, $updateSQL) or die(mysqli_error($pSQLI));
 
-    $addSQL = "INSERT INTO patient_info(pid, p_first, p_last, p_dob, p_sex, p_addr, p_city, p_state, p_zip, p_phone, allergies, insurer, primary_physician, physician_addr, physician_phone, pharm_id) 
-    VALUES('$pid', '$p_first', '$p_last', '$p_dob', '$p_sex', '$p_addr', '$p_city', '$p_state', '$p_zip', '$p_phone', '$p_allergies', '$p_insurer', '$pcp_name', '$pcp_addr', '$pcp_phone', '$pharmacyID')";
-    mysqli_query($pSQLI, $addSQL);
-
-    header('location: ../../homepage/patients/patient_lookup.php?patient_added');
+    header('location: ../../homepage/patients/view_patient.php?pid='.$id.'&update=success');
     exit();

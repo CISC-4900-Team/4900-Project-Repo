@@ -9,7 +9,7 @@
                 <h1>Error 401</h1>
                 <h2>Unauthorized Access</h2>
                 <hr>
-                <h3>If you need assistance please contact support, or join Equinox for access</h3>
+                <h3>If you need assistance please contact support</h3>
             </div>
         </div>
     </div>

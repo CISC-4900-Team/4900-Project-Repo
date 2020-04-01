@@ -1,6 +1,6 @@
 <?php include
     $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php';
-    include("{$_SERVER['DOCUMENT_ROOT']}/includes/patientSchema.inc.php");
+    include $_SERVER['DOCUMENT_ROOT'] . '/includes/db_includes/patientSchema.inc.php';
 
     //Check if form is being submitted
     if($_SERVER['REQUEST_METHOD'] == 'POST')

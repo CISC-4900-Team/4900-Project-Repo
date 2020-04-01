@@ -1,5 +1,5 @@
 <?php
-    include('registrarSchema.inc.php');
+    include('db_includes/registrarSchema.inc.php');
 
     $company_id = $mysqli->escape_string($_POST['company_id']);
     $user_id = $mysqli->escape_string($_POST['user_id']);
@@ -35,24 +35,24 @@
                 }
                 else if($userType == 'User')
                 {
-                    header("location: user_page.php?login=success");
+                    header("location: homepage/main_page.php?login=success");
                     exit();
                 }
             }
             else
             {
-                header("location: user_login.php?error=wrongpassword");
+                header("location: main_page.php?error=wrongpassword");
                 exit();
             }
         }
         else
         {
-            header("location: user_login.php?error=invalidcompany");
+            header("location: main_page.php?error=invalidcompany");
             exit();
         }
     }
     else
     {
-        header("location: user_login.php?error=invaliduser");
+        header("location: main_page.php?error=invaliduser");
         exit();
     }
