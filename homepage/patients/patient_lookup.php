@@ -2,7 +2,7 @@
 	$_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php';
     include $_SERVER['DOCUMENT_ROOT'] . '/includes/db_includes/patientSchema.inc.php';
 
-    $pharmacyID = $_SESSION['companyID'];
+    //$pharmacyID = $_SESSION['companyID'];
 
     if (isset($_GET['pageno'])) {
         $pageno = $_GET['pageno'];
@@ -29,20 +29,9 @@
     }
     else
     {
-    	//Check if filter has been set
-    	if(!isset($_GET['filter']) || $_GET['filter'] == 'None')
-	    {
-            $pagiSQL = "SELECT * FROM patient_info WHERE '$pharmacyID' IN (pharm_id) LIMIT $offset, $limit";
-            $dataResult = mysqli_query($pSQLI, $pagiSQL);
-	    }
-    	else if(isset($_GET['filter']))
-	    {
-	    	$filterType = $_GET['filter'];
-	    	echo $filterType;
-
-            $pagiSQL = "SELECT * FROM patient_info WHERE '$filterType' AND '$pharmacyID' IN (pharm_id) LIMIT $offset, $limit";
-            $dataResult = mysqli_query($pSQLI, $pagiSQL);
-	    }
+        //$pagiSQL = "SELECT * FROM patient_info WHERE '$pharmacyID' IN (pharm_id) LIMIT $offset, $limit";
+        $pagiSQL = "SELECT * FROM patient_info LIMIT $offset, $limit";
+        $dataResult = mysqli_query($pSQLI, $pagiSQL);
     }
 
     //Check if user clicks delete
@@ -58,15 +47,6 @@
     {
 	    header('location: add_patient.php');
     }
-
-    /*
-     * <?php
-
-                        $filter = array("None", "First Name", "Last Name", "D-O-B", "Address", "City", "State", "Zip", "Insurer");
-                        for($i=0;$i<8;$i++):?>
-							<option value="<?php echo "$filter[$i]"?>"><?php echo "$filter[$i]"?></option>
-                        <?php endfor; ?>
-     */
 ?>
 <link rel="stylesheet" href="../../stylesheets/patient_lookup_style.css">
 <title>Patient Lookup</title>
@@ -74,26 +54,9 @@
 <div class="container">
 	<h1><a href="patient_lookup.php">Patient Lookup</a></h1>
 	<div class="form-row">
-		<form action="patient_lookup.php?filter" method="get" name="filter_form">
-			<div class="col-md-2">
-				<select id="inputState" class="form-control" name="filter">
-					<option value="None">None</option>
-					<option value="p_first">First Name</option>
-					<option value="p_last">Last Name</option>
-					<option value="p_dob">D-O-B</option>
-					<option value="p_sex">Gender</option>
-					<option value="p_addr">Address</option>
-					<option value="p_city">City</option>
-					<option value="p_state">State</option>
-					<option value="p_zip">Zipcode</option>
-				</select>
-			</div>
-			<div class="col-md-1">
-				<button type="submit" class="search-button">Filter</button>
-			</div>
-		</form>
-
 		<form class="searchbar" id="patient-search" method="get" action="patient_lookup.php?query">
+			<div class="col-md-3">
+			</div>
 			<div class="col-md-6">
 				<input type="text" name="query" placeholder="Filter Patients by Name(F or L), DOB, Gender, City, State, Zip, or Insurer" required>
 			</div>

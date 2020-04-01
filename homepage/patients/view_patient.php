@@ -8,6 +8,7 @@
     $result = mysqli_query($pSQLI, $patientSQL);
     $record = mysqli_fetch_assoc($result);
 
+    /*
     //Check whether the user accessing the patient has authorization
     $pharmacyID = $_SESSION['companyID'];
     if($pharmacyID != $record['pharm_id'])
@@ -22,13 +23,7 @@
             header('location: edit_patient.php?pid='.$id);
             exit();
         }
-        /*
-        else if($_POST['view_transaction'])
-        {
-            header('location: #');
-        }
-        */
-	}
+	}*/
 ?>
 
 <link rel="stylesheet" href="../../stylesheets/crud_styles/patient_page_style.css">
