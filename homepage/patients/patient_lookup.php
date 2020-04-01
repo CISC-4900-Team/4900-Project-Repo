@@ -1,5 +1,8 @@
-<?php include
-	$_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php';
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php'; ?>
+<link rel="stylesheet" href="../../stylesheets/patient_lookup_style.css">
+<title>Patient Lookup</title>
+
+<?php
     include $_SERVER['DOCUMENT_ROOT'] . '/includes/db_includes/patientSchema.inc.php';
 
     //$pharmacyID = $_SESSION['companyID'];
@@ -48,8 +51,6 @@
 	    header('location: add_patient.php');
     }
 ?>
-<link rel="stylesheet" href="../../stylesheets/patient_lookup_style.css">
-<title>Patient Lookup</title>
 
 <div class="container">
 	<h1><a href="patient_lookup.php">Patient Lookup</a></h1>

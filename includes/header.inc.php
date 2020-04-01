@@ -25,16 +25,11 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<?php
-                if(isset($_SESSION['loggedIn']))
-				{
-                    echo '<a href="http://localhost:63342/PharmaSystem/homepage/main_page.php" class="navbar-brand" ><i class="fas fa-prescription"></i>Equinox</a>';
-				}
-                else
-                {
-                	echo '<a href="http://localhost:63342/PharmaSystem/index.php" class="navbar-brand" ><i class="fas fa-prescription"></i>Equinox</a>';
-                }
-			?>
+			<?php if(isset($_SESSION['loggedIn'])): ?>
+				<a href="http://localhost:63342/PharmaSystem/homepage/main_page.php" class="navbar-brand"><i class="fas fa-prescription"></i>Equinox</a>
+			<?php else: ?>
+				<a href="http://localhost:63342/PharmaSystem/index.php" class="navbar-brand" ><i class="fas fa-prescription"></i>Equinox</a>
+			<?PHP endif; ?>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-nav-demo">
 			<ul class="nav navbar-nav">
