@@ -1,28 +1,29 @@
 <?php
     include('db_includes/database_info.inc.php');
+    include('mailer.inc.php');
 
     //Getting pharmacy information from registration form
     //Using escape_string to prevent SQL injection
-    echo $pharm_name = $mySQLI->escape_string($_POST['pharm_name']);
-    echo $pharm_license = $mySQLI->escape_string($_POST['pharm_license']);
-    echo $pharm_addr = $mySQLI->escape_string($_POST['pharm_addr']);
-    echo $pharm_city = $mySQLI->escape_string($_POST['pharm_city']);
-    echo $pharm_state = $mySQLI->escape_string($_POST['pharm_state']);
-    echo $pharm_zip = $mySQLI->escape_string($_POST['pharm_zip']);
-    echo $pharm_phone = $mySQLI->escape_string($_POST['pharm_phone']);
-    echo $pharm_email = $mySQLI->escape_string($_POST['pharm_email']);
+    $pharm_name = $mySQLI->escape_string($_POST['pharm_name']);
+    $pharm_license = $mySQLI->escape_string($_POST['pharm_license']);
+    $pharm_addr = $mySQLI->escape_string($_POST['pharm_addr']);
+    $pharm_city = $mySQLI->escape_string($_POST['pharm_city']);
+    $pharm_state = $mySQLI->escape_string($_POST['pharm_state']);
+    $pharm_zip = $mySQLI->escape_string($_POST['pharm_zip']);
+    $pharm_phone = $mySQLI->escape_string($_POST['pharm_phone']);
+    $pharm_email = $mySQLI->escape_string($_POST['pharm_email']);
 
     //Getting manager information from registration form
-    echo $emp_first = $mySQLI->escape_string($_POST['emp_first']);
-    echo $emp_last = $mySQLI->escape_string($_POST['emp_last']);
-    echo $emp_license = $mySQLI->escape_string($_POST['emp_license']);
-    echo $emp_addr = $mySQLI->escape_string($_POST['emp_addr']);
-    echo $emp_city = $mySQLI->escape_string($_POST['emp_city']);
-    echo $emp_state = $mySQLI->escape_string($_POST['emp_state']);
-    echo $emp_zip = $mySQLI->escape_string($_POST['emp_zip']);
-    echo $emp_email = $mySQLI->escape_string($_POST['emp_email']);
-    echo $emp_phone = $mySQLI->escape_string($_POST['emp_phone']);
-    echo $emp_pass = $mySQLI->escape_string($_POST['emp_pwd']);
+    $emp_first = $mySQLI->escape_string($_POST['emp_first']);
+    $emp_last = $mySQLI->escape_string($_POST['emp_last']);
+    $emp_license = $mySQLI->escape_string($_POST['emp_license']);
+    $emp_addr = $mySQLI->escape_string($_POST['emp_addr']);
+    $emp_city = $mySQLI->escape_string($_POST['emp_city']);
+    $emp_state = $mySQLI->escape_string($_POST['emp_state']);
+    $emp_zip = $mySQLI->escape_string($_POST['emp_zip']);
+    $emp_email = $mySQLI->escape_string($_POST['emp_email']);
+    $emp_phone = $mySQLI->escape_string($_POST['emp_phone']);
+    $emp_pass = $mySQLI->escape_string($_POST['emp_pwd']);
     $type = 'Admin';
     $firstLogin = 1;
     $isActive = 0;
@@ -55,7 +56,7 @@
 
         //7. Parse result(s)
         if($result->num_rows > 0) {
-            header("location: pharm_registration.php?license_exists");
+            header("location: pharm_registration.php?error=license_exists");
             exit();
         } else {
             //Check users table to see if manager email already exists in the system
@@ -71,9 +72,10 @@
                 $result = mysqli_stmt_get_result($stmt);
 
                 if($result->num_rows > 0) {
-                    header("location: pharm_registration.php?email_exists");
+                    header("location: pharm_registration.php?error=email_exists");
                     exit();
                 } else {
+                    /*
                     //Generate unique ID for the pharmacy
                     $pharm_id = substr((uniqid(rand()) . 5), 0, 6);
 
@@ -106,8 +108,25 @@
                         mysqli_stmt_bind_param($stmt, 'sssssssssss', $u_id, $pharm_id, $emp_license, $emp_first, $emp_last, $emp_addr, $emp_city, $emp_state, $emp_zip, $emp_phone, $emp_email);
                         mysqli_stmt_execute($stmt);
                     }
-                    header("location: pharm_registration.php?register_success");
-                    exit();
+                    */
+
+                    //Test http://localhost:63342/PharmaSystem/verify.php?vkey=66808e327dc79d135ba18e051673d906
+
+                    $mail->SetFrom('equinoxpharmacysystems@gmail.com', 'Equinox Systems');
+                    $mail->Subject = 'Equinox Account Verification';
+                    $mail->Body = "
+                    <h3>Thank You for Registering</h3><br>
+                    <p>Please click this <a href='http://localhost:63342/PharmaSystem/verify.php?vkey=$hash'>verification</a> link to verify your email</p><br>
+                    <p>Once the email has been verified, an email with your login credentials will be sent. </p>        
+                    ";
+                    $mail->AddAddress($emp_email);
+                    if(!$mail->Send()) {
+                        $error = 'Mail error: '.$mail->ErrorInfo;
+                        return false;
+                    } else {
+                        $error = 'Message sent!';
+                        return true;
+                    }
                 }
             }
         }

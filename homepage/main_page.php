@@ -3,7 +3,6 @@
 <title>Pharmacy Page</title>
 
 <?php
-
 	/*
     if(!isset($_SESSION['loggedIn'])){ //if login in session is not set
         header("Location: 401_unauthorized.php");

@@ -7,7 +7,7 @@
         <div class="col-lg-12">
             <div id="content">
                 <h1>Registration Successful!</h1>
-                <h3>Please check the email you registered with for login instructions.</h3>
+                <h3>A verification email has been sent to the email you provided./h3>
                 <hr>
             </div>
         </div>

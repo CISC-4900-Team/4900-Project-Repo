@@ -35,15 +35,21 @@
             } else {
                 //Check if password entered matches user's password in the database
                 if(password_verify($password, $user['u_pass'])) {
-                    session_start();
+                    //Check if user account is verified
+                    if(!$user['is_active']) {
+                        header("location: user_login.php?error=unverified");
+                        exit();
+                    } else {
+                        session_start();
 
-                    $_SESSION['employeeID'] = $user['u_id'];
-                    $_SESSION['companyID'] = $user['pharm_id'];
-                    $_SESSION['userType'] = $user['u_type'];
-                    $_SESSION['loggedIn'] = 'true';
+                        $_SESSION['employeeID'] = $user['u_id'];
+                        $_SESSION['companyID'] = $user['pharm_id'];
+                        $_SESSION['userType'] = $user['u_type'];
+                        $_SESSION['loggedIn'] = 'true';
 
-                    header("location: homepage/main_page.php?login=success");
-
+                        header("location: homepage/main_page.php?login=success");
+                        exit();
+                    }
                 } else {
                     header("location: user_login.php?error=wrongpassword");
                     exit();

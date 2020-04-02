@@ -1,6 +1,9 @@
 <?php
     $activePage = basename($_SERVER['PHP_SELF'], ".php");
     session_start();
+    if(isset($_POST['logout'])) {
+		require("logout.inc.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,38 +29,41 @@
 				<span class="icon-bar"></span>
 			</button>
 			<?php if(isset($_SESSION['loggedIn'])): ?>
-				<a href="https://equinoxpharma.herokuapp.com/homepage/main_page.php" class="navbar-brand"><i class="fas fa-prescription"></i>Equinox</a>
+				<!-- <a href="https://equinoxpharma.herokuapp.com/homepage/main_page.php" class="navbar-brand"><i class="fas fa-prescription"></i>Equinox</a> -->
+				<a href="/main_page.php" class="navbar-brand"><i class="fas fa-prescription"></i>Equinox</a>
 			<?php else: ?>
-				<a href="https://equinoxpharma.herokuapp.com/index.php" class="navbar-brand" ><i class="fas fa-prescription"></i>Equinox</a>
+				<!-- <a href="https://equinoxpharma.herokuapp.com/index.php" class="navbar-brand" ><i class="fas fa-prescription"></i>Equinox</a> -->
+				<a href="index.php" class="navbar-brand" ><i class="fas fa-prescription"></i>Equinox</a>
 			<?PHP endif; ?>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-nav-demo">
 			<ul class="nav navbar-nav">
-                <?php
-                    if(!isset($_SESSION['loggedIn']))
-                    {
-                        echo '<li><a href="https://equinoxpharma.herokuapp.com/pharm_registration.php"><i class="fas fa-users"></i>Join</a></li>';
-                        echo '<li><a href="https://equinoxpharma.herokuapp.com/help.php"><i class="fas fa-question-circle"></i>Help</a></li>';
-                    }
-                    else if($_SESSION['userType']=='Admin')
-                    {
-                        echo '<li><a href="new_employee.php"><i class="fas fa-user-plus"></i>New User</a></li>';
-                    }
+                <?php if(!isset($_SESSION['loggedIn'])): ?>
+	                <!-- <a href="https://equinoxpharma.herokuapp.com/pharm_registration.php"><i class="fas fa-users"></i>Join</a></li> -->
+	                <li><a href="pharm_registration.php"><i class="fas fa-users"></i>Join</a></li>
 
-                ?>
+	                <!-- <li><a href="https://equinoxpharma.herokuapp.com/help.php"><i class="fas fa-question-circle"></i>Help</a></li> -->
+	                <li><a href="help.php"><i class="fas fa-question-circle"></i>Help</a></li>
+                <?php elseif($_SESSION['userType']=='Admin'): ?>
+	                <!--<li><a href="new_employee.php"><i class="fas fa-user-plus"></i>New User</a></li>-->
+	                <li><a href="../new_employee.php"><i class="fas fa-user-plus"></i>New User</a></li>
+                <?php endif; ?>
 			</ul>
+
 			<ul class="nav navbar-nav navbar-right">
-                <?php
-                    if(isset($_SESSION['loggedIn']))
-                    {
-                        echo '<li><a href="#"><i class="far fa-id-card"></i></i>PROFILE</a></li>';
-                        echo '<li><a href="https://equinoxpharma.herokuapp.com/includes/logout.inc.php"><i class="fas fa-sign-out-alt"></i>LOGOUT</a></li>';
-                    }
-                    else
-                    {
-                        echo '<li><a href="https://equinoxpharma.herokuapp.com/user_login.php"><i class="fas fa-sign-in-alt"></i>LOGIN</a></li>';
-                    }
-                ?>
+                <?php if(isset($_SESSION['loggedIn'])): ?>
+	                <li><a href="#"><i class="far fa-id-card"></i></i>PROFILE</a></li>
+	                <!-- <li><a href="https://equinoxpharma.herokuapp.com/includes/logout.inc.php"><i class="fas fa-sign-out-alt"></i>LOGOUT</a></li> -->
+
+	                <form class="navbar-form navbar-right" action="" method="post">
+		                <div class="form-group">
+			                <button type="submit" name="logout" class="btn btn-info">Logout</button>
+		                </div>
+	                </form>
+                <?php else: ?>
+	                <!-- <li><a href="https://equinoxpharma.herokuapp.com/user_login.php"><i class="fas fa-sign-in-alt"></i>LOGIN</a></li> -->
+	                <li><a href="user_login.php"><i class="fas fa-sign-in-alt"></i>LOGIN</a></li>
+                <?php endif; ?>
 			</ul>
 		</div>
 	</div>

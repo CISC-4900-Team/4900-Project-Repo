@@ -13,7 +13,6 @@
 		}
     }
 ?>
-
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12">
@@ -36,7 +35,7 @@
 						<input type="checkbox" id="save_cred" name="save_cred">
 						<label for="save_cred">Save Login</label><br>
 						<button type="input" name="login" class="btn btn-light">Login</button><br>
-						<a href="#">Forgot ID/Password</a>
+						<a href="#">Forgot ID/Password?</a>
 					</form>
 				</div>
 			</div>
