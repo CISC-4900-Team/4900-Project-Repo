@@ -25,39 +25,39 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<?php if(isset($_SESSION['loggedIn'])): ?>
-				<a href="http://localhost:63342/PharmaSystem/homepage/main_page.php" class="navbar-brand"><i class="fas fa-prescription"></i>Equinox</a>
-			<?php else: ?>
-				<a href="http://localhost:63342/PharmaSystem/index.php" class="navbar-brand" ><i class="fas fa-prescription"></i>Equinox</a>
-			<?PHP endif; ?>
+            <?php if(isset($_SESSION['loggedIn'])): ?>
+				<a href="https://equinox-pharma.herokuapp.com/homepage/main_page.php" class="navbar-brand"><i class="fas fa-prescription"></i>Equinox</a>
+            <?php else: ?>
+				<a href="https://equinox-pharma.herokuapp.com/index.php" class="navbar-brand" ><i class="fas fa-prescription"></i>Equinox</a>
+            <?PHP endif; ?>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-nav-demo">
 			<ul class="nav navbar-nav">
-				<?php
+                <?php
                     if(!isset($_SESSION['loggedIn']))
-					{
-						echo '<li class="<?= ($activePage == \'pharm_registration\') ? \'active\':\'\'; ?>"><a href="http://localhost:63342/PharmaSystem/pharm_registration.php"><i class="fas fa-users"></i>Join</a></li>';
-						echo '<li class="<?= ($activePage == \'help\') ? \'active\':\'\'; ?>"><a href="http://localhost:63342/PharmaSystem/help.php"><i class="fas fa-question-circle"></i>Help</a></li>';
-					}
+                    {
+                        echo '<li><a href="https://equinox-pharma.herokuapp.com/pharm_registration.php"><i class="fas fa-users"></i>Join</a></li>';
+                        echo '<li><a href="https://equinox-pharma.herokuapp.com/help.php"><i class="fas fa-question-circle"></i>Help</a></li>';
+                    }
                     else if($_SESSION['userType']=='Admin')
                     {
-                    	echo '<li class="<?= ($activePage == \'help\') ? \'active\':\'\'; ?>"><a href="new_employee.php"><i class="fas fa-user-plus"></i>New User</a></li>';
+                        echo '<li><a href="new_employee.php"><i class="fas fa-user-plus"></i>New User</a></li>';
                     }
 
-				?>
+                ?>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<?php
-					if(isset($_SESSION['loggedIn']))
-					{
+                <?php
+                    if(isset($_SESSION['loggedIn']))
+                    {
                         echo '<li><a href="#"><i class="far fa-id-card"></i></i>PROFILE</a></li>';
-						echo '<li><a href="http://localhost:63342/PharmaSystem/includes/logout.inc.php"><i class="fas fa-sign-out-alt"></i>LOGOUT</a></li>';
-					}
-					else
-					{
-						echo '<li class="<?= ($activePage == \'user_login\') ? \'active\':\'\'; ?>"><a href="http://localhost:63342/PharmaSystem/user_login.php"><i class="fas fa-sign-in-alt"></i>LOGIN</a></li>';
-					}
-				?>
+                        echo '<li><a href="https://equinox-pharma.herokuapp.com/includes/logout.inc.php"><i class="fas fa-sign-out-alt"></i>LOGOUT</a></li>';
+                    }
+                    else
+                    {
+                        echo '<li><a href="https://equinox-pharma.herokuapp.com/user_login.php"><i class="fas fa-sign-in-alt"></i>LOGIN</a></li>';
+                    }
+                ?>
 			</ul>
 		</div>
 	</div>

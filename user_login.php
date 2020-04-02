@@ -22,12 +22,12 @@
 				<div class="container" id="forms">
 					<form name="user_login" action="user_login.php" method="post" autocomplete="off">
 						<div>
-							<label for="Employee_ID">Employee ID:</label>
-							<input type="text" name="user_id" id="user-id" required>
+							<label for="emp_id">Employee ID:</label>
+							<input type="text" name="emp_id" id="user-id" required>
 						</div>
 						<div>
-							<label for="Company">Company ID:</label>
-							<input type="text" name="company_id" id="company-id" required>
+							<label for="pharm_id">Pharmacy ID:</label>
+							<input type="text" name="pharm_id" id="company-id" required>
 						</div>
 						<div>
 							<label for="password">Password:</label>
@@ -35,7 +35,7 @@
 						</div>
 						<input type="checkbox" id="save_cred" name="save_cred">
 						<label for="save_cred">Save Login</label><br>
-						<button name="login" class="btn btn-light">Login</button><br>
+						<button type="input" name="login" class="btn btn-light">Login</button><br>
 						<a href="#">Forgot ID/Password</a>
 					</form>
 				</div>

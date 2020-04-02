@@ -25,6 +25,10 @@ h1{
     font-size: 3em;
 }
 
+i{
+    padding-right: 4px;
+}
+
 
 .main-form{
     padding: 25px 20px;
