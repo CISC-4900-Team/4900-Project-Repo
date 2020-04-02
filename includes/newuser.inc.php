@@ -1,5 +1,5 @@
 <?php
-    include('db_includes/registrarSchema.inc.php');
+    include('db_includes/database_info.inc.php');
     //Getting pharmacy information from registration form
     //Using escape_string to prevent SQL injection
     $user_first = $mysqli->escape_string($_POST['f_name']);

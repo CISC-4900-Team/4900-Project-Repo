@@ -1,58 +1,53 @@
 <?php
-    include('db_includes/registrarSchema.inc.php');
+    include('db_includes/database_info.inc.php');
 
-    $company_id = $mysqli->escape_string($_POST['company_id']);
-    $user_id = $mysqli->escape_string($_POST['user_id']);
-    $password = $mysqli->escape_string($_POST['password']);
+    $pharm_id = $mySQLI->escape_string($_POST['pharm_id']);
+    $emp_id = $mySQLI->escape_string($_POST['emp_id']);
+    $password = $mySQLI->escape_string($_POST['password']);
 
-    //Find user in the users table
-    $findUserID = "SELECT * FROM users WHERE user_id = '$user_id'";
-    $result = mysqli_query($mysqli, $findUserID);
+    //Logic to check if user exists in the users table
+    $sql = "SELECT * FROM user_accounts WHERE u_id = ?";
 
-    //If user ID exists
-    if($result->num_rows > 0)
-    {
-        $user = $result->fetch_assoc();
-        $checkCompanyID = $user['pharmacy_id'];
-        $userType = $user['user_type'];
-        //Check if the company ID matches with the record
-        if($company_id == $checkCompanyID)
-        {
-            //Check if password entered matches user's password in the database
-            if(password_verify($password, $user['user_password']))
-            {
-                session_start();
+    $stmt = mysqli_stmt_init($mySQLI);
 
-                $_SESSION['employeeID'] = $user['user_id'];
-                $_SESSION['companyID'] = $user['pharmacy_id'];
-                $_SESSION['userType'] = $user['user_type'];
-                $_SESSION['loggedIn'] = 'true';
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo 'SQL Statement Failed';
+    } else {
+        mysqli_stmt_bind_param($stmt, 's', $emp_id);
 
-                if($userType == 'Admin')
-                {
-                    header("location: homepage/main_page.php?login=success");
-                    exit();
-                }
-                else if($userType == 'User')
-                {
-                    header("location: homepage/main_page.php?login=success");
-                    exit();
-                }
-            }
-            else
-            {
-                header("location: main_page.php?error=wrongpassword");
-                exit();
-            }
-        }
-        else
-        {
-            header("location: main_page.php?error=invalidcompany");
+        mysqli_stmt_execute($stmt);
+
+        $result = mysqli_stmt_get_result($stmt);
+
+        //If user account doesn't exist
+        if(!$result->num_rows > 0) {
+            header("location: user_login.php?error=invaliduser");
             exit();
+        } else {
+            //If user exists, fetch the row
+            $user = $result->fetch_assoc();
+
+            //Check if the company ID matches with the record
+            if($user['pharm_id'] != $pharm_id)
+            {
+                header("location: user_login.php?error=invalidcompany");
+                exit();
+            } else {
+                //Check if password entered matches user's password in the database
+                if(password_verify($password, $user['u_pass'])) {
+                    session_start();
+
+                    $_SESSION['employeeID'] = $user['u_id'];
+                    $_SESSION['companyID'] = $user['pharm_id'];
+                    $_SESSION['userType'] = $user['u_type'];
+                    $_SESSION['loggedIn'] = 'true';
+
+                    header("location: homepage/main_page.php?login=success");
+
+                } else {
+                    header("location: user_login.php?error=wrongpassword");
+                    exit();
+                }
+            }
         }
-    }
-    else
-    {
-        header("location: main_page.php?error=invaliduser");
-        exit();
     }
