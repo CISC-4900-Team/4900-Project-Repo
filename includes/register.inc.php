@@ -1,64 +1,116 @@
 <?php
-    include('db_includes/registrarSchema.inc.php');
+    include('db_includes/database_info.inc.php');
+
     //Getting pharmacy information from registration form
     //Using escape_string to prevent SQL injection
-    $pharm_license = $mysqli->escape_string($_POST['pharm_license']);
-    $pharm_name = $mysqli->escape_string($_POST['pharm_name']);
-    $pharm_addr = $mysqli->escape_string($_POST['pharm_addr']);
-    $pharm_city = $mysqli->escape_string($_POST['pharm_city']);
-    $pharm_state = $mysqli->escape_string($_POST['pharm_state']);
-    $pharm_zip = $mysqli->escape_string($_POST['pharm_zip']);
-    $pharm_phone = $mysqli->escape_string($_POST['pharm_phone']);
-    $pharm_email = $mysqli->escape_string($_POST['pharm_email']);
+    echo $pharm_name = $mySQLI->escape_string($_POST['pharm_name']);
+    echo $pharm_license = $mySQLI->escape_string($_POST['pharm_license']);
+    echo $pharm_addr = $mySQLI->escape_string($_POST['pharm_addr']);
+    echo $pharm_city = $mySQLI->escape_string($_POST['pharm_city']);
+    echo $pharm_state = $mySQLI->escape_string($_POST['pharm_state']);
+    echo $pharm_zip = $mySQLI->escape_string($_POST['pharm_zip']);
+    echo $pharm_phone = $mySQLI->escape_string($_POST['pharm_phone']);
+    echo $pharm_email = $mySQLI->escape_string($_POST['pharm_email']);
 
     //Getting manager information from registration form
-    $mgr_license = $mysqli->escape_string($_POST['pharm_license']);
-    $mgr_first = $mysqli->escape_string($_POST['mgr_first']);
-    $mgr_last = $mysqli->escape_string($_POST['mgr_last']);
-    $mgr_addr = $mysqli->escape_string($_POST['mgr_address']);
-    $mgr_city = $mysqli->escape_string($_POST['mgr_city']);
-    $mgr_state = $mysqli->escape_string($_POST['mgr_state']);
-    $mgr_zip = $mysqli->escape_string($_POST['mgr_zip']);
-    $mgr_email = $mysqli->escape_string($_POST['mgr_email']);
+    echo $emp_first = $mySQLI->escape_string($_POST['emp_first']);
+    echo $emp_last = $mySQLI->escape_string($_POST['emp_last']);
+    echo $emp_license = $mySQLI->escape_string($_POST['emp_license']);
+    echo $emp_addr = $mySQLI->escape_string($_POST['emp_addr']);
+    echo $emp_city = $mySQLI->escape_string($_POST['emp_city']);
+    echo $emp_state = $mySQLI->escape_string($_POST['emp_state']);
+    echo $emp_zip = $mySQLI->escape_string($_POST['emp_zip']);
+    echo $emp_email = $mySQLI->escape_string($_POST['emp_email']);
+    echo $emp_phone = $mySQLI->escape_string($_POST['emp_phone']);
+    echo $emp_pass = $mySQLI->escape_string($_POST['emp_pwd']);
+    $type = 'Admin';
+    $firstLogin = 1;
+    $isActive = 0;
 
-    //Hashing Password
-    $mgr_pass = $mysqli->escape_string(password_hash($_POST['password'], PASSWORD_BCRYPT));
-    //User Hash
-    $hash = $mysqli->escape_string(md5(rand(0,1000)));
+    //Encrypting password
+    $passHash = $mySQLI->escape_string(password_hash($emp_pass, PASSWORD_BCRYPT));
 
-    //Check pharmacies table to see if pharmacy license already exists
-    $sql = "SELECT * FROM pharmacies WHERE pharmacy_license = '$pharm_license'";
-    $checkPharmacyLicense  = mysqli_query($mysqli, $sql);
+    //User hash code
+    $hash = $mySQLI->escape_string(md5(rand(0,1000)));
 
-    if($checkPharmacyLicense->num_rows > 0)
-    {
-        echo 'license error';
-    }
-    else //Check users table to see if manager email already exists in the system
-    {
-        $checkUserEmail = $mysqli->query("SELECT * FROM users WHERE user_email = '$mgr_email'");
-        if($checkUserEmail->num_rows > 0)
-        {
-            echo 'manager email error';
-        }
-        else //If pharmacy doesnt exist in the system AND manager does not exist in the system
-        {
-            //Generate unique ID for the pharmacy
-            $pharmacy_id = substr((uniqid(rand()) . 5), 0, 6);
+    //1. Create SQL statement
+    $sql = "SELECT * FROM pharmacies WHERE pharm_license = ?";
 
-            //Generate unique ID for the manager
-            $user_id = substr(uniqid(rand()), 0, 6);
+    //2. Create prepared statement
+    $stmt = mysqli_stmt_init($mySQLI);
 
-            $sql = "INSERT INTO pharmacies (pharmacy_id, pharmacy_name, pharmacy_addr, city, state, zip, phone_number, pharmacy_email, pharmacy_license) 
-                                values ('$pharmacy_id', '$pharm_name', '$pharm_addr', '$pharm_city', '$pharm_state', '$pharm_zip', '$pharm_phone', '$pharm_email', '$pharm_license')";
-            mysqli_query($mysqli, $sql);
+    //3. Prepare the prepared statement and check if it will run
+    //In PHP check for failure before checking for success
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo 'SQL Statement Failed';
+    } else {
+        //4. Bind parameters to placeholder(s)
+        mysqli_stmt_bind_param($stmt, 's', $pharm_license);
 
-            $sql = "INSERT INTO users (user_id, user_email, user_password, pharmacy_id, user_first, user_last, address, city, state, zipcode, license_num, hash, user_type, phone_number, active) 
-                                values ('$user_id', '$mgr_email', '$mgr_pass', '$pharmacy_id', '$mgr_first', '$mgr_last', '$mgr_addr', '$mgr_city', '$mgr_state', '$mgr_zip', '$mgr_license', '$hash', 'Admin', '0000000000', 1)";
-            mysqli_query($mysqli, $sql);
+        //5. Run parameters inside database
+        mysqli_stmt_execute($stmt);
 
-            echo 'Added pharmacy and manager successfully';
-            header("location: ../register_success.php");
+        //6. Get result(s) from executed statement
+        $result = mysqli_stmt_get_result($stmt);
+
+        //7. Parse result(s)
+        if($result->num_rows > 0) {
+            header("location: pharm_registration.php?license_exists");
             exit();
+        } else {
+            //Check users table to see if manager email already exists in the system
+            $sql = "SELECT * FROM user_accounts WHERE u_email = ?";
+
+            $stmt = mysqli_stmt_init($mySQLI);
+
+            if(!mysqli_stmt_prepare($stmt, $sql)) {
+                echo 'SQL Statement Failed';
+            } else {
+                mysqli_stmt_bind_param($stmt, 's', $emp_email);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+
+                if($result->num_rows > 0) {
+                    header("location: pharm_registration.php?email_exists");
+                    exit();
+                } else {
+                    //Generate unique ID for the pharmacy
+                    $pharm_id = substr((uniqid(rand()) . 5), 0, 6);
+
+                    //Generate unique ID for the manager
+                    $u_id = substr(uniqid(rand()), 0, 6);
+
+                    //Insert pharmacy information
+                    $sql = "INSERT INTO pharmacies (pharm_id, pharm_license, pharm_name, pharm_addr, pharm_city, pharm_state, pharm_zip, phone_number1, pharm_email) 
+                            values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    $stmt = mysqli_stmt_init($mySQLI);
+                    if(mysqli_stmt_prepare($stmt, $sql)) {
+                        mysqli_stmt_bind_param($stmt, 'sssssssss', $pharm_id, $pharm_license, $pharm_name, $pharm_addr, $pharm_city, $pharm_state, $pharm_zip, $pharm_phone, $pharm_email);
+                        mysqli_stmt_execute($stmt);
+                    }
+
+                    //Insert manager account information
+                    $sql = "INSERT INTO user_accounts (u_id, pharm_id, u_email, u_type, is_active, first_login, u_pass, u_hash) 
+                            values (?, ?, ?, ?, ?, ?, ?, ?)";
+                    $stmt = mysqli_stmt_init($mySQLI);
+                    if(mysqli_stmt_prepare($stmt, $sql)) {
+                        mysqli_stmt_bind_param($stmt, 'ssssssss', $u_id, $pharm_id, $emp_email, $type, $isActive, $firstLogin, $passHash, $hash);
+                        mysqli_stmt_execute($stmt);
+                    }
+
+                    //Insert manager employee information
+                    $sql = "INSERT INTO employees (emp_id, pharm_id, emp_license, emp_first, emp_last, emp_addr, emp_city, emp_state, emp_zip, emp_phone1, emp_email) 
+                            values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    $stmt = mysqli_stmt_init($mySQLI);
+                    if(mysqli_stmt_prepare($stmt, $sql)) {
+                        mysqli_stmt_bind_param($stmt, 'sssssssssss', $u_id, $pharm_id, $emp_license, $emp_first, $emp_last, $emp_addr, $emp_city, $emp_state, $emp_zip, $emp_phone, $emp_email);
+                        mysqli_stmt_execute($stmt);
+                    }
+                    header("location: pharm_registration.php?register_success");
+                    exit();
+                }
+            }
         }
     }
+
+
