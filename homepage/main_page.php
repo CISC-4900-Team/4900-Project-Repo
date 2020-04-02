@@ -1,13 +1,15 @@
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php'; ?>
+<link rel="stylesheet" href="../stylesheets/admin_page_style.css">
+<title>Pharmacy Page</title>
+
 <?php
-	include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php';
+
 	/*
     if(!isset($_SESSION['loggedIn'])){ //if login in session is not set
         header("Location: 401_unauthorized.php");
     }
 	*/
 ?>
-<link rel="stylesheet" href="../stylesheets/admin_page_style.css">
-<title>Pharmacy Page</title>
 
 <div class="container">
 	<h1>Main Page</h1>

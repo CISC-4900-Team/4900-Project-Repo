@@ -1,5 +1,8 @@
-<?php include
-    $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php';
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php'; ?>
+<link rel="stylesheet" href="../../stylesheets/crud_styles/add_patient_style.css">
+<title>New Patient</title>
+
+<?php
     include $_SERVER['DOCUMENT_ROOT'] . '/includes/db_includes/patientSchema.inc.php';
 
     //Check if form is being submitted
@@ -11,8 +14,7 @@
         }
     }
 ?>
-<link rel="stylesheet" href="../../stylesheets/crud_styles/add_patient_style.css">
-<title>New Patient</title>
+
 <div class="container">
 	<a href="patient_lookup.php"><button>Back</button></a>
 	<h1>New Patient</h1>

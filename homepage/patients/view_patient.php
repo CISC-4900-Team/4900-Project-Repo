@@ -1,5 +1,8 @@
-<?php include
-    $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php';
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php'; ?>
+<link rel="stylesheet" href="../../stylesheets/crud_styles/patient_page_style.css">
+<title>Patient Information</title>
+
+<?php
     include $_SERVER['DOCUMENT_ROOT'] . '/includes/db_includes/patientSchema.inc.php';
 
     //Get the ID of record to show
@@ -26,8 +29,6 @@
 	}*/
 ?>
 
-<link rel="stylesheet" href="../../stylesheets/crud_styles/patient_page_style.css">
-<title>Patient Information</title>
 <div class="container">
 	<a href="patient_lookup.php"><button>Back</button></a>
 	<h1><strong>Patient Information</strong></h1>

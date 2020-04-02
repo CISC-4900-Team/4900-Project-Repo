@@ -1,5 +1,8 @@
-<?php include
-    $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php';
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php'; ?>
+<link rel="stylesheet" href="../../stylesheets/crud_styles/patient_page_style.css">
+<title>Update Patient</title>
+
+<?php
     include $_SERVER['DOCUMENT_ROOT'] . '/includes/db_includes/patientSchema.inc.php';
 
     $id = $_GET['pid'];
@@ -48,8 +51,6 @@
     }
 ?>
 
-<link rel="stylesheet" href="../../stylesheets/crud_styles/patient_page_style.css">
-<title>Update Patient</title>
 <div class="container">
     <a href="patient_lookup.php"><button>Back</button></a>
     <h1>Update Patient</h1>

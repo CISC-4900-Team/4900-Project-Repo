@@ -4,113 +4,167 @@
 
 <?php
 	//Check if form is being submitted
-	if($_SERVER['REQUEST_METHOD'] == 'POST')
-	{
-		//Check if passwords match
-		if($_POST['password'] == $_POST['confirmpassword'])
-		{
-		    if(isset($_POST['register']))
-		    {
-		        require 'includes/register.inc.php';
-		    }
-		}
+	if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if($_POST['emp_pwd'] != $_POST['emp_pwd_confirm'])
+        {
+            header('location: pharm_registration.php?password_missmatch');
+        } else {
+            if(isset($_POST['register'])) {
+                require 'includes/register.inc.php';
+            }
+        }
 	}
 ?>
 <!-- Registration form -->
-<div class="container">
-	<div id="content">
-		<h1>Join Equinox</h1>
-		<h3>Pharmacy Information</h3>
-		<form name="pharm_reg_form" action="pharm_registration.php" method="post" autocomplete="off">
-			<div class="row">
-				<div class="form-group col-md-2" id="pharm-name">
-					<input type="text" name="pharm_name" placeholder="Pharmacy Name" required>
-				</div>
-				<div class="form-group col-md-2">
-					<input type="text" name="pharm_license" placeholder="Registration Number" required>
-				</div>
-			</div>
-			<div class="row" id="pharm-addr">
-				<div class="form-group col-md-2">
-					<input type="text" name="pharm_addr" placeholder="Address" required>
-				</div>
-			</div>
-			<div class="row" id="csz-row">
-				<div class="form-group col-md-2"  id="csz-city">
-					<input type="text" name="pharm_city" placeholder="City" required>
-				</div>
-				<div class="form-group col-md-2" id="csz-state">
-					<input type="text" name="pharm_state" placeholder="State" required>
-				</div>
-				<div class="form-group col-md-2" id="csz_zip">
-					<input type="text" name="pharm_zip" placeholder="Zip Code" required>
-				</div>
-			</div>
-			<div class="row" id="pharm-contact">
-				<div class="form-group col-md-2">
-					<input type="text" name="pharm_phone" placeholder="Phone Number" required>
-				</div>
-				<div class="form-group col-md-2">
-					<input type="email" name="pharm_email" placeholder="Email" required>
-				</div>
-			</div>
-			<hr>
-			<h3>Manager Registration</h3>
-			<div class="row" id="mgr-license">
-				<div class="form-group col-md-2">
-					<label for="pharm_addr">License Number</label>
-					<input type="text" name="mgr_license" required>
-				</div>
-			</div>
-			<div class="row" id="mgr-name">
-				<div class="form-group col-md-2">
-					<label for="mgr_first">First Name</label>
-					<input type="text" name="mgr_first" required>
-				</div>
-				<div class="form-group col-md-2">
-					<label for="mgr_last">Last Name</label>
-					<input type="text" name="mgr_last" required>
-				</div>
-			</div>
-			<div class="row" id="mgr-addr">
-				<div class="form-group col-md-2">
-					<label for="mgr_address">Address</label>
-					<input type="text" name="mgr_address" required>
-				</div>
-			</div>
-			<div class="row" id="mgr-csz-row">
-				<div class="form-group col-md-2"  id="csz-city">
-					<label for="mgr_city">City</label>
-					<input type="text" name="mgr_city" required>
-				</div>
-				<div class="form-group col-md-2" id="csz-state">
-					<label for="mgr_state">State</label>
-					<input type="text" name="mgr_state" required>
-				</div>
-				<div class="form-group col-md-2" id="csz_zip">
-					<label for="mgr_zip">Zip</label>
-					<input type="text" name="mgr_zip" required>
-				</div>
-			</div>
-			<div class="row" id="mgr-email">
-				<div class="form-group col-md-2">
-					<label for="mgr_email">Email</label>
-					<input type="email" name="mgr_email" required>
-				</div>
-			</div>
-			<div class="row" id="mgr-name">
-				<div class="form-group col-md-2">
-					<label for="password">Password</label>
-					<input type="password" name="password" required>
-				</div>
-				<div class="form-group col-md-2">
-					<label for="confirmpassword">Confirm Password</label>
-					<input type="password" name="confirmpassword" required>
-				</div>
-			</div>
-			<button name="register">Join</button>
-		</form>
-	</div>
+<div class="container alerts">
+    <?php if(isset($_GET['license_exists'])): ?>
+		<div class="alert alert-danger alert-dismissible">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>Pharmacy license already in system.</strong><br>
+			If you need assistance please contact support.
+		</div>
+    <?php elseif(isset($_GET['password_missmatch'])): ?>
+	    <div class="alert alert-warning alert-dismissible">
+		    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		    <strong>Your passwords must match.</strong>
+	    </div>
+    <?php elseif(isset($_GET['email_exists'])): ?>
+	    <div class="alert alert-danger alert-dismissible">
+		    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		    <strong>User email is already taken.</strong><br>
+		    Please use another email address.
+	    </div>
+    <?php elseif(isset($_GET['register_success'])): ?>
+	    <div class="alert alert-success alert-dismissible">
+		    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		    <strong>Registration Successful!</strong><br>
+		    Please check the email you provided for activation instructions
+	    </div>
+    <?php endif; ?>
 </div>
+<h1>Join Equinox</h1>
+<div class="container form">
+	<form action="" method="post">
+		<div class="row">
+			<div class="col-sm-7">
+				<label for="pharm_name">Pharmacy Name</label><br>
+				<input type="text" class="form-control input-sm" name="pharm_name" required>
+			</div>
+			<div class="col-sm-5">
+				<label for="pharm_license">License Number</label><br>
+				<input type="text" class="form-control input-sm" name="pharm_license" required>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<label for="pharm_addr">Address</label>
+				<input type="text" class="form-control input-sm" name="pharm_addr" required>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-5">
+				<label for="pharm_city">City</label>
+				<input type="text" class="form-control input-sm" name="pharm_city" required>
+			</div>
+			<div class="col-sm-4">
+				<label for="pharm_state">State</label>
+				<select id="inputState" class="form-control input-sm" name="pharm_state" required>
+					<option selected>State</option>
+                    <?php
+                        $states = array("AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI",
+                            "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS",
+                            "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC",
+                            "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY");
 
+                        for($i=0; $i<51; $i++):?>
+							<option value="<?php echo $states[$i];?>"> <?php echo $states[$i];?></option>
+                        <?php endfor; ?>
+				</select>
+			</div>
+			<div class="col-sm-3">
+				<label for="pharm_zip">Zipcode</label>
+				<input type="text" class="form-control input-sm" name="pharm_zip" required>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-7">
+				<label for="pharm_email">Email</label>
+				<input type="email" class="form-control input-sm" name="pharm_email" required>
+			</div>
+			<div class="col-sm-5">
+				<label for="pharm_phone">Phone</label>
+				<input type="text" class="form-control input-sm" name="pharm_phone" required>
+			</div>
+		</div>
+		<hr>
+		<h3>Manager Information:</h3>
+		<div class="row">
+			<div class="col-sm-4">
+				<label for="emp_first">First Name</label>
+				<input type="text" class="form-control input-sm" name="emp_first" required>
+			</div>
+			<div class="col-sm-4">
+				<label for="emp_last">Last Name</label>
+				<input type="text" class="form-control input-sm" name="emp_last" required>
+			</div>
+			<div class="col-sm-4">
+				<label for="emp_license">License Number</label>
+				<input type="text" class="form-control input-sm" name="emp_license" required>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<label for="emp_addr">Address</label>
+				<input type="text" class="form-control input-sm" name="emp_addr" required>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-5">
+				<label for="emp_city">City</label>
+				<input type="text" class="form-control input-sm" name="emp_city" required>
+			</div>
+			<div class="col-sm-4">
+				<label for="emp_state">State</label>
+				<select id="inputState" class="form-control input-sm" name="emp_state" required>
+					<option selected>State</option>
+                    <?php for($i=0; $i<51; $i++):?>
+						<option value="<?php echo $states[$i];?>"> <?php echo $states[$i];?></option>
+                    <?php endfor; ?>
+				</select>
+			</div>
+			<div class="col-sm-3">
+				<label for="emp_zip">Zipcode</label>
+				<input type="text" class="form-control input-sm" name="emp_zip" required>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-7">
+				<label for="emp_email">Email</label>
+				<input type="email" class="form-control input-sm" name="emp_email" required>
+			</div>
+			<div class="col-sm-5">
+				<label for="emp_phone">Phone</label>
+				<input type="text" class="form-control input-sm" name="emp_phone" required>
+			</div>
+		</div>
+		<hr>
+		<h3>Create Account Password</h3>
+		<div class="row">
+			<div class="col-sm-6">
+				<label for="emp_pwd">Password</label>
+				<input type="password" class="form-control input-sm" name="emp_pwd" required>
+			</div>
+			<div class="col-sm-6">
+				<label for="confirm_emp_pwd">Confirm Password</label>
+				<input type="password" class="form-control input-sm" name="emp_pwd_confirm" required>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col text-center">
+				<button type="submit" class="btn btn-primary" name="register">Join Equinox</button>
+			</div>
+		</div>
+	</form>
+</div>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.inc.php'; ?>
