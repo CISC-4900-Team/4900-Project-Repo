@@ -1,5 +1,5 @@
 <?php
-    include $_SERVER["DOCUMENT_ROOT"].'/db_includes/database_info.inc.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/includes/database_info.inc.php';
     include $_SERVER["DOCUMENT_ROOT"].'/includes/mailer.inc.php';
     $htmlRoot = 'https://equinoxpharma.herokuapp.com';
 

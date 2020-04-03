@@ -1,5 +1,5 @@
 <?php
-    include $_SERVER["DOCUMENT_ROOT"].'/includes/db_includes/database_info.inc.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/includes/database_info.inc.php';
     $htmlRoot = 'https://equinoxpharma.herokuapp.com';
 
     $pharm_id = $mySQLI->escape_string($_POST['pharm_id']);

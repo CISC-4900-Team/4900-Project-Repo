@@ -1,5 +1,5 @@
 <?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
-<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/db_includes/database_info.inc.php'; ?>
+<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/database_info.inc.php'; ?>
 <link rel="stylesheet" href="stylesheets/index_style.css">
 <title>Equinox Pharma Systems</title>
 
