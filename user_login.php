@@ -4,11 +4,9 @@
 
 <?php
 	//Check if form is being submitted
-    if($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
     	//Check if button was pressed
-		if(isset($_POST['login']))
-		{
+		if(isset($_POST['login'])) {
 		    require '$_SERVER["DOCUMENT_ROOT"]/includes/login.inc.php';
 		}
     }
@@ -42,5 +40,9 @@
 		</div>
 	</div>
 </div>
+<?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 'on');
+?>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.inc.php'; ?>

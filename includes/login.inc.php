@@ -1,6 +1,10 @@
 <?php
     include $_SERVER["DOCUMENT_ROOT"].'/includes/database_info.inc.php';
     $htmlRoot = 'https://equinoxpharma.herokuapp.com';
+    echo "$htmlRoot/homepage/main_page.php?login=success";
+
+    error_reporting(E_ALL);
+    ini_set('display_errors', 'on');
 
     $pharm_id = $mySQLI->escape_string($_POST['pharm_id']);
     $emp_id = $mySQLI->escape_string($_POST['emp_id']);
