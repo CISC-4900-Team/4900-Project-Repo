@@ -1,4 +1,6 @@
-<?php include 'C:\Users\Home\Documents\PharmaSystem\includes\header.inc.php'; ?>
+<?php //include 'C:\Users\Home\Documents\PharmaSystem\includes\header.inc.php'; ?>
+<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
+
 <link rel="stylesheet" href="../stylesheets/New_Emp.css">
 <title>New Employee</title>
 

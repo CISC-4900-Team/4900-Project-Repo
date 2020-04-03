@@ -1,5 +1,5 @@
 <?php //include 'C:\Users\Home\Documents\PharmaSystem\includes\header.inc.php'; ?>
-<?php include $htmlRoot.'/includes/header.inc.php'; ?>
+<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
 
 <link rel="stylesheet" href="stylesheets/index_style.css">
 <title>Equinox Pharma Systems</title>
