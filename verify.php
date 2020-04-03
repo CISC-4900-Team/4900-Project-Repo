@@ -1,9 +1,5 @@
-<!-- Nav, Stylesheet and Title -->
-<?php
-	include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php';
-    include('includes/db_includes/database_info.inc.php');
-?>
-
+<?php include 'C:\Users\Home\Documents\PharmaSystem\includes\header.inc.php'; ?>
+<?php include('includes/db_includes/database_info.inc.php'); ?>
 <link rel="stylesheet" href="stylesheets/index_style.css">
 <title>Equinox Pharma Systems</title>
 

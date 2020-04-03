@@ -1,4 +1,4 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php'; ?>
+<?php include 'C:\Users\Home\Documents\PharmaSystem\includes\header.inc.php'; ?>
 <link rel="stylesheet" href="../../stylesheets/crud_styles/patient_page_style.css">
 <title>Update Patient</title>
 

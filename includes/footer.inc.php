@@ -8,6 +8,10 @@
 
 <script>
     $(document).ready(function() {
+        $('#users_table').DataTable();
+    } );
+
+    $(document).ready(function() {
         $('#drugs').DataTable();
     } );
 

@@ -45,6 +45,7 @@
                         $_SESSION['employeeID'] = $user['u_id'];
                         $_SESSION['companyID'] = $user['pharm_id'];
                         $_SESSION['userType'] = $user['u_type'];
+                        $_SESSION['firstName'] = $user['u_id'];
                         $_SESSION['loggedIn'] = 'true';
 
                         header("location: homepage/main_page.php?login=success");
