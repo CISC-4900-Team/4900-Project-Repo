@@ -1,5 +1,7 @@
 <?php
-    include('db_includes/database_info.inc.php');
+    include $_SERVER["DOCUMENT_ROOT"].'/db_includes/database_info.inc.php';
+    $htmlRoot = 'https://equinoxpharma.herokuapp.com';
+
     //Getting pharmacy information from registration form
     //Using escape_string to prevent SQL injection
     $user_first = $mySQLI->escape_string($_POST['f_name']);
@@ -35,7 +37,6 @@
     $first_login = 1;
     $is_active = 0;
 
-    //Inserting into the database
-
-    header("location: ../homepage/new_employee.php?add=success");
+   //header("location: ../homepage/new_employee.php?add=success");
+    header("location: $htmlRoot/homepage/new_employee.php?add=success");
     exit();

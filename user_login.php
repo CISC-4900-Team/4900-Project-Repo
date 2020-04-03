@@ -9,7 +9,7 @@
     	//Check if button was pressed
 		if(isset($_POST['login']))
 		{
-		    require 'includes/login.inc.php';
+		    require '$_SERVER["DOCUMENT_ROOT"]/includes/login.inc.php';
 		}
     }
 ?>

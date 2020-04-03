@@ -1,5 +1,6 @@
 <?php
     include $_SERVER["DOCUMENT_ROOT"].'/includes/db_includes/database_info.inc.php';
+    $htmlRoot = 'https://equinoxpharma.herokuapp.com';
 
     $pharm_id = $mySQLI->escape_string($_POST['pharm_id']);
     $emp_id = $mySQLI->escape_string($_POST['emp_id']);
@@ -21,7 +22,8 @@
 
         //If user account doesn't exist
         if(!$result->num_rows > 0) {
-            header("location: user_login.php?error=invaliduser");
+            //header("location: user_login.php?error=invaliduser");
+            header("location: $htmlRoot/user_login.php?error=invaliduser");
             exit();
         } else {
             //If user exists, fetch the row
@@ -30,14 +32,17 @@
             //Check if the company ID matches with the record
             if($user['pharm_id'] != $pharm_id)
             {
-                header("location: user_login.php?error=invalidcompany");
+                //header("location: user_login.php?error=invalidcompany");
+                header("location: $htmlRoot/user_login.php?error=invalidcompany");
                 exit();
+
             } else {
                 //Check if password entered matches user's password in the database
                 if(password_verify($password, $user['u_pass'])) {
                     //Check if user account is verified
                     if(!$user['is_active']) {
-                        header("location: user_login.php?error=unverified");
+                        //header("location: user_login.php?error=unverified");
+                        header("location: $htmlRoot/user_login.php?error=unverified");
                         exit();
                     } else {
                         session_start();
@@ -48,11 +53,13 @@
                         $_SESSION['firstName'] = $user['u_id'];
                         $_SESSION['loggedIn'] = 'true';
 
-                        header("location: homepage/main_page.php?login=success");
+                        //header("location: homepage/main_page.php?login=success");
+                        header("location: $htmlRoot/homepage/main_page.php?login=success");
                         exit();
                     }
                 } else {
-                    header("location: user_login.php?error=wrongpassword");
+                    //header("location: user_login.php?error=wrongpassword");
+                    header("location: $htmlRoot/user_login.php?error=wrongpassword");
                     exit();
                 }
             }

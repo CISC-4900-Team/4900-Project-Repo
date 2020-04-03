@@ -7,10 +7,12 @@
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
         if($_POST['emp_pwd'] != $_POST['emp_pwd_confirm'])
         {
-            header('location: pharm_registration.php?password_missmatch');
+        	//header("location: pharm_registration.php?password_missmatch");
+	        
+            header("location: $htmlRoot/pharm_registration.php?password_missmatch");
         } else {
             if(isset($_POST['register'])) {
-                require 'includes/register.inc.php';
+                require $_SERVER["DOCUMENT_ROOT"].'/includes/register.inc.php';
             }
         }
 	}

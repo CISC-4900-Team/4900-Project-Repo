@@ -1,6 +1,7 @@
 <?php
-    include('db_includes/database_info.inc.php');
-    include('mailer.inc.php');
+    include $_SERVER["DOCUMENT_ROOT"].'/db_includes/database_info.inc.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/includes/mailer.inc.php';
+    $htmlRoot = 'https://equinoxpharma.herokuapp.com';
 
     //Getting pharmacy information from registration form
     //Using escape_string to prevent SQL injection
@@ -56,7 +57,9 @@
 
         //7. Parse result(s)
         if($result->num_rows > 0) {
-            header("location: pharm_registration.php?error=license_exists");
+            //header("location: pharm_registration.php?error=license_exists");
+
+            header("location: $htmlRoot/pharm_registration.php?error=license_exists");
             exit();
         } else {
             //Check users table to see if manager email already exists in the system
@@ -72,10 +75,12 @@
                 $result = mysqli_stmt_get_result($stmt);
 
                 if($result->num_rows > 0) {
-                    header("location: pharm_registration.php?error=email_exists");
+                    //header("location: pharm_registration.php?error=email_exists");
+
+                    header("location: $htmlRoot/pharm_registration.php?error=email_exists");
                     exit();
                 } else {
-                    /*
+
                     //Generate unique ID for the pharmacy
                     $pharm_id = substr((uniqid(rand()) . 5), 0, 6);
 
@@ -108,9 +113,7 @@
                         mysqli_stmt_bind_param($stmt, 'sssssssssss', $u_id, $pharm_id, $emp_license, $emp_first, $emp_last, $emp_addr, $emp_city, $emp_state, $emp_zip, $emp_phone, $emp_email);
                         mysqli_stmt_execute($stmt);
                     }
-                    */
 
-                    //Test http://localhost:63342/PharmaSystem/verify.php?vkey=66808e327dc79d135ba18e051673d906
 
                     $mail->SetFrom('equinoxpharmacysystems@gmail.com', 'Equinox Systems');
                     $mail->Subject = 'Equinox Account Verification';
