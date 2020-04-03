@@ -1,6 +1,5 @@
-<?php //include 'C:\Users\Home\Documents\PharmaSystem\includes\header.inc.php'; ?>
 <?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
-<?php include 'C:\Users\Home\Documents\PharmaSystem\includes\crud_includes\pop_patients.inc.php'; ?>
+<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/crud_includes/pop_patients.inc.php'; ?>
 <link rel="stylesheet" href="../../stylesheets/patient_lookup_style.css">
 <title>Patient Lookup</title>
 

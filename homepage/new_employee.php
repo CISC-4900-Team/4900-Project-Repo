@@ -1,6 +1,4 @@
-<?php //include 'C:\Users\Home\Documents\PharmaSystem\includes\header.inc.php'; ?>
 <?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
-
 <link rel="stylesheet" href="../stylesheets/New_Emp.css">
 <title>New Employee</title>
 
@@ -10,7 +8,7 @@
     {
         if(isset($_POST['add']))
         {
-            require '../includes/newuser.inc.php';
+            require $_SERVER["DOCUMENT_ROOT"].'/includes/newuser.inc.php';
         }
     }
 ?>

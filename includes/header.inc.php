@@ -2,7 +2,7 @@
     $activePage = basename($_SERVER['PHP_SELF'], ".php");
     session_start();
     if(isset($_POST['logout'])) {
-		require("C:\Users\Home\Documents\PharmaSystem\includes\logout.inc.php");
+		require $_SERVER["DOCUMENT_ROOT"].'/includes/logout.inc.php';
     }
     $htmlRoot = 'https://equinoxpharma.herokuapp.com';
     $localRoot = 'http://localhost:63342/PharmaSystem';
@@ -28,21 +28,25 @@
 
 		<ul class="nav navbar-nav">
             <?php if(!isset($_SESSION['loggedIn'])): ?>
-				<li><a href="pharm_registration.php">SIGN UP</a></li>
-				<li><a href="help.php">HELP</a></li>
+				<!-- <li><a href="pharm_registration.php">SIGN UP</a></li> -->
+	            <li><a href="<?php echo $htmlRoot?>/pharm_registration.php">SIGN UP</a></li>
+
+				<!-- <li><a href="help.php">HELP</a></li> -->
+	            <li><a href="<?php echo $htmlRoot?>/help.php">HELP</a></li>
             <?php endif; ?>
 		</ul>
 
 		<ul class="nav navbar-nav navbar-right">
             <?php if(isset($_SESSION['loggedIn'])): ?>
-	            <li><a href="user_login.php"><i class="fas fa-user"></i>PROFILE</a></li>
+	            <li><a href="#"><i class="fas fa-user"></i>PROFILE</a></li>
 				<form class="navbar-form navbar-right" action="" method="post">
 					<div class="form-group">
 						<button type="submit" name="logout" class="btn btn-info">LOGOUT</button>
 					</div>
 				</form>
             <?php else: ?>
-				<li><a href="user_login.php"><i class="fas fa-sign-in-alt"></i>LOGIN</a></li>
+	            <!-- <li><a href="user_login.php"><i class="fas fa-sign-in-alt"></i>LOGIN</a></li> -->
+				<li><a href="<?php echo $htmlRoot?>/user_login.php"><i class="fas fa-sign-in-alt"></i>LOGIN</a></li>
             <?php endif; ?>
 		</ul>
 	</div>

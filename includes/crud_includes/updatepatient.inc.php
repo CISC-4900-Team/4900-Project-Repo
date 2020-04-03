@@ -1,5 +1,5 @@
 <?php
-    include $_SERVER['DOCUMENT_ROOT'] . '/includes/patientSchema.inc.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/database_info.inc.php';
 
     //Getting patient information from new patient form
     $p_first = $pSQLI->escape_string($_POST['p_first']);

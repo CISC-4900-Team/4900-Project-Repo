@@ -1,5 +1,5 @@
 <?php
-    include('db_includes/database_info.inc.php');
+    include $_SERVER["DOCUMENT_ROOT"].'/includes/db_includes/database_info.inc.php';
 
     $pharm_id = $mySQLI->escape_string($_POST['pharm_id']);
     $emp_id = $mySQLI->escape_string($_POST['emp_id']);

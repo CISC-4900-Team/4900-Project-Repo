@@ -1,17 +1,16 @@
-<?php //include 'C:\Users\Home\Documents\PharmaSystem\includes\header.inc.php'; ?>
 <?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
 <link rel="stylesheet" href="../../stylesheets/crud_styles/add_patient_style.css">
 <title>New Patient</title>
 
 <?php
-    include 'C:\Users\Home\Documents\PharmaSystem\includes\database_info.inc.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/includes/database_info.inc.php';
 
     //Check if form is being submitted
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         if(isset($_POST['add_patient']))
         {
-            require 'C:\Users\Home\Documents\PharmaSystem\includes\crud_includes\addpatient.inc.php';
+            require $_SERVER["DOCUMENT_ROOT"].'/includes/crud_includes/addpatient.inc.php';
         }
     }
 ?>

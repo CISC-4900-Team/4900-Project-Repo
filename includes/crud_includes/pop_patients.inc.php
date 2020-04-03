@@ -1,5 +1,5 @@
 <?php
-    include 'C:\Users\Home\Documents\PharmaSystem\includes\database_info.inc.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/includes/database_info.inc.php';
     $pharmacyID = $_SESSION['companyID'];
 
     if (isset($_GET['pageno'])) {
