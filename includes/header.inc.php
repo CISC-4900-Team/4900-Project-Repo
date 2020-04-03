@@ -4,6 +4,8 @@
     if(isset($_POST['logout'])) {
 		require("C:\Users\Home\Documents\PharmaSystem\includes\logout.inc.php");
     }
+    $htmlRoot = 'https://equinoxpharma.herokuapp.com/';
+    $localRoot = 'http://localhost:63342/PharmaSystem';
 ?>
 <!DOCTYPE html>
 <html lang="en">

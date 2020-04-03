@@ -1,4 +1,5 @@
 <?php include 'C:\Users\Home\Documents\PharmaSystem\includes\header.inc.php'; ?>
+<?php include ''; ?>
 <link rel="stylesheet" href="stylesheets/index_style.css">
 <title>Equinox Pharma Systems</title>
 
