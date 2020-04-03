@@ -4,7 +4,7 @@
     if(isset($_POST['logout'])) {
 		require("C:\Users\Home\Documents\PharmaSystem\includes\logout.inc.php");
     }
-    $htmlRoot = 'https://equinoxpharma.herokuapp.com/';
+    $htmlRoot = 'https://equinoxpharma.herokuapp.com';
     $localRoot = 'http://localhost:63342/PharmaSystem';
 ?>
 <!DOCTYPE html>
@@ -22,7 +22,8 @@
 <nav class="navbar navbar-inverse">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="<?php if(isset($_SESSION['loggedIn'])){echo 'http://localhost:63342/PharmaSystem/homepage/main_page.php';}else{echo 'index.php';}?>"><i class="fas fa-prescription"></i>EQUINOX</a>
+			<!-- <a class="navbar-brand" href="<?php if(isset($_SESSION['loggedIn'])){echo 'http://localhost:63342/PharmaSystem/homepage/main_page.php';}else{echo 'index.php';}?>"> -->
+			<a class="navbar-brand" href="<?php if(isset($_SESSION['loggedIn'])){echo $htmlRoot.'/homepage/main_page.php';}else{echo $htmlRoot;}?>"><i class="fas fa-prescription"></i>EQUINOX</a>
 		</div>
 
 		<ul class="nav navbar-nav">
