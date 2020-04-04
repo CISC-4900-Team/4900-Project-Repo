@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="main_emp.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
     <title>Employee Main Page</title>
 </head>
 <body>
@@ -32,16 +32,18 @@
 </nav>
 
 <!-- Side Bar -->
-<div class="sidenav">
-  <a href="#">Welcome 'userID'</a>
-  <a href="#">"Last Login Time"</a>
-  <a href="#">Other Locations</a>
-  <a href="#">Contact</a>
+<div class="container">
+    <div class="sidenav">
+        <a href="#">Welcome 'userID'</a>
+        <a href="#">"Last Login Time"</a>
+        <a href="#">Location info</a>
+        <a href="#">Contact</a>
+    </div>
 </div>
 
 <!-- main structure -->
 <div class="container">
-	<h1>Main Page</h1>
+        <h1>Equinox</h1>
 	<div class="row">
 		<!-- Patient Lookup  -->
 		<div id="Patient_Lookup" class="col-lg-6 col-sm-6">
@@ -56,10 +58,10 @@
 		</div>
 		<!-- Recent Patient Transactions End -->
 		<!-- Employee system usage -->
-	        <div id="Emp_sys_usage" class="col-lg-6 col-sm-6">
-			<h4>Employee system usage</h4>
+	    <div id="Emp_sys_usage" class="col-lg-6 col-sm-6">
+            <h4>System Usage</h4>
 			<button type="button" class = "btn btn-dark btn-lg">System Usage</button>
-			</div>
+		</div>
 		<!-- Employee system usage End -->
 		<!-- Inventory count  -->
 		<div id="Inv_count" class="col-lg-6 col-sm-6">
