@@ -7,7 +7,7 @@
     } else {
         $pageno = 1;
     }
-
+    $dataResult = null;
     $limit = 10;
     $offset = ($pageno - 1) * $limit;
 

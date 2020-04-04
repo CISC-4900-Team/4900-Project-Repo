@@ -1,14 +1,18 @@
 <?php include_once '../../header.php'; ?>
-<?php require_once '../../includes/pop_patients.inc.php'; ?>
+<?php require_once '../../includes/populate_patients.inc.php'; ?>
 
 <?php
     if(isset($_POST['add_patient'])) {
         header('location: add_patient.php');
-    }
-    if(isset($_GET['view_patient'])) {
-        header('location: view_patient.php?patient='.$_GET['view_patient']);
         exit();
     }
+
+    if(isset($_POST['view_patient'])) {
+    	$_SESSION['pid'] = $mySQLI->escape_string($_POST['view_patient']);
+        header('location: view_patient.php?='.$_POST['view_patient']);
+        exit();
+    }
+
     if(isset($_POST['delete_patient'])) {
         include_once '../../includes/deletepatient.inc.php';
     }
@@ -16,7 +20,6 @@
 
 <link rel="stylesheet" href="../../stylesheets/patient_lookup_style.css">
 <title>Patient Lookup</title>
-
 <div class="container">
 	<h1><a href="patient_lookup.php">Patient Lookup</a></h1>
 	<div class="container">
@@ -47,7 +50,8 @@
 					</tr>
 					</thead>
 					<tbody>
-                    <?php $count = 1; while($row = mysqli_fetch_array($dataResult)): ?>
+                    <?php $count = 1;
+                        while($row = mysqli_fetch_array($dataResult)): ?>
 						<tr>
 							<th><?php echo $count; ?></th>
 							<td><?php echo $row['p_first']; ?></td>
@@ -58,7 +62,7 @@
 							<td><?php echo $row['p_state']; ?></td>
 							<td><?php echo $row['p_zip']; ?></td>
 							<td><?php echo $row['insurer']; ?></td>
-							<td><form action="" method="get"><button type="submit" name="view_patient" value="<?php echo $row['p_id']; ?>" class="btn fas fa-eye""></button></form></td>
+							<td><form action="" method="post"><button type="submit" name="view_patient" value="<?php echo $row['p_id']; ?>" class="btn fas fa-eye""></button></form></td>
 							<td><form action="" method="post"><button type="submit" name="delete_patient" value="<?php echo $row['p_id']; ?>" class="btn fas fa-trash-alt""></button></form></td>
 						</tr>
                         <?php $count++; endwhile; ?>

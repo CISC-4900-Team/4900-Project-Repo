@@ -1,7 +1,6 @@
 <?php
     require_once 'database_info.inc.php';
     $pid = $mySQLI->escape_string($_POST['delete_patient']);
-    echo $pid;
 
     $sql = "DELETE FROM patients WHERE p_id = ?";
     $stmt = mysqli_stmt_init($mySQLI);

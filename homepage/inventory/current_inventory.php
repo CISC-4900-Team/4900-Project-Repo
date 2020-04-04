@@ -1,17 +1,14 @@
-<?php include $_SERVER["DOCUMENT_ROOT"] . '/includes/header.php'; ?>
-<link rel="stylesheet" href="../../stylesheets/inventory_style.css">
-<title>Current Inventory</title>
-
+<?php include_once '../../header.php'; ?>
+<?php require_once '../../includes/populate_inventory.inc.php'; ?>
 <?php
-    include $_SERVER['DOCUMENT_ROOT'].'/includes/db_includes/inventorySchema.inc.php';
 
-    //Getting the column names
-	$getCol = "SELECT * FROM drug_inventory";
-    $dataResult = mysqli_query($invSQLI, $getCol);
 ?>
 
+<link rel="stylesheet" href="../../stylesheets/inventory_style.css">
+<title>Current Inventory</title>
 <div class="container">
-	<h3>Drug Inventory</h3>
+	<h3>Drug Inventory - TO DO</h3>
+	<!--
 	<table id="drugs" class="display" style="width:100%">
 		<thead>
 			<tr>
@@ -66,5 +63,5 @@
 		</tbody>
 	</table>
 </div>
-
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
+-->
+<?php include_once '../../footer.php'; ?>

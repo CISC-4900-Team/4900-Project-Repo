@@ -1,9 +1,7 @@
 <?php
     require_once 'database_info.inc.php';
-    if (isset($_GET['patient'])) {
-        $pid = $_GET['patient'];
-    }
-
+    $pid = $_SESSION['pid'];
+    $record = null;
     $sql = "SELECT * FROM patients WHERE p_id = ?";
     $stmt = mysqli_stmt_init($mySQLI);
     if(!mysqli_stmt_prepare($stmt, $sql)) {

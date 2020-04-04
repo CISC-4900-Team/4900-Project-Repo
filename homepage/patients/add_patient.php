@@ -48,7 +48,18 @@
 			</div>
 			<div class="form-group col-md-2">
 				<label for="p_state">State</label>
-				<input type="text" name="p_state" >
+				<select id="inputState" class="form-control input-sm" name="p_state">
+					<option>State</option>
+                    <?php
+                        $states = array("AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI",
+                            "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS",
+                            "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC",
+                            "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY");
+
+                        for($i=0; $i<51; $i++):?>
+							<option value="<?php echo $states[$i];?>"> <?php echo $states[$i];?></option>
+                        <?php endfor; ?>
+				</select>
 			</div>
 			<div class="form-group col-md-1">
 				<label for="p_zip">Zipcode</label>
