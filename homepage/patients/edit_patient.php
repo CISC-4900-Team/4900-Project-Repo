@@ -1,4 +1,4 @@
-<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
+<?php include $_SERVER["DOCUMENT_ROOT"] . '/includes/header.php'; ?>
 <link rel="stylesheet" href="../../stylesheets/crud_styles/patient_page_style.css">
 <title>Update Patient</title>
 
@@ -148,4 +148,5 @@
         <button name="save_edit">Save</button>
     </form>
 </div>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.inc.php'; ?>
+
+<?php include_once '../../footer.php'; ?>

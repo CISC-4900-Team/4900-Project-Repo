@@ -1,6 +1,4 @@
-<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
-<link rel="stylesheet" href="../stylesheets/admin_page_style.css">
-<title>Pharmacy Page</title>
+<?php include_once '../header.php'; ?>
 
 <?php
 	/*
@@ -10,13 +8,15 @@
 	*/
 ?>
 
+<link rel="stylesheet" href="../stylesheets/admin_page_style.css">
+<title>Pharmacy Page</title>
 <div class="container">
 	<h1>Main Page</h1>
 	<div class="row">
 		<!-- Patient Lookup  -->
 		<div id="Patient_Lookup" class="col-lg-6 col-sm-6">
 			<h4>Patient Lookup</h4>
-			<a href="patients/patient_lookup.php"><button class = "btn btn-dark">Patient Lookup</button></a>
+			<a href="<?php echo HTTP.'homepage/patients/patient_lookup.php'?>"><button class = "btn btn-dark">Patient Lookup</button></a>
 		</div>
 		<!-- Patient Lookup End  -->
 		<!-- Recent Patient Transactions -->
@@ -53,4 +53,4 @@
 	</div>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.inc.php'; ?>
+<?php include_once '../footer.php'; ?>

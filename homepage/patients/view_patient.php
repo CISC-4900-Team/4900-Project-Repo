@@ -1,8 +1,8 @@
-<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
-<?php include $_SERVER["DOCUMENT_ROOT"]. '/includes/crud_includes/viewpatient.inc.php'; ?>
+<?php include_once '../../header.php'; ?>
+<?php require_once '../../includes/viewpatient.inc.php'; ?>
+
 <link rel="stylesheet" href="../../stylesheets/crud_styles/patient_page_style.css">
 <title>Patient Information</title>
-
 <div class="container">
 	<a href="patient_lookup.php"><button>Back</button></a>
 	<h1><strong>Patient Information</strong></h1>
@@ -56,4 +56,6 @@
 		</div>
 	</form>
 </div>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.inc.php'; ?>
+
+<?php include_once '../../footer.php'; ?>
+

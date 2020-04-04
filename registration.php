@@ -1,23 +1,22 @@
-<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
-<link rel="stylesheet" href="stylesheets/registration_page_style.css">
-<title>Join Equinox</title>
+<?php include_once 'header.php'; ?>
 
 <?php
 	//Check if form is being submitted
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
         if($_POST['emp_pwd'] != $_POST['emp_pwd_confirm'])
         {
-        	//header("location: pharm_registration.php?password_missmatch");
-	        
-            header("location: $htmlRoot/pharm_registration.php?password_missmatch");
+            header("location: registration.php?password_missmatch");
         } else {
             if(isset($_POST['register'])) {
-                require $_SERVER["DOCUMENT_ROOT"].'/includes/register.inc.php';
+                require 'includes/register.inc.php';
             }
         }
 	}
 ?>
-<!-- Registration form -->
+
+<link rel="stylesheet" href="stylesheets/registration_page_style.css">
+<title>Join Equinox</title>
+
 <div class="container alerts">
     <?php if(isset($_GET['license_exists'])): ?>
 		<div class="alert alert-danger alert-dismissible">
@@ -42,7 +41,7 @@
 		    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		    <strong>Registration Successful!</strong><br>
 	    </div>
-    <?php header('Refresh:10; pharm_registration.php');endif; ?>
+    <?php endif; ?>
 </div>
 <h1>Join Equinox</h1>
 <div class="container form">
@@ -169,4 +168,5 @@
 		</div>
 	</form>
 </div>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.inc.php'; ?>
+
+<?php include_once 'footer.php'; ?>

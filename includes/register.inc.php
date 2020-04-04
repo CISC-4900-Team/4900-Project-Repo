@@ -1,7 +1,6 @@
 <?php
-    include $_SERVER["DOCUMENT_ROOT"].'/includes/database_info.inc.php';
-    include $_SERVER["DOCUMENT_ROOT"].'/includes/mailer.inc.php';
-    $htmlRoot = 'https://equinoxpharma.herokuapp.com';
+    require_once 'database_info.inc.php';
+    require_once 'mailer.inc.php';
 
     //Getting pharmacy information from registration form
     //Using escape_string to prevent SQL injection
@@ -57,9 +56,7 @@
 
         //7. Parse result(s)
         if($result->num_rows > 0) {
-            //header("location: pharm_registration.php?error=license_exists");
-
-            header("location: $htmlRoot/pharm_registration.php?error=license_exists");
+            header("location: registration.php?error=license_exists");
             exit();
         } else {
             //Check users table to see if manager email already exists in the system
@@ -75,9 +72,7 @@
                 $result = mysqli_stmt_get_result($stmt);
 
                 if($result->num_rows > 0) {
-                    //header("location: pharm_registration.php?error=email_exists");
-
-                    header("location: $htmlRoot/pharm_registration.php?error=email_exists");
+                    header("location: registration.php?error=email_exists");
                     exit();
                 } else {
 
@@ -114,12 +109,11 @@
                         mysqli_stmt_execute($stmt);
                     }
 
-
                     $mail->SetFrom('equinoxpharmacysystems@gmail.com', 'Equinox Systems');
                     $mail->Subject = 'Equinox Account Verification';
                     $mail->Body = "
                     <h3>Thank You for Registering</h3><br>
-                    <p>Please click this <a href='http://localhost:63342/PharmaSystem/verify.php?vkey=$hash'>verification</a> link to verify your email</p><br>
+                    <p>Please click this <a href='#'>verification</a> link to verify your email</p><br>
                     <p>Once the email has been verified, an email with your login credentials will be sent. </p>        
                     ";
                     $mail->AddAddress($emp_email);

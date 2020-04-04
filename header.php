@@ -1,11 +1,9 @@
 <?php
-    $activePage = basename($_SERVER['PHP_SELF'], ".php");
     session_start();
+    include_once 'config.php';
     if(isset($_POST['logout'])) {
-		require $_SERVER["DOCUMENT_ROOT"].'/includes/logout.inc.php';
+		require 'includes/logout.inc.php';
     }
-    $htmlRoot = 'https://equinoxpharma.herokuapp.com';
-    $localRoot = 'http://localhost:63342/PharmaSystem';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,17 +20,13 @@
 <nav class="navbar navbar-inverse">
 	<div class="container">
 		<div class="navbar-header">
-			<!-- <a class="navbar-brand" href="<?php if(isset($_SESSION['loggedIn'])){echo 'http://localhost:63342/PharmaSystem/homepage/main_page.php';}else{echo 'index.php';}?>"> -->
-			<a class="navbar-brand" href="<?php if(isset($_SESSION['loggedIn'])){echo $htmlRoot.'/homepage/main_page.php';}else{echo $htmlRoot;}?>"><i class="fas fa-prescription"></i>EQUINOX</a>
+			<li><a class="navbar-brand" href="<?php if(isset($_SESSION['loggedIn'])){echo HTTP.'homepage/main_page.php';}else{echo HTTP.'index.php';}?>"><i class="fas fa-prescription"></i>EQUINOX</a></li>
 		</div>
 
 		<ul class="nav navbar-nav">
             <?php if(!isset($_SESSION['loggedIn'])): ?>
-				<!-- <li><a href="pharm_registration.php">SIGN UP</a></li> -->
-	            <li><a href="<?php echo $htmlRoot?>/pharm_registration.php">SIGN UP</a></li>
-
-				<!-- <li><a href="help.php">HELP</a></li> -->
-	            <li><a href="<?php echo $htmlRoot?>/help.php">HELP</a></li>
+	            <li><a href="<?php echo HTTP.'registration.php'?>">SIGN UP</a></li>
+	            <li><a href="<?php echo HTTP.'help.php'?>">HELP</a></li>
             <?php endif; ?>
 		</ul>
 
@@ -45,8 +39,7 @@
 					</div>
 				</form>
             <?php else: ?>
-	            <!-- <li><a href="user_login.php"><i class="fas fa-sign-in-alt"></i>LOGIN</a></li> -->
-				<li><a href="<?php echo $htmlRoot?>/user_login.php"><i class="fas fa-sign-in-alt"></i>LOGIN</a></li>
+	            <li><a href="<?php echo HTTP.'login.php'?>"><i class="fas fa-sign-in-alt"></i>LOGIN</a></li>
             <?php endif; ?>
 		</ul>
 	</div>

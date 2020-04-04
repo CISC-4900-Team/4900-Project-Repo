@@ -1,16 +1,12 @@
-<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
+<?php include_once '../../header.php'; ?>
 <link rel="stylesheet" href="../../stylesheets/crud_styles/add_patient_style.css">
 <title>New Patient</title>
 
 <?php
-    include $_SERVER["DOCUMENT_ROOT"].'/includes/database_info.inc.php';
-
     //Check if form is being submitted
-    if($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-        if(isset($_POST['add_patient']))
-        {
-            require $_SERVER["DOCUMENT_ROOT"].'/includes/crud_includes/addpatient.inc.php';
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if(isset($_POST['add_patient'])) {
+            require '../../includes/addpatient.inc.php';
         }
     }
 ?>
@@ -24,18 +20,18 @@
 		<div class="row">
 			<div class="form-group col-md-2">
 				<label for="p_first">First Name</label>
-				<input type="text" name="p_first" required>
+				<input type="text" name="p_first" >
 			</div>
 			<div class="form-group col-md-2">
 				<label for="p_last">Last Name</label>
-				<input type="text" name="p_last" required>
+				<input type="text" name="p_last" >
 			</div>
 			<div class="form-group col-md-2">
 				<label for="p_dob">Date of Birth</label>
-				<input type="date" name="p_dob" required>
+				<input type="date" name="p_dob" >
 			</div>
 			<div class="form-group col-md-2">
-				<label for="p_dob" required>Sex</label><br>
+				<label for="p_dob" >Sex</label><br>
 				<label class="radio-inline"><input type="radio" name="optradio" value="M" checked>M</label>
 				<label class="radio-inline"><input type="radio" name="optradio" value="F">F</label>
 			</div>
@@ -44,33 +40,33 @@
 		<div class="row">
 			<div class="form-group col-md-3">
 				<label for="p_addr">Patient Address</label>
-				<input type="text" name="p_addr" size="40" required>
+				<input type="text" name="p_addr" size="40" >
 			</div>
 			<div class="form-group col-md-2">
 				<label for="p_city">City</label>
-				<input type="text" name="p_city" required>
+				<input type="text" name="p_city" >
 			</div>
 			<div class="form-group col-md-2">
 				<label for="p_state">State</label>
-				<input type="text" name="p_state" required>
+				<input type="text" name="p_state" >
 			</div>
 			<div class="form-group col-md-1">
 				<label for="p_zip">Zipcode</label>
-				<input type="text" name="p_zip" size="5" required>
+				<input type="text" name="p_zip" size="5" >
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="form-group col-md-1">
 				<label for="p_allergies">Allergies</label>
-				<input type="text" name="p_allergies" size="120" required>
+				<input type="text" name="p_allergies" size="120" >
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="form-group col-md-2">
 				<label for="p_phone1">Primary Phone</label>
-				<input type="text" name="p_phone1" required>
+				<input type="text" name="p_phone1" >
 			</div>
 			<div class="form-group col-md-2">
 				<label for="p_phone2">Secondary Phone</label>
@@ -87,11 +83,11 @@
 		<div class="row">
 			<div class="form-group col-md-3">
 				<label for="p_insurer">Insurer</label>
-				<input type="text" name="p_insurer" size="32" required>
+				<input type="text" name="p_insurer" size="32" >
 			</div>
 			<div class="form-group col-md-2">
 				<label for="p_ins_id">Insurance ID</label>
-				<input type="text" name="p_ins_id" size="32" required>
+				<input type="text" name="p_ins_id" size="32" >
 			</div>
 		</div>
 	<hr>
@@ -99,19 +95,19 @@
 		<div class="row">
 			<div class="form-group col-md-2">
 				<label for="pcp_name">PCP Name</label>
-				<input type="text" name="pcp_name" size="25" required>
+				<input type="text" name="pcp_name" size="25" >
 			</div>
 			<div class="form-group col-md-4">
 				<label for="pcp_addr">PCP Office Address</label>
-				<input type="text" name="pcp_addr" size="55" required>
+				<input type="text" name="pcp_addr" size="55" >
 			</div>
 			<div class="form-group col-md-2">
 				<label for="pcp_phone">PCP Phone</label>
-				<input type="text" name="pcp_phone" size="25" required>
+				<input type="text" name="pcp_phone" size="25" >
 			</div>
 		</div>
 		<button name="add_patient">Add New Patient</button>
 	</form>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.inc.php'; ?>
+<?php include_once '../../footer.php'; ?>

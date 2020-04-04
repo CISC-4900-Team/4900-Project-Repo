@@ -1,8 +1,7 @@
-<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
+<?php include_once 'header.php'; ?>
 
 <link rel="stylesheet" href="stylesheets/index_style.css">
 <title>Get Information</title>
-
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -13,4 +12,4 @@
     </div>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.inc.php'; ?>
+<?php include_once 'footer.php'; ?>

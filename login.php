@@ -1,23 +1,24 @@
-<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
-<link rel="stylesheet" href="stylesheets/login_page_style.css">
-<title>Employee Login</title>
+<?php include_once 'header.php'; ?>
 
 <?php
 	//Check if form is being submitted
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
     	//Check if button was pressed
 		if(isset($_POST['login'])) {
-		    require $_SERVER["DOCUMENT_ROOT"].'/includes/login.inc.php';
+		    require 'includes/login.inc.php';
 		}
     }
 ?>
+
+<link rel="stylesheet" href="stylesheets/login_page_style.css">
+<title>Employee Login</title>
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12">
 			<div id="content">
 				<h1>Employee Login</h1>
 				<div class="container" id="forms">
-					<form name="user_login" action="user_login.php" method="post" autocomplete="off">
+					<form name="user_login" action="login.php" method="post" autocomplete="off">
 						<div>
 							<label for="emp_id">Employee ID:</label>
 							<input type="text" name="emp_id" id="user-id" required>
@@ -40,9 +41,5 @@
 		</div>
 	</div>
 </div>
-<?php
-    error_reporting(E_ALL);
-    ini_set('display_errors', 'on');
-?>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.inc.php'; ?>
+<?php include_once 'footer.php'; ?>

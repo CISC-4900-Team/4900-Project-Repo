@@ -1,4 +1,4 @@
-<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
+<?php include $_SERVER["DOCUMENT_ROOT"] . '/includes/header.php'; ?>
 <link rel="stylesheet" href="../../stylesheets/inventory_style.css">
 <title>Current Inventory</title>
 
@@ -67,4 +67,4 @@
 	</table>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.inc.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>

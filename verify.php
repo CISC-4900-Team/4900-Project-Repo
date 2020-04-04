@@ -1,7 +1,5 @@
-<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
-<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/database_info.inc.php'; ?>
-<link rel="stylesheet" href="stylesheets/index_style.css">
-<title>Equinox Pharma Systems</title>
+<?php include_once 'header.php'; ?>
+<?php include '/includes/database_info.inc.php'; ?>
 
 <?php
 	if(isset($_GET['vkey'])) {
@@ -15,6 +13,8 @@
     }
 ?>
 
+<link rel="stylesheet" href="stylesheets/index_style.css">
+<title>Equinox Pharma Systems</title>
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -26,4 +26,4 @@
     </div>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.inc.php'; ?>
+<?php include_once 'footer.php'; ?>

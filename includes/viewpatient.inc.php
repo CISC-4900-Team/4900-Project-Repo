@@ -1,5 +1,5 @@
 <?php
-    include $_SERVER["DOCUMENT_ROOT"].'/includes/database_info.inc.php';
+    require_once 'database_info.inc.php';
     if (isset($_GET['patient'])) {
         $pid = $_GET['patient'];
     }

@@ -1,6 +1,4 @@
-<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
-<link rel="stylesheet" href="../stylesheets/New_Emp.css">
-<title>New Employee</title>
+<?php include_once '../header.php'; ?>
 
 <?php
     //Check if form is being submitted
@@ -8,11 +6,13 @@
     {
         if(isset($_POST['add']))
         {
-            require $_SERVER["DOCUMENT_ROOT"].'/includes/newuser.inc.php';
+            require '../includes/newuser.inc.php';
         }
     }
 ?>
 
+<link rel="stylesheet" href="../stylesheets/New_Emp.css">
+<title>New Employee</title>
 <div class="container my-con">
 	<?php if(isset($_GET['add=success']))echo '<h2>New Employee Addedd Successfully</h2>'; ?>
 	<h1>New Employee</h1>
@@ -93,4 +93,4 @@
     </form>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.inc.php'; ?>
+<?php include_once '../footer.php'; ?>

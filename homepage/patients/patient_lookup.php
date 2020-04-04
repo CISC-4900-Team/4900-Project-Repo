@@ -1,5 +1,19 @@
-<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
-<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/crud_includes/pop_patients.inc.php'; ?>
+<?php include_once '../../header.php'; ?>
+<?php require_once '../../includes/pop_patients.inc.php'; ?>
+
+<?php
+    if(isset($_POST['add_patient'])) {
+        header('location: add_patient.php');
+    }
+    if(isset($_GET['view_patient'])) {
+        header('location: view_patient.php?patient='.$_GET['view_patient']);
+        exit();
+    }
+    if(isset($_POST['delete_patient'])) {
+        include_once '../../includes/deletepatient.inc.php';
+    }
+?>
+
 <link rel="stylesheet" href="../../stylesheets/patient_lookup_style.css">
 <title>Patient Lookup</title>
 
@@ -45,7 +59,7 @@
 							<td><?php echo $row['p_zip']; ?></td>
 							<td><?php echo $row['insurer']; ?></td>
 							<td><form action="" method="get"><button type="submit" name="view_patient" value="<?php echo $row['p_id']; ?>" class="btn fas fa-eye""></button></form></td>
-							<td><form action="" method="get"><button type="submit" name="delete_patient" value="<?php echo $row['p_id']; ?>" class="btn fas fa-trash-alt""></button></form></td>
+							<td><form action="" method="post"><button type="submit" name="delete_patient" value="<?php echo $row['p_id']; ?>" class="btn fas fa-trash-alt""></button></form></td>
 						</tr>
                         <?php $count++; endwhile; ?>
 					</tbody>
@@ -55,4 +69,4 @@
 	</div>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.inc.php'; ?>
+<?php include_once '../../footer.php'; ?>
