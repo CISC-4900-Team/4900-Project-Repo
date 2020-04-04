@@ -13,7 +13,6 @@
 
 <!-- navBar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
             <a href="#" class="navbar-brand" ><i class="fas fa-prescription"></i>Equinox</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,7 +22,6 @@
             <li class="nav-item active"><a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a></li>
             <li class="nav-item active"><a class="nav-link" href="#">Help <span class="sr-only">(current)</span></a></li>
         </ul>
-  </div>
   </div>
 </nav>
   
@@ -36,7 +34,7 @@
 
 <!-- payment container -->
             <div class="col-50">
-                    <h3>Patient Lookup</h3>
+                    <h3>Medication Transaction</h3>
                             <label for="ID"><i class="fa fa-user"></i> PatientID</label>
                             <input type="text" id="ID" name="ID" placeholder="ID" required>
                     <h3>Payment</h3>
