@@ -1,1 +1,2 @@
 front_structure.docx
+email_template.html

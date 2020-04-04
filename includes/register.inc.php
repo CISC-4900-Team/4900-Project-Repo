@@ -1,7 +1,7 @@
 <?php
     require_once 'database_info.inc.php';
     require_once 'mailer.inc.php';
-
+    $link = HTTP.'verify.php?vkey=';
     //Getting pharmacy information from registration form
     //Using escape_string to prevent SQL injection
     $pharm_name = $mySQLI->escape_string($_POST['pharm_name']);
@@ -56,8 +56,8 @@
 
         //7. Parse result(s)
         if($result->num_rows > 0) {
-            header("location: registration.php?error=license_exists");
-            exit();
+            //header("location: registration.php?error=license_exists");
+            //exit();
         } else {
             //Check users table to see if manager email already exists in the system
             $sql = "SELECT * FROM user_accounts WHERE u_email = ?";
@@ -72,8 +72,8 @@
                 $result = mysqli_stmt_get_result($stmt);
 
                 if($result->num_rows > 0) {
-                    header("location: registration.php?error=email_exists");
-                    exit();
+                    //header("location: registration.php?error=email_exists");
+                    //exit();
                 } else {
 
                     //Generate unique ID for the pharmacy
@@ -113,7 +113,7 @@
                     $mail->Subject = 'Equinox Account Verification';
                     $mail->Body = "
                     <h3>Thank You for Registering</h3><br>
-                    <p>Please click this <a href='#'>verification</a> link to verify your email</p><br>
+                    <p>Please click this <a href='$link$hash'>verification</a> link to verify your email</p><br>
                     <p>Once the email has been verified, an email with your login credentials will be sent. </p>        
                     ";
                     $mail->AddAddress($emp_email);

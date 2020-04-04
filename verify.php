@@ -1,5 +1,5 @@
 <?php include_once 'header.php'; ?>
-<?php include '/includes/database_info.inc.php'; ?>
+<?php include 'includes/database_info.inc.php'; ?>
 
 <?php
 	if(isset($_GET['vkey'])) {
@@ -7,6 +7,7 @@
         $result = $mySQLI->query("SELECT is_active, u_hash FROM user_accounts WHERE is_active = 0 AND u_hash = '$vkey' LIMIT 1");
         if($result->num_rows == 1) {
 			$mySQLI->query("UPDATE user_accounts SET is_active = 1 WHERE u_hash = '$vkey'");
+			require_once('includes/sendcredentials.inc.php');
         } else {
         	echo 'Account Already Verified or Invalid Account';
         }
