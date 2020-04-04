@@ -1,9 +1,9 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php'; ?>
+<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
 <link rel="stylesheet" href="../../stylesheets/crud_styles/patient_page_style.css">
 <title>Update Patient</title>
 
 <?php
-    include $_SERVER['DOCUMENT_ROOT'] . '/includes/db_includes/patientSchema.inc.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/includes/database_info.inc.php';
 
     $id = $_GET['pid'];
     $patientSQL = "SELECT * FROM patient_info WHERE pid = $id";

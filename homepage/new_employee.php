@@ -1,4 +1,4 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php' ?>
+<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
 <link rel="stylesheet" href="../stylesheets/New_Emp.css">
 <title>New Employee</title>
 
@@ -8,7 +8,7 @@
     {
         if(isset($_POST['add']))
         {
-            require '../includes/newuser.inc.php';
+            require $_SERVER["DOCUMENT_ROOT"].'/includes/newuser.inc.php';
         }
     }
 ?>
@@ -72,8 +72,8 @@
                 <input type="text" class="form-control" name="phone" id="phone" placeholder="(xxx)-xxx-xxxx" required>
             </div>
 		    <div class="form-group col-md-3">
-			    <div><label for="phone">Phone 2:</label></div>
-			    <input type="text" class="form-control" name="phone" id="phone" placeholder="Optional">
+			    <div><label for="phone2">Phone 2:</label></div>
+			    <input type="text" class="form-control" name="phone2" id="phone" placeholder="Optional">
 		    </div>
         </div>
         <div class="row my-row">

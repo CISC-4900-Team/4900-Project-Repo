@@ -1,16 +1,16 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php'; ?>
+<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
 <link rel="stylesheet" href="../../stylesheets/crud_styles/add_patient_style.css">
 <title>New Patient</title>
 
 <?php
-    include $_SERVER['DOCUMENT_ROOT'] . '/includes/db_includes/patientSchema.inc.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/includes/database_info.inc.php';
 
     //Check if form is being submitted
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         if(isset($_POST['add_patient']))
         {
-            require '../../includes/crud_includes/addpatient.inc.php';
+            require $_SERVER["DOCUMENT_ROOT"].'/includes/crud_includes/addpatient.inc.php';
         }
     }
 ?>
@@ -36,7 +36,7 @@
 			</div>
 			<div class="form-group col-md-2">
 				<label for="p_dob" required>Sex</label><br>
-				<label class="radio-inline"><input type="radio" name="optradio" value="M">M</label>
+				<label class="radio-inline"><input type="radio" name="optradio" value="M" checked>M</label>
 				<label class="radio-inline"><input type="radio" name="optradio" value="F">F</label>
 			</div>
 		</div>
@@ -69,17 +69,17 @@
 
 		<div class="row">
 			<div class="form-group col-md-2">
-				<label for="p_phone_1">Primary Phone</label>
-				<input type="text" name="p_phone_1" required>
+				<label for="p_phone1">Primary Phone</label>
+				<input type="text" name="p_phone1" required>
 			</div>
 			<div class="form-group col-md-2">
-				<label for="p_phone_2">Secondary Phone</label>
-				<input type="text" name="p_phone_2">
+				<label for="p_phone2">Secondary Phone</label>
+				<input type="text" name="p_phone2" placeholder="Optional">
 			</div>
 
 			<div class="form-group col-md-1">
 				<label for="p_email">Email</label>
-				<input type="text" name="p_email" size="48">
+				<input type="text" name="p_email" size="48" placeholder="Optional">
 			</div>
 		</div>
 	<hr>
@@ -91,7 +91,7 @@
 			</div>
 			<div class="form-group col-md-2">
 				<label for="p_ins_id">Insurance ID</label>
-				<input type="text" name="p_ins_id" size="32">
+				<input type="text" name="p_ins_id" size="32" required>
 			</div>
 		</div>
 	<hr>

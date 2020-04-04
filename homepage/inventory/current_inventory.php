@@ -1,9 +1,9 @@
-<?php include  $_SERVER['DOCUMENT_ROOT'] . '/includes/header.inc.php'; ?>
+<?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
 <link rel="stylesheet" href="../../stylesheets/inventory_style.css">
 <title>Current Inventory</title>
 
 <?php
-    include $_SERVER['DOCUMENT_ROOT'] . '/includes/db_includes/inventorySchema.inc.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/includes/db_includes/inventorySchema.inc.php';
 
     //Getting the column names
 	$getCol = "SELECT * FROM drug_inventory";
