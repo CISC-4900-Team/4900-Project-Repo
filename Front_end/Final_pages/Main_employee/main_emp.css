@@ -1,0 +1,77 @@
+body{
+    background-image: url(https://images.unsplash.com/photo-1583604310111-9cd137d6ffe5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);
+    background-size: cover;
+    background-position: center;
+}
+
+html{
+    height: 100%;
+}
+
+/* The sidebar menu */
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 130px;
+    position: fixed;
+    z-index: 1;
+    top: 51px;
+    left: 0px;
+    background-color: #202020; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Style page content */
+  .main {
+    margin-left: 160px; /* Same as the width of the sidebar */
+    padding: 0px 10px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+.container h1{
+    text-align: center;
+    padding-top: 0.5%;
+    color: white;
+    font-family: Lato;
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+                 0px 8px 13px rgba(0, 0, 0, 0.1)
+                 0px 18px 23px rgba(0, 0, 0, 0.1)
+}
+
+#content label{
+    padding-right: 20px;
+    align-items: center;
+}
+
+i{
+    padding-right: 3px;
+}
+
+.row{
+    padding-left: 15rem;
+}
+
+div h4{
+    color:	#A9A9A9;
+}
+
+
