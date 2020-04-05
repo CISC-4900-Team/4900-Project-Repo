@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Trans_invoice.css">
-     <!-- Bootstrap CSS -->
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="Trans_invoice.css">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,700&display=swap" rel="stylesheet">
+	 <!-- Bootstrap CSS -->
+	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
      <script src="https://kit.fontawesome.com/922c329282.js" crossorigin="anonymous"></script>
     <title>Transaction page</title>
 </head>
@@ -38,7 +39,8 @@
     				<strong>Patient Info:</strong><br>
     					John Doe<br>
     					1234 Main<br>
-    					New York, NY 12345
+						New York, NY 12345<br>
+						Insurance provider: BlueCross BlueShield
     				</address>
     			</div>
             </div>
