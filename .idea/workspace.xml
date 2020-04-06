@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14703d00-e936-4285-a36a-f8f2132587a8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Main_employee/Main_emp.php" beforeDir="false" afterPath="$PROJECT_DIR$/Front_end/Final_pages/Main_employee/Main_emp.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Main_employee/main_emp.css" beforeDir="false" afterPath="$PROJECT_DIR$/Front_end/Final_pages/Main_employee/main_emp.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Trans_Invoice/Trans_invoice.css" beforeDir="false" afterPath="$PROJECT_DIR$/Front_end/Final_pages/Trans_Invoice/Trans_invoice.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Trans_Invoice/Trans_invoice.php" beforeDir="false" afterPath="$PROJECT_DIR$/Front_end/Final_pages/Trans_Invoice/Trans_invoice.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Trans_page/Trans.css" beforeDir="false" afterPath="$PROJECT_DIR$/Front_end/Final_pages/Trans_page/Trans.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Trans_page/Trans.php" beforeDir="false" afterPath="$PROJECT_DIR$/Front_end/Final_pages/Trans_page/Trans.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +54,8 @@
       <workItem from="1585858970285" duration="155000" />
       <workItem from="1585860092159" duration="2798000" />
       <workItem from="1586015366625" duration="19000" />
-      <workItem from="1586056984957" duration="1979000" />
+      <workItem from="1586056984957" duration="2547000" />
+      <workItem from="1586115985823" duration="2563000" />
     </task>
     <servers />
   </component>
@@ -90,10 +89,10 @@
     </state>
     <state x="458" y="142" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1586015384236" />
     <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1585704434179" />
-    <state x="388" y="199" key="com.intellij.ide.util.TipDialog" timestamp="1586056985488">
+    <state x="388" y="199" key="com.intellij.ide.util.TipDialog" timestamp="1586115986736">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="388" y="199" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1586056985488" />
+    <state x="388" y="199" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1586115986736" />
     <state x="465" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.834@0.0.1536.834" timestamp="1585704247374" />
   </component>
 </project>

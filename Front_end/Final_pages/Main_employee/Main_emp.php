@@ -27,55 +27,59 @@
   </div>
 </nav>
 
-<!-- side bar -->
-<div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+<!-- Information side bar -->
+<div class="container">
+	<div id="mySidebar" class="sidebar">
+  		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="#">UserID:</a>
         <a href="#">Previous Login:</a>
         <a href="#">Location info:</a>
         <a href="#">Contact:</a>
+		<button type="button" class = "btn btn-dark btn-sm">Patient Checkout</button></a>
+	</div>
+
+	<div id="main">
+  		<button class="openbtn" onclick="openNav()">&#9776; Information</button>
+	</div>
 </div>
 
-<div id="main">
-  <button class="openbtn" onclick="openNav()">&#9776; Information</button>
-</div>
 
 <!-- main structure -->
 <div class="container">
         <h1>Equinox</h1>
-	<div class="row">
+	<div class="row row-cols-2">
 		<!-- Patient Lookup  -->
-		<div id="Patient_Lookup" class="col-lg-6 col-sm-6">
+		<div id="Patient_Lookup" class="col">
 			<h4>Patient Lookup</h4>
             <button type="button" class = "btn btn-dark btn-lg">Patient Lookup</button></a>
 		</div>
 		<!-- Patient Lookup End  -->
 		<!-- Recent Patient Transactions -->
-		<div id="Patient_Trans" class="col-lg-6 col-sm-6">
+		<div id="Patient_Trans" class="col">
 			<h4>Recent Patient Transactions</h4>
 			<button type="button" class = "btn btn-dark btn-lg">Patient Transactions</button>
 		</div>
 		<!-- Recent Patient Transactions End -->
 		<!-- Employee system usage -->
-	    <div id="Emp_sys_usage" class="col-lg-6 col-sm-6">
+	    <div id="Emp_sys_usage" class="col">
             <h4>System Usage</h4>
 			<button type="button" class = "btn btn-dark btn-lg">System Usage</button>
 		</div>
 		<!-- Employee system usage End -->
 		<!-- Inventory count  -->
-		<div id="Inv_count" class="col-lg-6 col-sm-6">
+		<div id="Inv_count" class="col">
 			<h4>Inventory</h4>
 			<button type="button" class = "btn btn-dark btn-lg">Inventory</button></a>
 		</div>
 		<!-- Inventory count End -->
 		<!-- Daily Employee Schedules -->
-		<div id="Emp_Sch" class="col-lg-6 col-sm-6">
+		<div id="Emp_Sch" class="col">
 			<h4>Daily Employee Schedules</h4>
 			<button type="button" class = "btn btn-dark btn-lg">Schedule</button>
 		</div>
 		<!-- Daily Employee Schedules End -->
 		<!-- Technical Resources  -->
-		<div id="Emp_Sch" class="col-lg-6 col-sm-6">
+		<div id="Emp_Sch" class="col">
 			<h4>Technical Resources</h4>
 			<button type="button" class = "btn btn-dark btn-lg">Resources</button>
 		</div>
