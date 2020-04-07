@@ -25,7 +25,7 @@
 	<div class="container">
 		<div class="row">
 			<form action="patient_lookup.php" method="post">
-				<div class="col-md-4">
+				<div class="col-md-12">
 					<button type="submit" name="add_patient" class="btn btn-primary">New Patient</button>
 				</div>
 			</form>
@@ -33,7 +33,7 @@
 		<hr>
 		<div class="row">
 			<div class="col">
-				<table class="table hover table-striped" id="users_table">
+				<table id="patients_table" class="table table-striped" style="width:100%">
 					<thead>
 					<tr>
 						<th>#</th>
@@ -45,8 +45,7 @@
 						<th id="p_state">State</th>
 						<th id="p_zip">Zip</th>
 						<th id="p_insurer">Insurer</th>
-						<th id="view_del">View</th>
-						<th id="view_del">Delete</th>
+						<th id="view_del">Action</th>
 					</tr>
 					</thead>
 					<tbody>
@@ -62,8 +61,12 @@
 							<td><?php echo $row['p_state']; ?></td>
 							<td><?php echo $row['p_zip']; ?></td>
 							<td><?php echo $row['insurer']; ?></td>
-							<td><form action="" method="post"><button type="submit" name="view_patient" value="<?php echo $row['p_id']; ?>" class="btn fas fa-eye""></button></form></td>
-							<td><form action="" method="post"><button type="submit" name="delete_patient" value="<?php echo $row['p_id']; ?>" class="btn fas fa-trash-alt""></button></form></td>
+							<td>
+								<div class="form-row">
+									<form action="" method="post"><button type="submit" name="view_patient" value="<?php echo $row['p_id']; ?>" class="btn fas fa-eye""></button></form>
+									<form action="" method="post"><button type="submit" name="delete_patient" value="<?php echo $row['p_id']; ?>" class="btn fas fa-trash-alt""></button></form>
+								</div>
+							</td>
 						</tr>
                         <?php $count++; endwhile; ?>
 					</tbody>

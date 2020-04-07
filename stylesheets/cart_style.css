@@ -1,0 +1,58 @@
+body {
+    height: 100%
+}
+
+html {
+    height: 100%;
+}
+
+.container{
+    height: 94.1%;
+    padding: 25px;
+    background-color: #343A40;
+    width: 450px;
+    color: white;
+    overflow: auto;
+}
+.checkout-btn, .barcode-input{
+    width: 100%;
+}
+
+table{
+    width: 100%;
+}
+
+th, td {
+    color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-body {
+    overflow: auto;
+    height: 60%;
+}
+
+td {
+    padding: 8px;
+    max-width: 200px;
+}
+
+.quantity {
+    width: 50px;
+}
+
+.product {
+    width: 200px;
+}
+
+.price {
+    width: 100px;
+}
+
+.cart-header {
+    width: 100%;
+}
+
+.cart-funcs{
+    margin-top: 10px;
+}

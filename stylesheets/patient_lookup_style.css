@@ -1,21 +1,24 @@
-body{background-color: white;}
+body{
+    background-color: white;
+}
+
 html{height: 100%;}
 i{padding-right: 4px;}
 h1{text-align: center;}
 
-#p_name{width: 100px;}
-#p_dob{width: 75px;}
-#p_addr{width: 150px;}
+#p_name{width: 75px;}
+#p_dob{width: 50px;}
+#p_addr{width: 175px;}
 #p_city{width: 100px;}
-#p_zip{width: 50px;}
-#p_insurer{width: 75px;}
+#p_zip{width: 25px;}
+#p_insurer{width: 100px;}
 
 .fa-eye {
     background-color: rgba(0,0,0,0);
     border: none;
     color: #33cc33;
     padding: 1px;
-    font-size: 22px;
+    font-size: 20px;
     cursor: pointer;
     margin-left: 5px;
 }
@@ -25,7 +28,7 @@ h1{text-align: center;}
     border: none;
     color: #ff1a1a;
     padding: 1px;
-    font-size: 22px;
+    font-size: 20px;
     cursor: pointer;
     margin-left: 15px;
 }
@@ -35,6 +38,3 @@ h1{text-align: center;}
     width: 100%;
 }
 
-#view_del{
-    text-align: center;
-}

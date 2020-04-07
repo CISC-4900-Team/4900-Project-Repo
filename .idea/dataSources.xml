@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://us-cdbr-iron-east-01.cleardb.net:3306</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="equinox_local" uuid="f40a494e-7179-46ed-bd1c-7a46b8d8821c">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/equinox_local</jdbc-url>
+    </data-source>
   </component>
 </project>

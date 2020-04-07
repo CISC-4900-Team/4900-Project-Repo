@@ -1,2 +1,7 @@
 front_structure.docx
 email_template.html
+.htaccess
+cart_test.php
+email_template.php
+pdftest.php
+

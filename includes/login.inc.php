@@ -46,10 +46,27 @@
                         $_SESSION['employeeID'] = $user['u_id'];
                         $_SESSION['companyID'] = $user['pharm_id'];
                         $_SESSION['userType'] = $user['u_type'];
-                        $_SESSION['firstName'] = $user['u_id'];
                         $_SESSION['loggedIn'] = 'true';
 
-                        header("location: homepage/main_page.php?login=success");
+                        //Getting employee information and setting session variables
+                        $empID = $_SESSION['employeeID'];
+                        echo $sql = "SELECT * FROM employees WHERE emp_id = $empID";
+                        $result = mysqli_query($mySQLI, $sql);
+                        $emp = mysqli_fetch_assoc($result);
+
+                        echo $_SESSION['emp_first'] = $emp['emp_first'];
+                        echo $_SESSION['emp_last'] = $emp['emp_last'];
+                        echo $_SESSION['emp_phone1'] = $emp['emp_phone1'];
+                        echo $_SESSION['emp_phone2'] = $emp['emp_phone2'];
+                        echo $_SESSION['emp_email'] = $emp['emp_email'];
+
+                        //Setting employee's last login
+                        date_default_timezone_set('US/Eastern');
+                        $timeStamp = date('m/d/Y h:i:s A', time());
+                        $_SESSION['last_login'] = $timeStamp;
+                        $sql = "UPDATE user_accounts SET last_login = '$timeStamp' WHERE u_id = $empID";
+                        mysqli_query($mySQLI, $sql);
+                        header("location: homepage/emp_page.php?login=success");
                         exit();
                     }
                 } else {

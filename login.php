@@ -10,36 +10,32 @@
     }
 ?>
 
-<link rel="stylesheet" href="stylesheets/login_page_style.css">
+<link rel="stylesheet" href="stylesheets/login_style.css">
 <title>Employee Login</title>
-<div class="container">
-	<div class="row">
-		<div class="col-lg-12">
-			<div id="content">
-				<h1>Employee Login</h1>
-				<div class="container" id="forms">
-					<form name="user_login" action="login.php" method="post" autocomplete="off">
-						<div>
-							<label for="emp_id">Employee ID:</label>
-							<input type="text" name="emp_id" id="user-id" required>
-						</div>
-						<div>
-							<label for="pharm_id">Pharmacy ID:</label>
-							<input type="text" name="pharm_id" id="company-id" required>
-						</div>
-						<div>
-							<label for="password">Password:</label>
-							<input type="password" name="password" id="password" placeholder="**********" required>
-						</div>
-						<input type="checkbox" id="save_cred" name="save_cred">
-						<label for="save_cred">Save Login</label><br>
-						<button type="input" name="login" class="btn btn-light">Login</button><br>
-						<a href="#">Forgot ID/Password?</a>
-					</form>
-				</div>
-			</div>
+<div class="container my-h1">
+	<h1>Employee Login</h1>
+</div>
+<div class="container login">
+	<form name="user_login" action="login.php" method="post" autocomplete="off">
+		<div class="form-group col-sm-12">
+			<label for="emp_id">Employee ID:</label><br>
+			<input type="text" name="emp_id" class="form-control" id="user-id" required>
 		</div>
-	</div>
+		<div class="form-group col-sm-12">
+			<label for="pharm_id">Pharmacy ID:</label><br>
+			<input type="text" name="pharm_id" class="form-control" id="company-id" required>
+		</div>
+		<div class="form-group col-sm-12">
+			<label for="password">Password:</label><br>
+			<input type="password" name="password" class="form-control" id="password" placeholder="**********" required>
+		</div>
+		<div class="form-group col-sm-12">
+			<button type="input" name="login" class="btn btn-light">Login</button>
+		</div>
+		<div class="form-group col-sm-12">
+			<a href="#">Forgot ID/Password?</a>
+		</div>
+	</form>
 </div>
 
 <?php include_once 'footer.php'; ?>
