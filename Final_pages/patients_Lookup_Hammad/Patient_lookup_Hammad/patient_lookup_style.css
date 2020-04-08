@@ -1,7 +1,15 @@
-body{background-color: white;}
-html{height: 100%;}
-i{padding-right: 4px;}
-h1{text-align: center;}
+body{
+    background-color: white;
+}
+html{
+    height: 100%;
+}
+i{
+    padding-right: 4px;
+}
+h1{
+    text-align: center;
+}
 
 #p_name{width: 100px;}
 #p_dob{width: 75px;}
@@ -13,7 +21,7 @@ h1{text-align: center;}
 .fa-eye {
     background-color: rgba(0,0,0,0);
     border: none;
-    color: #33cc33;
+    color: #2a2a2a;
     padding: 1px;
     font-size: 22px;
     cursor: pointer;

@@ -6,11 +6,6 @@ body{
     background-color: black;
 }
 
-/* change the background color */
-.navbar-dark{
-    color: #ff5500;
-}
-
 div .jumbotron{
     text-align: center;
     margin: 10%;

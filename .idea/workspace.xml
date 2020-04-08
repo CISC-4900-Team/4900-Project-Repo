@@ -3,9 +3,37 @@
   <component name="ChangeListManager">
     <list default="true" id="14703d00-e936-4285-a36a-f8f2132587a8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Main_employee/Main_emp.php" beforeDir="false" afterPath="$PROJECT_DIR$/Front_end/Final_pages/Main_employee/Main_emp.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Main_employee/main_emp.css" beforeDir="false" afterPath="$PROJECT_DIR$/Front_end/Final_pages/Main_employee/main_emp.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Trans_page/Trans.css" beforeDir="false" afterPath="$PROJECT_DIR$/Front_end/Final_pages/Trans_page/Trans.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Checkout/checkout.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Checkout/checkout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Checkout/checkout2.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Emp_Main_pageRedo/Main_Emp_PageRedo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Emp_Main_pageRedo/Main_Emp_pageRedo.css" beforeDir="false" afterPath="$PROJECT_DIR$/Final_pages/Emp_Main_pageRedo/Main_Emp_pageRedo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Employee_Login/Emp_Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/Final_pages/Employee_Login/Emp_Login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Main_page/Main_Page.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Main_page/Main_page.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Trans_Invoice/Trans_invoice.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Trans_Invoice/Trans_invoice.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Trans_Invoice/Trans_invoice.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Trans_page/Trans.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Trans_page/Trans.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Emp_Main_pageRedo/Main_Emp_PageRedo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Emp_Main_pageRedo/Main_Emp_pageRedo.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Emp_Main_pageRedo/Main_Emp_pageRedo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Front Structure.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Main_employee/Main_emp.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Main_employee/main_emp.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Main_employee/main_emp.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Trans_Invoice/Trans_invoice.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Trans_Invoice/Trans_invoice.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Trans_Invoice/Trans_invoice.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Trans_page/Trans.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front_end/Final_pages/Trans_page/Trans.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/homepage/patients/add_patient.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/homepage/patients/edit_patient.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/homepage/patients/patient_lookup.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/homepage/patients/view_patient.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/crud_includes/pop_patients.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/crud_includes/pop_patients.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stylesheets/patient_lookup_style.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +84,8 @@
       <workItem from="1586015366625" duration="19000" />
       <workItem from="1586056984957" duration="2547000" />
       <workItem from="1586115985823" duration="2563000" />
+      <workItem from="1586363546544" duration="25000" />
+      <workItem from="1586365323340" duration="9584000" />
     </task>
     <servers />
   </component>
@@ -84,15 +114,15 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="321" y="81" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.689@0.0.1280.689" timestamp="1585859119812" />
-    <state x="458" y="142" key="FileChooserDialogImpl" timestamp="1586015384236">
+    <state x="458" y="142" key="FileChooserDialogImpl" timestamp="1586363569339">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="458" y="142" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1586015384236" />
+    <state x="458" y="142" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1586363569339" />
     <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1585704434179" />
-    <state x="388" y="199" key="com.intellij.ide.util.TipDialog" timestamp="1586115986736">
+    <state x="388" y="199" key="com.intellij.ide.util.TipDialog" timestamp="1586363546311">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="388" y="199" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1586115986736" />
+    <state x="388" y="199" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1586363546311" />
     <state x="465" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.834@0.0.1536.834" timestamp="1585704247374" />
   </component>
 </project>

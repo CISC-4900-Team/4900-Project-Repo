@@ -1,18 +1,10 @@
 <?php include $_SERVER["DOCUMENT_ROOT"].'/includes/header.inc.php'; ?>
 <?php include $_SERVER["DOCUMENT_ROOT"].'/includes/crud_includes/pop_patients.inc.php'; ?>
-<link rel="stylesheet" href="../../stylesheets/patient_lookup_style.css">
+<link rel="stylesheet" href="patient_lookup_style.css">
 <title>Patient Lookup</title>
 
 <div class="container">
 	<h1><a href="patient_lookup.php">Patient Lookup</a></h1>
-	<div class="container">
-		<div class="row">
-			<form action="patient_lookup.php" method="post">
-				<div class="col-md-4">
-					<button type="submit" name="add_patient" class="btn btn-primary">New Patient</button>
-				</div>
-			</form>
-		</div>
 		<hr>
 		<div class="row">
 			<div class="col">

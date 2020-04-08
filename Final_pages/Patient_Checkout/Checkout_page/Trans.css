@@ -18,18 +18,18 @@ html{
   }
   
   .col-25 {
-    -ms-flex: 25%; /* IE10 */
-    flex: 25%;
+    -ms-flex: 15%; /* IE10 */
+    flex: 15%;
   }
   
   .col-50 {
-    -ms-flex: 50%; /* IE10 */
-    flex: 50%;
+    -ms-flex: 30%; /* IE10 */
+    flex: 30%;
   }
   
   .col-75 {
-    -ms-flex: 75%; /* IE10 */
-    flex: 75%;
+    -ms-flex: 45%; /* IE10 */
+    flex: 45%;
   }
   
   .col-25,
@@ -46,26 +46,21 @@ html{
   }
 
   input[type=text] {
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 12px;
+    width: 50%;
+    margin-bottom: 10px;
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 3px;
   }
   
-  label {
-    margin-bottom: 10px;
-    display: block;
-  }
-  
   .icon-container {
-    margin-bottom: 20px;
+    margin-bottom: 2.5px;
     padding: 7px 0;
     font-size: 24px;
   }
   
-  .btn {
-    background-color: #4CAF50;
+  .submit.btn {
+    background-color: #2a2a2a;
     color: white;
     padding: 12px;
     margin: 10px 0;
@@ -76,8 +71,8 @@ html{
     font-size: 17px;
   }
   
-  .btn:hover {
-    background-color: #45a049;
+  .submit.btn:hover {
+    background-color: white;
   }
   
   span.price {
