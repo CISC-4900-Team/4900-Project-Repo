@@ -102,7 +102,7 @@
         <!-- Insurance info-->
         <table class="table table-striped table-bordered table-hover" id="mydata" style="width: 100%">
                 <thead>
-                    <th>Provider Name</th>
+                    <th>Insurer Name</th>
                     <th>Policy Number</th>
                     <th>Deductible</th>
                 </thead>

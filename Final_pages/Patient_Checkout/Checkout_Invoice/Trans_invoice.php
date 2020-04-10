@@ -150,7 +150,7 @@
     							<tr>
     								<td class="no-line"></td>
     								<td class="no-line"></td>
-    								<td class="no-line text-center"><strong>Co-Pay</strong></td>
+    								<td class="no-line text-center"><strong>Insurance Coverage</strong></td>
     								<td class="no-line text-right">-$650.00</td>
     							</tr>
     							<tr>

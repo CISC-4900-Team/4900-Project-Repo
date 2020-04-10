@@ -53,10 +53,6 @@
                              <label for="password">Password:</label>
                              <input type="password" name="password" id="password" placeholder="**********" required> 
                         </div>
-                        <div>
-                             <label for="Company">Company ID:</label>
-                             <input type="password" name="password" id="password" placeholder="**********" required> 
-                        </div>
                         <!-- submission -->
                         <button type="button" class="btn btn-light">Login</button>
                         <div>
