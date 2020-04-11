@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Main_Emp_pageRedo.css">
-    <script src="Main_Emp_PageRedo.js"></script>
+    <link rel="stylesheet" href="Transaction.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
-
-    <!-- BootStrap -->
-    <script src="https://kit.fontawesome.com/922c329282.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Employee Main Page</title>
+    <script src="https://kit.fontawesome.com/922c329282.js" crossorigin="anonymous"></script>
+<!-- DataTables -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"/>
+    <title>Transactions</title>
     
 </head>
 <body>
@@ -60,15 +59,51 @@
         </div>
       </nav>
 <!-- nav Bar End -->
-<!-- MAIN PAGE -->
-<!-- Jumbotron -->
-    <div class="container">
-        <div class="jumbotron">
-            <h1>Equinox</h1>
-        </div>
-    </div>
 
-    <!-- Footer -->
+<!-- Main Page -->
+
+<div class="container">
+            <h1> Recent Transactions</h1>
+    </div>
+        <div class="container mb-3 mt-3">
+            <table class="table table-striped table-bordered table-hover mydatatable" style="width: 100%">
+                <thead>
+                    <tr>
+                        <th>Transaction Number</th>
+                        <th>Items</th>
+                        <th>Date of Transaction</th>
+                        <th>Payment Used</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>23022607</td>
+                            <td>Acetaminophen<br>citalopram<br>Ativan</td>
+                            <td>12-23-2019</td>
+                            <td>**********2014</td>
+                        </tr>
+                        <tr>
+                            <td>23022607</td>
+                            <td>Acetaminophen<br>citalopram<br>Ativan</td>
+                            <td>12-23-2019</td>
+                            <td>**********2014</td>
+                        </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                        <th>Transaction Number</th>
+                        <th>Items</th>
+                        <th>Date of Transaction</th>
+                        <th>Payment Used</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+
+
+<!-- Main Page End -->
+<!-- Footer -->
 <footer class="page-footer font-small blue-grey lighten-5">
 
     <div style="background-color: #2a2a2a;">
@@ -148,9 +183,20 @@
   <!-- Footer -->
 
 
-<!-- Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!-- Bootstrap 4  -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<!-- Datatable -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.15/api/row().show().js"></script>
+
+<script>
+$(document).ready(function() {
+    $('.mydatatable').dataTable();
+});
+</script>
 </body>
 </html>
