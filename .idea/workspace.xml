@@ -3,6 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="14703d00-e936-4285-a36a-f8f2132587a8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Emp_Main_pageRedo/Main_Emp_pageRedo.php" beforeDir="false" afterPath="$PROJECT_DIR$/Final_pages/Emp_Main_pageRedo/Main_Emp_pageRedo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Inventory/Inv.php" beforeDir="false" afterPath="$PROJECT_DIR$/Final_pages/Inventory/Inv.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/New_patient/new_patient.php" beforeDir="false" afterPath="$PROJECT_DIR$/Final_pages/New_patient/new_patient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Patient_Checkout/Checkout/checkout2.php" beforeDir="false" afterPath="$PROJECT_DIR$/Final_pages/Patient_Checkout/Checkout/checkout2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Patient_Checkout/Checkout_Invoice/Trans_invoice.php" beforeDir="false" afterPath="$PROJECT_DIR$/Final_pages/Patient_Checkout/Checkout_Invoice/Trans_invoice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Patient_Checkout/Checkout_page/Trans.php" beforeDir="false" afterPath="$PROJECT_DIR$/Final_pages/Patient_Checkout/Checkout_page/Trans.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/Transactions/Transaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/Final_pages/Transactions/Transaction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/patient_Lookup_Andy/patient_lookup/patient_lookup.php" beforeDir="false" afterPath="$PROJECT_DIR$/Final_pages/patient_Lookup_Andy/patient_lookup/patient_lookup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_pages/patient_Lookup_Andy/patient_lookup/view_patient.php" beforeDir="false" afterPath="$PROJECT_DIR$/Final_pages/patient_Lookup_Andy/patient_lookup/view_patient.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +64,8 @@
       <workItem from="1586115985823" duration="2563000" />
       <workItem from="1586363546544" duration="25000" />
       <workItem from="1586365323340" duration="11502000" />
-      <workItem from="1586631493695" duration="2290000" />
+      <workItem from="1586631493695" duration="2291000" />
+      <workItem from="1586640950684" duration="141000" />
     </task>
     <servers />
   </component>
@@ -89,10 +99,10 @@
     </state>
     <state x="458" y="142" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1586363569339" />
     <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1585704434179" />
-    <state x="465" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1586631494734">
+    <state x="465" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1586640950694">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="388" y="199" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1586363546311" />
-    <state x="465" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.834@0.0.1536.834" timestamp="1586631494734" />
+    <state x="465" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.834@0.0.1536.834" timestamp="1586640950694" />
   </component>
 </project>
