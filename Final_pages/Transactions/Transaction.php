@@ -123,19 +123,6 @@
       <div class="row mt-3 dark-grey-text">
   
         <!-- Grid column -->
-        <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
-  
-          <!-- Content -->
-          <h6 class="text-uppercase font-weight-bold">Company name</h6>
-          <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-            consectetur
-            adipisicing elit.</p>
-  
-        </div>
-        <!-- Grid column -->
-  
-        <!-- Grid column -->
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" >
   
           <!-- Links -->
@@ -172,12 +159,6 @@
   
     </div>
     <!-- Footer Links -->
-  
-    <!-- Copyright -->
-    <div class="footer-copyright text-center text-black-50 py-3">© 2020 Copyright:
-      <a class="dark-grey-text" href="https://mdbootstrap.com/"> MDBootstrap.com</a>
-    </div>
-    <!-- Copyright -->
   
   </footer>
   <!-- Footer -->
