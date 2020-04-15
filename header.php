@@ -2,7 +2,7 @@
     session_start();
     include_once 'config.php';
     if(isset($_POST['logout'])) {
-		require 'includes/logout.inc.php';
+		require INCLUDES.'logout.inc.php';
     }
 ?>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2a2a2a;">
-	<a class="navbar-brand" href="<?php if(isset($_SESSION['loggedIn'])){echo HTTP.'homepage/emp_page.php';}else{echo HTTP.'index.php';}?>"><i class="fas fa-prescription"></i>EQUINOX</a>
+	<a class="navbar-brand" href="<?php if(isset($_SESSION['loggedIn'])){echo HTTP.'homepage/emp_page.php';}else{echo HTTP.'index.php';}?>"><i class="fas fa-prescription" style="padding-right: 4px;"></i>EQUINOX</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -32,13 +32,13 @@
 				<a class="nav-link" href="<?php if(isset($_SESSION['loggedIn'])){echo HTTP.'homepage/emp_page.php';}else{echo HTTP.'index.php';}?>">Home <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="<?php echo HTTP.'help.php'?>">Help</a>
+				<a class="nav-link" href="<?php echo HTTP.'main/help.php'?>">Help</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="<?php echo HTTP.'registration.php'?>">Join</a>
+				<a class="nav-link" href="<?php echo HTTP.'main/registration.php'?>">Join</a>
 			</li>
 		</ul>
-		<a href="<?php echo HTTP.'login.php'?>"><button class="btn btn-outline-light my-2 my-sm-0" name="login_btn">Employee Login</button></a>
+		<a href="<?php echo HTTP.'main/login.php'?>"><button class="btn btn-outline-light my-2 my-sm-0" name="login_btn">Employee Login</button></a>
 	</div>
 	<?php else: ?>
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -50,6 +50,9 @@
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="#">System Info</a>
+					<a class="dropdown-item" href="<?php echo HTTP.'homepage/employees/schedules.php'?>">Employee Schedule</a>
+					<a class="dropdown-item" href="#">User Profile</a>
+					<a class="dropdown-item" href="#">Admin Settings</a>
 			</li>
             <?php endif;?>
 			<li class="nav-item dropdown">
@@ -65,7 +68,8 @@
 					Inventory
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="#">Quarter inventory</a>
+					<a class="dropdown-item" href="<?php echo HTTP.'homepage/inventory/medication_inventory.php'?>">Medication inventory</a>
+					<a class="dropdown-item" href="<?php echo HTTP.'homepage/inventory/product_inventory.php'?>">Product inventory</a>
 			</li>
 
 			<li class="nav-item dropdown">
@@ -77,14 +81,12 @@
 			</li>
 
 		</ul>
-		<form action="<?php echo HTTP;?>/homepage/patients/view_patient.php" method="post" name="patient_lookup" class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="search" name="patient_query" placeholder="Patient Lookup" aria-label="Search">
-			<button class="btn btn-outline-light my-2 my-sm-0" type="submit" name="search_btn">Search</button>
-		</form>
-		<a href="#"><button class="btn btn-outline-light my-2 my-sm-0" type="button">New Patient</button></a>
+
+		<a href="<?php echo HTTP.'homepage/patients/patient_lookup.php'?>"><button type="button" class="btn btn-outline-light my-2 my-sm-0">Patient Lookup</button></a>
+		<a href="<?php echo HTTP.'homepage/patients/new_patient.php'?>"><button type="button" class="btn btn-outline-light my-2 my-sm-0">New Patient</button></a>
 
 		<?php if($_SESSION['userType'] == 'Admin'):?>
-			<a href="<?php echo HTTP.'homepage/new_employee.php'?>"><button class="btn btn-outline-light my-2 my-sm-0" type="button">New Employee</button></a>
+			<a href="<?php echo HTTP.'homepage/new_employee.php'?>"><button type="button" class="btn btn-outline-light my-2 my-sm-0" name="new_emp_button">New Employee</button></a>
         <?php endif;?>
 
 		<form class="form-inline my-2 my-lg-0" action="" method="post">

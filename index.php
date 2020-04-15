@@ -1,16 +1,7 @@
 <?php include_once 'header.php'; ?>
 
-<link rel="stylesheet" href="stylesheets/index_style.css">
+<link rel="stylesheet" href="stylesheets/index.css">
 <title>Equinox Pharma Systems</title>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div id="content">
-					<h1>Equinox</h1>
-					<hr>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="container">
 
-<?php include_once 'footer.php'; ?>
+</div>

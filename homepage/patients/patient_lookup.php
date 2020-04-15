@@ -1,15 +1,11 @@
 <?php include_once '../../header.php'; ?>
-<?php require_once '../../includes/populate_patients.inc.php'; ?>
+<?php require_once 'includes/getpatients.inc.php'; ?>
 
 <?php
-    if(isset($_POST['add_patient'])) {
-        header('location: add_patient.php');
-        exit();
-    }
-
     if(isset($_POST['view_patient'])) {
-    	$_SESSION['pid'] = $mySQLI->escape_string($_POST['view_patient']);
-        header('location: view_patient.php?='.$_POST['view_patient']);
+    	//$_SESSION['pid'] = $mySQLI->escape_string($_POST['view_patient']);
+	    $pid = $_GET['view_patient'];
+        //header('location:'.HTTP.'homepage/patients/view_patient.php?='.$pid);
         exit();
     }
 
@@ -18,25 +14,18 @@
     }
 ?>
 
-<link rel="stylesheet" href="../../stylesheets/patient_lookup_style.css">
+<link rel="stylesheet" href="css/patient_lookup.css">
 <title>Patient Lookup</title>
 <div class="container">
 	<h1><a href="patient_lookup.php">Patient Lookup</a></h1>
-	<div class="container">
-		<div class="row">
-			<form action="patient_lookup.php" method="post">
-				<div class="col-md-12">
-					<button type="submit" name="add_patient" class="btn btn-primary">New Patient</button>
-				</div>
-			</form>
-		</div>
+	<div class="container patient_table">
 		<hr>
 		<div class="row">
 			<div class="col">
 				<table id="patients_table" class="table table-striped" style="width:100%">
 					<thead>
 					<tr>
-						<th>#</th>
+						<th></th>
 						<th id="p_name">First Name</th>
 						<th id="p_name">Last Name</th>
 						<th id="p_dob">D-O-B</th>
@@ -63,8 +52,8 @@
 							<td><?php echo $row['insurer']; ?></td>
 							<td>
 								<div class="form-row">
-									<form action="" method="post"><button type="submit" name="view_patient" value="<?php echo $row['p_id']; ?>" class="btn fas fa-eye""></button></form>
-									<form action="" method="post"><button type="submit" name="delete_patient" value="<?php echo $row['p_id']; ?>" class="btn fas fa-trash-alt""></button></form>
+									<a href="<?php echo HTTP?>/homepage/patients/view_patient.php?pid=<?php echo $row['p_id'];?>"><i class="btn fas fa-eye"></i></a>
+									<form action="" method="get"><button type="submit" name="delete_patient" value="<?php echo $row['p_id']; ?>" class="btn fas fa-trash-alt""></button></form>
 								</div>
 							</td>
 						</tr>

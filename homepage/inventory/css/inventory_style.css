@@ -1,0 +1,22 @@
+body{
+    background-color: white;
+}
+
+html{
+    height: 100%;
+}
+
+td{
+    font-size: 17px;
+}
+
+#info{
+    font-size: 22px;
+    padding: 0px;
+    margin-left: 0px;
+}
+
+#order-btn{
+    float: right;
+
+}

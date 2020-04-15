@@ -19,7 +19,7 @@
         //Check whether the user editing the patient has authorization
         //$pharmacyID = $_SESSION['companyID'];
         //if ($pharmacyID != $result['pharm_id']) {
-          //  header('location: ../../401_unauthorized.php?confidential');
+          //  header('location: ../../401.php?confidential');
           //  exit();
       // } else {
             //Populate form fields with current patient information
@@ -53,7 +53,7 @@
 	}
 ?>
 
-<link rel="stylesheet" href="../../stylesheets/crud_styles/patient_page_style.css">
+<link rel="stylesheet" href="css/patient_page_style.css">
 <title>Update Patient</title>
 <div class="container">
     <a href="patient_lookup.php"><button>Back</button></a>

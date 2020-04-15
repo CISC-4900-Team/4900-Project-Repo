@@ -2,6 +2,7 @@
     require_once 'database_info.inc.php';
     require_once 'mailer.inc.php';
     $link = HTTP.'verify.php?vkey=';
+
     //Getting pharmacy information from registration form
     //Using escape_string to prevent SQL injection
     $pharm_name = $mySQLI->escape_string($_POST['pharm_name']);
@@ -27,106 +28,161 @@
     $type = 'Admin';
     $firstLogin = 1;
     $isActive = 0;
+    $last_login = '01/01/1970';
+
+    //First run some validations to check if licenses or emails already exist in the system. Once all the validation
+    //checks have passed, the pharmacy will be registered and the user admin account will be created
+
+    //Check if pharmacy license already exists
+    $sql = "SELECT * FROM pharmacies WHERE pharm_license = ?";
+    $stmt = mysqli_stmt_init($mySQLI);
+    if(mysqli_stmt_prepare($stmt, $sql))
+    {
+        mysqli_stmt_bind_param($stmt, 's', $pharm_license);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        if ($result->num_rows > 0)
+        {
+            header("location: registration.php?error=pharm_license_exists");
+            exit();
+        }
+    }
+
+    //Check if pharmacy email address already exists
+    $sql = "SELECT * FROM pharmacies WHERE pharm_email = ?";
+    $stmt = mysqli_stmt_init($mySQLI);
+    if(mysqli_stmt_prepare($stmt, $sql))
+    {
+        mysqli_stmt_bind_param($stmt, 's', $pharm_email);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        if ($result->num_rows > 0) {
+            header("location: registration.php?error=pharm_email_exists");
+            exit();
+        }
+    }
+
+    //Check if manager license number is already registered
+    $sql = "SELECT * FROM employees WHERE emp_license = ?";
+    $stmt = mysqli_stmt_init($mySQLI);
+    if(mysqli_stmt_prepare($stmt, $sql))
+    {
+        mysqli_stmt_bind_param($stmt, 's', $emp_license);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if ($result->num_rows > 0) {
+            header("location: registration.php?error=manager_license_exists");
+            exit();
+        }
+    }
+
+    //Check if manager license number is already registered
+    $sql = "SELECT * FROM employees WHERE emp_email = ?";
+    $stmt = mysqli_stmt_init($mySQLI);
+    if(mysqli_stmt_prepare($stmt, $sql))
+    {
+        mysqli_stmt_bind_param($stmt, 's', $emp_email);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if ($result->num_rows > 0) {
+            header("location: registration.php?error=manager_email_exists");
+            exit();
+        }
+    }
+
+    //If the code reaches this point, the above validations have passed; the pharmacy and user can be registered
 
     //Encrypting password
     $passHash = $mySQLI->escape_string(password_hash($emp_pass, PASSWORD_BCRYPT));
 
-    //User hash code
+    //Generate unique user hash
     $hash = $mySQLI->escape_string(md5(rand(0,1000)));
 
-    //1. Create SQL statement
-    $sql = "SELECT * FROM pharmacies WHERE pharm_license = ?";
+    //Generating a pharmacy ID
+    $pharm_id = substr((uniqid(rand()) . 5), 0, 6);
 
-    //2. Create prepared statement
+    //Generating a user ID
+    $u_id = substr(uniqid(rand()), 0, 6);
+
+    //Insert the form data into the relevant tables
+    $sql = "INSERT INTO pharmacies (pharm_id, pharm_license, pharm_name, pharm_addr, pharm_city, pharm_state, pharm_zip, phone_number1, pharm_email) 
+            values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_stmt_init($mySQLI);
-
-    //3. Prepare the prepared statement and check if it will run
-    //In PHP check for failure before checking for success
-    if(!mysqli_stmt_prepare($stmt, $sql)) {
-        echo 'SQL Statement Failed';
-    } else {
-        //4. Bind parameters to placeholder(s)
-        mysqli_stmt_bind_param($stmt, 's', $pharm_license);
-
-        //5. Run parameters inside database
+    if(mysqli_stmt_prepare($stmt, $sql))
+    {
+        mysqli_stmt_bind_param($stmt, 'sssssssss', $pharm_id, $pharm_license, $pharm_name, $pharm_addr, $pharm_city, $pharm_state, $pharm_zip, $pharm_phone, $pharm_email);
         mysqli_stmt_execute($stmt);
+    } else {echo 'Error!'; }
 
-        //6. Get result(s) from executed statement
-        $result = mysqli_stmt_get_result($stmt);
+    $sql = "INSERT INTO user_accounts (u_id, pharm_id, u_email, u_type, is_active, first_login, u_pass, u_hash, last_login) 
+            values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = mysqli_stmt_init($mySQLI);
+    if(mysqli_stmt_prepare($stmt, $sql))
+    {
+        mysqli_stmt_bind_param($stmt, 'sssssssss', $u_id, $pharm_id, $emp_email, $type, $isActive, $firstLogin, $passHash, $hash, $last_login);
+        mysqli_stmt_execute($stmt);
+    } else {echo 'Error!'; }
 
-        //7. Parse result(s)
-        if($result->num_rows > 0) {
-            //header("location: registration.php?error=license_exists");
-            //exit();
-        } else {
-            //Check users table to see if manager email already exists in the system
-            $sql = "SELECT * FROM user_accounts WHERE u_email = ?";
+    $sql = "INSERT INTO employees (emp_id, pharm_id, emp_license, emp_first, emp_last, emp_addr, emp_city, emp_state, emp_zip, emp_phone1, emp_email) 
+            values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = mysqli_stmt_init($mySQLI);
+    if(mysqli_stmt_prepare($stmt, $sql))
+    {
+        mysqli_stmt_bind_param($stmt, 'sssssssssss', $u_id, $pharm_id, $emp_license, $emp_first, $emp_last, $emp_addr, $emp_city, $emp_state, $emp_zip, $emp_phone, $emp_email);
+        mysqli_stmt_execute($stmt);
+    } else {echo 'Error!'; }
 
-            $stmt = mysqli_stmt_init($mySQLI);
+    //Send verification email to user
+    $mail->SetFrom('equinoxpharmacysystems@gmail.com', 'Equinox Systems');
+    $mail->Subject = 'Equinox Account Verification';
+    $mail->Body =
+    "
+    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" height=\"100%\" width=\"100%\" id=\"bodyTable\">
+        <tr>
+            <td align=\"center\" valign=\"top\">
+                <table border=\"0\" cellpadding=\"20\" cellspacing=\"0\" width=\"600\" id=\"emailContainer\">
+                    <tr>
+                        <td align=\"center\" valign=\"top\">
+                            <h3 style=\"text-align: center; font-family: sans-serif; font-size: 30px;\">Equinox Pharmacy Systems</h3>
+                            <br>
+                            <hr>
+                            <br>
+                            <h4 style=\"text-align: center; font-family: sans-serif; font-size: 20px;\">Thank you for signing up with Equinox!</h4><br>
+                            <p style=\"text-align: center; font-family: sans-serif; line-height: 1.6; font-size: 16px;\">
+                                You will have to verify your email before accessing your account. Please click the verify button below.
+                                When your email has been verified a second email containing your login information will be sent to this email
+                            </p>
+                            <p style=\"text-align: center; font-family: sans-serif;\">
+                            </p>
+                            <br>
+                            <button class=btn
+                                    style=\"background-color: #47d147; padding: 5px 10px; font-size: 18px; outline: none; border-radius: 10px;\">
+                                <a href=$link$hash style=\"text-decoration: none; color: white;\">VERIFY EMAIL</a>
+                            </button>
+                            <br>
+                            <hr>
+                            <p style=\"text-align: center; font-family: sans-serif; line-height: 1.5; font-size: 12px;\">
+                                This messages was sent from Equinox System Activation. If you believe this messages was sent in error, please contact
+                                the Equinox support team.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    ";
+    $mail->AddAddress($emp_email);
+    $mail->send();
+    header('location: registration_success.php');
+    exit();
 
-            if(!mysqli_stmt_prepare($stmt, $sql)) {
-                echo 'SQL Statement Failed';
-            } else {
-                mysqli_stmt_bind_param($stmt, 's', $emp_email);
-                mysqli_stmt_execute($stmt);
-                $result = mysqli_stmt_get_result($stmt);
 
-                if($result->num_rows > 0) {
-                    //header("location: registration.php?error=email_exists");
-                    //exit();
-                } else {
 
-                    //Generate unique ID for the pharmacy
-                    $pharm_id = substr((uniqid(rand()) . 5), 0, 6);
 
-                    //Generate unique ID for the manager
-                    $u_id = substr(uniqid(rand()), 0, 6);
 
-                    //Insert pharmacy information
-                    $sql = "INSERT INTO pharmacies (pharm_id, pharm_license, pharm_name, pharm_addr, pharm_city, pharm_state, pharm_zip, phone_number1, pharm_email) 
-                            values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                    $stmt = mysqli_stmt_init($mySQLI);
-                    if(mysqli_stmt_prepare($stmt, $sql)) {
-                        mysqli_stmt_bind_param($stmt, 'sssssssss', $pharm_id, $pharm_license, $pharm_name, $pharm_addr, $pharm_city, $pharm_state, $pharm_zip, $pharm_phone, $pharm_email);
-                        mysqli_stmt_execute($stmt);
-                    }
 
-                    //Insert manager account information
-                    $sql = "INSERT INTO user_accounts (u_id, pharm_id, u_email, u_type, is_active, first_login, u_pass, u_hash) 
-                            values (?, ?, ?, ?, ?, ?, ?, ?)";
-                    $stmt = mysqli_stmt_init($mySQLI);
-                    if(mysqli_stmt_prepare($stmt, $sql)) {
-                        mysqli_stmt_bind_param($stmt, 'ssssssss', $u_id, $pharm_id, $emp_email, $type, $isActive, $firstLogin, $passHash, $hash);
-                        mysqli_stmt_execute($stmt);
-                    }
-
-                    //Insert manager employee information
-                    $sql = "INSERT INTO employees (emp_id, pharm_id, emp_license, emp_first, emp_last, emp_addr, emp_city, emp_state, emp_zip, emp_phone1, emp_email) 
-                            values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                    $stmt = mysqli_stmt_init($mySQLI);
-                    if(mysqli_stmt_prepare($stmt, $sql)) {
-                        mysqli_stmt_bind_param($stmt, 'sssssssssss', $u_id, $pharm_id, $emp_license, $emp_first, $emp_last, $emp_addr, $emp_city, $emp_state, $emp_zip, $emp_phone, $emp_email);
-                        mysqli_stmt_execute($stmt);
-                    }
-
-                    $mail->SetFrom('equinoxpharmacysystems@gmail.com', 'Equinox Systems');
-                    $mail->Subject = 'Equinox Account Verification';
-                    $mail->Body = "
-                    <h3>Thank You for Registering</h3><br>
-                    <p>Please click this <a href='$link$hash'>verification</a> link to verify your email</p><br>
-                    <p>Once the email has been verified, an email with your login credentials will be sent. </p>        
-                    ";
-                    $mail->AddAddress($emp_email);
-                    if(!$mail->Send()) {
-                        $error = 'Mail error: '.$mail->ErrorInfo;
-                        return false;
-                    } else {
-                        $error = 'Message sent!';
-                        return true;
-                    }
-                }
-            }
-        }
-    }
 
 

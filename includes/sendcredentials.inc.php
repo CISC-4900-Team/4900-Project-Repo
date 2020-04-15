@@ -1,20 +1,60 @@
 <?php
     require_once 'database_info.inc.php';
     require_once 'mailer.inc.php';
+    $link = HTTP;
+    $user_id = $_SESSION['userID'];
+    $pharm_id = $_SESSION['pharm_id'];
+    $emp_email = $_SESSION['recepient'];
 
     $mail->SetFrom('equinoxpharmacysystems@gmail.com', 'Equinox Systems');
-    $mail->Subject = 'Equinox Account Verification';
-    $mail->Body = "
-                    <h3>Your email has been verified</h3>
-                    <h3>Your email has been verified</h3><br><br>
-                    <p>Please click this <a href='$link$hash'>verification</a> link to verify your email</p><br>
-                    <p>Once the email has been verified, an email with your login credentials will be sent. </p>        
-                    ";
+    $mail->Subject = 'Equinox Account Credentials';
+    $mail->Body =
+        "
+        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" height=\"100%\" width=\"100%\" id=\"bodyTable\">
+            <tr>
+                <td align=\"center\" valign=\"top\">
+                    <table border=\"0\" cellpadding=\"20\" cellspacing=\"0\" width=\"600\" id=\"emailContainer\">
+                        <tr>
+                            <td align=\"center\" valign=\"top\">
+                                <h3 style=\"text-align: center; font-family: sans-serif; font-size: 30px;\">Equinox Pharmacy Systems</h3>
+                                <hr>
+                                <h4 style=\"text-align: center; font-family: sans-serif; font-size: 20px;\">Account Login Information</h4>
+                                <p style=\"text-align: center; font-family: sans-serif; line-height: 1.6; font-size: 16px;\">
+                                    Your account has been verified. Below are the login credentials for your account.
+                                    You will need these to sign onto your account.
+                                </p>
+                                <p style=\"font-family: sans-serif; line-height: 1.6; font-size: 16px;\">
+                                    <strong>USER ID:</strong> $user_id
+                                    <br>
+                                    <strong>COMPANY ID:</strong> $pharm_id
+                                </p>
+                                <p style=\"font-family: sans-serif; line-height: 1.6; font-size: 16px;\">
+                                    Your company ID is tied to the pharmacy you have registered with. You may login to your Equinox account
+                                    with the above credentials and the password you set when you registered. Click the button below to go
+                                    to the login page.
+                                </p>
+                                <br>
+                                <button class=btn
+                                        style=\"background-color: #47d147; padding: 5px 10px; font-size: 18px; outline: none; border-radius: 10px;\">
+                                    <a href=\"$link/login.php\" style=\"text-decoration: none; color: white;\">LOGIN TO EQUINOX</a>
+                                </button>
+                                <br>
+                                <hr>
+                                <p style=\"text-align: center; font-family: sans-serif; line-height: 1.5; font-size: 12px;\">
+                                    This messages was sent from Equinox System Activation. If you believe this messages was sent in error, please contact
+                                    the Equinox support team.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>                   
+        ";
     $mail->AddAddress($emp_email);
-    if(!$mail->Send()) {
-        $error = 'Mail error: '.$mail->ErrorInfo;
-        return false;
-    } else {
-        $error = 'Message sent!';
-        return true;
-    }
+    $mail->Send();
+    unset($_SESSION['userID']);
+    unset($_SESSION['pharm_id']);
+    unset($_SESSION['recepient']);
+
+
