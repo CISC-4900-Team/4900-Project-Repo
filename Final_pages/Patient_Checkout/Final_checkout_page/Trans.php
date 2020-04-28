@@ -117,23 +117,71 @@
       </form>
     </div>
   </div>
+
 <!-- Shopping Cart -->
   <div class="col-25">
     <div class="container" >
+      <!-- testing -->
       <h4>Cart
-        <span class="price" style="color:black">
-        <i class="fa fa-shopping-cart"></i>
-        </span>
+        <span class="price" style="color:black"></span>
       </h4>
-      <p><a href="#">Item 1</a> <span class="price">$15</span></p>
-      <p><a href="#">Item  2</a> <span class="price">$5</span></p>
-      <p><a href="#">Item  3</a> <span class="price">$8</span></p>
-      <p><a href="#">Item  4</a> <span class="price">$2</span></p>
-      <hr>
-      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+      <form name="prod_upc" action="" method="post" class="cart-header" style="margin-top: 20px;">
+        <div class="form-row">
+            <div class="col-sm-2">
+                <input type="text" name="quantity" placeholder="QT" value="1" class="form-control barcode-input">
+            </div>
+            <div class="col-sm-8">
+                <input type="text" name="barcode" autofocus="autofocus" placeholder="Scan or Enter UPC" class="form-control barcode-input">
+            </div>
+            <div class="col-sm-1">
+                <button type="submit" name="add" class="btn btn-primary" style="background-color: #505050;">Add</button>
+            </div>
+        </div>
+        <?php if(isset($_GET['notfound'])): ?>
+            <div class="form-row">
+                <div class="col-sm-12">
+                    <p style="text-align: center;">Product Not Found. Make sure UPC is Correct</p>
+                </div>
+            </div>
+        <?php endif; ?>
+        <table class="" style="margin-top: 10px;">
+            <thead>
+            <th class="quantity">QT</th>
+            <th class="product">PRODUCT</th>
+            <th class="price">PRICE</th>
+            <th>VOID</th>
+            </thead>
+        </table>
+    </form>
+    <div class="col-sm-12 cart-body">
+        <div class="row">
+            <table class="prod_table">
+                <tbody>
+                <?php
+                    $total = 0;
+                    if(!isset($_SESSION['shopping_cart'])) {
+                        $total = 0;
+                    }
+                    if(isset($_SESSION['shopping_cart'])):
+                        foreach($_SESSION['shopping_cart'] as $key => $product): ?>
+                            <tr>
+                                <td class="quantity"><?php echo $product['QUANTITY']; ?></td>
+                                <td class="product"><?php echo $product['DESCRIPTION']; ?></td>
+                                <td class="price"><?php echo '$'. number_format($subtotal = $product['PRICE'] * $product['QUANTITY'], 2); ?></td>
+                                <td><form action="" method="post"><button type="submit" name="void" value="<?php echo $product['ITEM_NUM']; ?>">X</button></form></td>
+                            </tr>
+                            <?php $total += $subtotal; ?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+        </div>
+        </div>
+      <!-- testing end -->
     </div>
   </div>
-</div>
 
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
