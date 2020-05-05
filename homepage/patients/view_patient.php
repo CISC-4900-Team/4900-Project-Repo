@@ -2,9 +2,10 @@
 <?php require_once '../../includes/database_info.inc.php'; ?>
 
 <?php
-	$record = null;
+    $p_record = null;
 	if(isset($_GET['pid']))
 	{
+		//get the patient information
 		$patient = $_GET['pid'];
         $sql = "SELECT * FROM patients WHERE p_id = ?";
 		$stmt = mysqli_stmt_init($mySQLI);
@@ -14,113 +15,135 @@
 	        mysqli_stmt_execute($stmt);
 	        $result = mysqli_stmt_get_result($stmt);
 	    }
-	    $record = mysqli_fetch_array($result);
+	    $p_record = mysqli_fetch_array($result);
+
+		//getting patient insurance information
+        $sql = "SELECT * FROM insurance WHERE policy_number = ".$p_record['insurance_id'];
+        $insResult = mysqli_query($mySQLI, $sql);
+        $insurance = mysqli_fetch_array($insResult);
 	}
 ?>
 
+<title>Patient Information</title>
 <link rel="stylesheet" href="css/view_patient.css">
 <div class="container mb-3 mt-3">
-	<div class="row align-items-center heading">
-		<div class="col-sm-2">
-			<a href="patient_lookup.php"><button class="btn btn-primary">Back</button></a>
+	<h1 style="text-align: center">Patient #<?php echo $p_record['p_id']; ?></h1>
+	<div class="container patient-table" style="margin-bottom: 10px;">
+		<div class="row">
+			<div class="col-sm-3" style="border: 1px solid #dee2e6;">
+				<p><strong>Full Name</strong></p>
+			</div>
+			<div class="col-sm-1" style="border: 1px solid #dee2e6;">
+				<p><strong>Sex</strong></p>
+			</div>
+			<div class="col-sm-2" style="border: 1px solid #dee2e6;">
+				<p><strong>D-O-B</strong></p>
+			</div>
+			<div class="col" style="border: 1px solid #dee2e6;">
+				<p><strong>Full Address</strong></p>
+			</div>
 		</div>
-		<div class="col-sm-8">
-			<h1>Patient Information</h1>
+		<div class="row">
+			<div class="col-sm-3" style="border: 1px solid #dee2e6; background-color: #f2f2f2">
+				<p><?php if(isset($p_record)){echo $p_record['patient_first'] . ' ' . $p_record['patient_last'];} else echo 'N/A'; ?></p>
+			</div>
+			<div class="col-sm-1" style="border: 1px solid #dee2e6; background-color: #f2f2f2">
+				<p><?php if(isset($p_record))echo $p_record['sex']; else echo 'N/A'; ?></p>
+			</div>
+			<div class="col-sm-2" style="border: 1px solid #dee2e6; background-color: #f2f2f2">
+				<p><?php if(isset($p_record))echo $p_record['dob']; ?></p>
+			</div>
+			<div class="col" style="border: 1px solid #dee2e6; background-color: #f2f2f2">
+				<p><?php if(isset($p_record)){echo $p_record['p_addr'] . ', ' . $p_record['p_city'] . ', ' . $p_record['p_state'] . ', ' . $p_record['p_zip'];} else echo 'N/A'; ?></p>
+			</div>
 		</div>
 	</div>
-	<!-- Basic Patient info -->
-	    <table class="table table-striped table-bordered table-hover" id="mydata" style="width: 100%">
-	        <thead>
-	            <th>Patient ID</th>
-	            <th>Full Name</th>
-	            <th>Address</th>
-	            <th>DOB</th>
-	            <th>Phone Number</th>
-	            <th>sex</th>
-	            <th>Allergies</th>
-	        </thead>
-	        <tbody>
-	            <tr>
-	                <td><?php echo $record['p_id']; ?></td>
-	                <td><?php if(isset($record)){echo strtoupper($record['p_first'] . ' ' . $record['p_last']);} else echo 'N/A'; ?></td>
-	                <td><?php if(isset($record)){echo strtoupper($record['p_addr'] . ', ' . $record['p_city'] . ', ' . $record['p_state'] . ', ' . $record['p_zip']);} else echo 'N/A'; ?></td>
-	                <td><?php if(isset($record))echo $record['p_dob']; ?></td>
-	                <td>
-	                    <?php if(isset($record))
-	                    {
-                            $areaCode = substr($record['p_phone'], 0, 3);
-                            $prefix = substr($record['p_phone'], 3, 3);
-                            $line = substr($record['p_phone'], 6, 4);
-                            echo "(" . $areaCode . ") " . $prefix . "-" . $line;
-                        }
-                        else echo 'N/A';
-	                    ?>
-	                </td>
-	                <td><?php if(isset($record))echo strtoupper($record['p_sex']); else echo 'N/A'; ?></td>
-	                <td><?php if(isset($record))echo strtoupper($record['allergies']); else echo 'N/A'; ?></td>
-	            </tr>
-	        </tbody>
-	    </table>
-	<!-- Insurance info-->
-	<table class="table table-striped table-bordered" id="mydata" style="width: 100%">
-	        <thead>
-	            <th>Provider Name</th>
-	            <th>Policy Number</th>
-	            <th>Deductible</th>
-	        </thead>
-	        <tbody>
-	            <tr>
-	                <td><?php if(isset($record))echo strtoupper($record['insurer']); else echo 'N/A'; ?></td>
-	                <td><?php if(isset($record))echo strtoupper($record['policy_num']); else echo 'N/A'; ?></td>
-	                <td><?php if(isset($record))echo '$'.strtoupper($record['ins_deductible']); else echo 'N/A'; ?></td>
-	            </tr>
-	        </tbody>
-	    </table>
-	<!-- Primary Care info-->
-	<table class="table table-striped table-bordered table-hover" id="mydata" style="width: 100%">
-	        <thead>
-	            <th>Physician Name</th>
-	            <th>Office Address</th>
-	            <th>Office Phone Number</th>
-	        </thead>
-	        <tbody>
-	            <tr>
-	                <td><?php if(isset($record))echo strtoupper($record['pcp_name']); else echo 'N/A'; ?></td>
-	                <td><?php if(isset($record))echo strtoupper($record['pcp_addr']); else echo 'N/A'; ?></td>
-	                <td>
-                        <?php if(isset($record))
-                        {
-                            $areaCode = substr($record['pcp_phone'], 0, 3);
-                            $prefix = substr($record['pcp_phone'], 3, 3);
-                            $line = substr($record['pcp_phone'], 6, 4);
-                            if(isset($record)) echo "(" . $areaCode . ") " . $prefix . "-" . $line;
-                        }
-                        else echo 'N/A';
-	                    ?>
-	                </td>
-	            </tr>
-	        </tbody>
-	    </table>
+	<div class="container patient-table" style="margin-bottom: 15px;">
+		<div class="row">
+			<div class="col-sm-2" style="border: 1px solid #dee2e6;">
+				<p><strong>Phone Number</strong></p>
+			</div>
+			<div class="col-sm-4" style="border: 1px solid #dee2e6;">
+				<p><strong>Email</strong></p>
+			</div>
+			<div class="col" style="border: 1px solid #dee2e6;">
+				<p><strong>Allergies</strong></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2" style="border: 1px solid #dee2e6; background-color: #f2f2f2;">
+				<p><?php if(isset($p_record)) echo $p_record['phone']; else echo 'N/A'; ?></p>
+			</div>
+			<div class="col-sm-4" style="border: 1px solid #dee2e6; background-color: #f2f2f2">
+				<p><?php if(isset($p_record))echo $p_record['p_email']; else echo 'N/A'; ?></p>
+			</div>
+			<div class="col" style="border: 1px solid #dee2e6; background-color: #f2f2f2">
+				<p><?php if(isset($p_record))echo $p_record['allergies']; else echo 'N/A'; ?></p>
+			</div>
+		</div>
+	</div>
 
-	<!-- Prescription info -->
+	<h3 style="text-align: center">Insurance Information</h3>
+	<div class="container insurance-table" style="margin-bottom: 15px;">
+		<div class="row">
+			<div class="col-sm-2" style="border: 1px solid #dee2e6;">
+				<p><strong>Policy Number</strong></p>
+			</div>
+			<div class="col-sm-4" style="border: 1px solid #dee2e6;">
+				<p><strong>Provider</strong></p>
+			</div>
+			<div class="col-sm-2" style="border: 1px solid #dee2e6;">
+				<p><strong>Deductible</strong></p>
+			</div>
+			<div class="col-sm-2" style="border: 1px solid #dee2e6;">
+				<p><strong>Start Date</strong></p>
+			</div>
+			<div class="col-sm-2" style="border: 1px solid #dee2e6;">
+				<p><strong>End Date</strong></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2" style="border: 1px solid #dee2e6; background-color: #f2f2f2">
+				<p><?php if(isset($insurance))echo $insurance['policy_number']; else echo 'N/A'; ?></p>
+			</div>
+			<div class="col-sm-4" style="border: 1px solid #dee2e6; background-color: #f2f2f2">
+				<p><?php if(isset($insurance))echo $insurance['insurance_name']; else echo 'N/A'; ?></p>
+			</div>
+			<div class="col-sm-2" style="border: 1px solid #dee2e6; background-color: #f2f2f2">
+				<p><?php if(isset($insurance))echo '$'.$insurance['deductible']; else echo 'N/A'; ?></p>
+			</div>
+			<div class="col-sm-2" style="border: 1px solid #dee2e6; background-color: #f2f2f2">
+				<p><?php if(isset($insurance))echo $insurance['start_date']; else echo 'N/A'; ?></p>
+			</div>
+			<div class="col-sm-2" style="border: 1px solid #dee2e6; background-color: #f2f2f2">
+				<p><?php if(isset($insurance))echo $insurance['exp_date']; else echo 'N/A'; ?></p>
+			</div>
+		</div>
+	</div>
+	<h3 style="text-align: center">Last Prescription</h3>
 	<table class="table table-striped table-bordered table-hover" id="mydata" style="width: 100%">
-	        <thead>
-	            <th>Medication Name</th>
-	            <th>Date_Issued</th>
-	            <th>Expiration</th>
-	            <th>Num_pills</th>
-	            <th>Refill_Count</th>
-	        </thead>
-	        <tbody>
-	            <tr>
-	                <td>Amoxicillin</td>
-	                <td>01/20/2020</td>
-	                <td>08/13/2020</td>
-	                <td>60</td>
-	                <td>2</td>
-	            </tr>
-	        </tbody>
-	    </table>
+	    <thead>
+	        <th>Medication Name</th>
+	        <th>Date_Issued</th>
+	        <th>Expiration</th>
+	        <th>Num_pills</th>
+	        <th>Refill_Count</th>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td>Amoxicillin</td>
+	            <td>01/20/2020</td>
+	            <td>08/13/2020</td>
+	            <td>60</td>
+	            <td>2</td>
+	        </tr>
+	    </tbody>
+    </table>
+	<div class="row justify-content-center">
+		<a href="patient_lookup.php"><button class="btn btn-dark" style="font-size: 20px">Back</button></a>
+		<a href="edit_patient.php?pid=<?php echo $p_record['p_id']; ?>"><button class="btn btn-primary" style="font-size: 20px; margin-left: 8px;">Edit Patient</button></a>
+	</div>
+
 </div>
 
 <?php include_once '../../footer.php'; ?>

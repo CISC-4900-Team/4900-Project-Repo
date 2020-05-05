@@ -1,5 +1,5 @@
 <?php
-    require_once 'PHPMailer/PHPMailerAutoload.php';
+    require_once ROOT.'/PHPMailer/PHPMailerAutoload.php';
     $mail = new PHPMailer();  // create a new object
     $mail->IsSMTP(); // enable SMTP
     $mail->SMTPAuth = true;  // authentication enabled

@@ -1,0 +1,16 @@
+body{
+    background-image: url(../img/background.webp);
+    background-size: cover;
+    background-position: center;
+}
+
+html{
+    height: 100%;
+}
+
+.container{
+    text-align: center;
+    color: white;
+    margin-top: 50px;
+    width: 600px;
+}

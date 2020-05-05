@@ -1,3 +1,11 @@
 tr{
     text-align: center;
 }
+
+.table{
+    box-shadow: 0px 5px 5px gray;
+}
+
+.btn-primary{
+    margin-bottom: 25px;
+}

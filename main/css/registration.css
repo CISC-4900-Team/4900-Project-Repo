@@ -8,23 +8,18 @@ html{
     height: 100%;
 }
 
-h3{
-    text-align: center;
-    color: white;
-    font-size: 22px;
-}
-
 .form{
-    font-size: 13px;
-    padding: 15px;
-    color: white;
-    width: 600px;
+    width: 550px;
 }
 
-.btn-primary{
+#registerBtn, #backBtn, #continueButton{
     margin-top: 20px;
     font-size: 18px;
     width: 100%;
+}
+
+#backBtn{
+    background-color: #e6e6e6;
 }
 
 .fa-prescription{
@@ -37,4 +32,21 @@ input:valid {
 
 .alert {
     text-align: center;
+}
+
+h3{
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+    color: white;
+}
+
+.card{
+    padding: 25px 25px 20px 25px;
+}
+
+form{
+    font-size: 15px;
 }

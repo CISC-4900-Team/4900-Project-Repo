@@ -1,97 +1,87 @@
 <?php include_once '../../header.php'; ?>
-<?php include '../../includes/database_info.inc.php'; ?>
 
 <?php
-    //Setting date parameters
-    if(isset($_POST['date']))
-        $_SESSION['schedule_date'] = $_POST['date'];
+    $pharmacy = $_SESSION['companyID'];
+    $_SESSION['schedule'] = array();
 
-    $year = substr($_SESSION['schedule_date'], 0, 4) . '-' .
-    $month = substr($_SESSION['schedule_date'], 5, 2) . '-' .
-    $day = substr($_SESSION['schedule_date'], 8, 2);
+    //Getting the employees
+    $sql = "SELECT * FROM employee WHERE pharm_id = $pharmacy";
+    $empResult = mysqli_query($mySQLI, $sql);
 
-    //Getting employees
-    echo $pharmacy = $_SESSION['companyID'];
-    $sql = "SELECT * FROM employees WHERE pharm_id = ?";
-    $stmt = mysqli_stmt_init($mySQLI);
+    //Getting the schedule from the schedule table
+    $sql = "SELECT week_start, schedule_array FROM emp_schedule WHERE pharm_id = '$pharmacy'";
+    $scheduleResult = mysqli_query($mySQLI, $sql);
+	if($scheduleResult->num_rows > 0)
+	{
+        $scheduleRecord = mysqli_fetch_array($scheduleResult);
+        $schedule = unserialize($scheduleRecord['schedule_array']);
+        $_SESSION['weekStart'] = $scheduleRecord['week_start'];
+	}
 
-    if(mysqli_stmt_prepare($stmt, $sql))
+    if(isset($_POST['saveBtn']))
     {
-        mysqli_stmt_bind_param($stmt, 's', $pharmacy);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
+
+        for($i = 0; $i < 3; $i++)
+    		for($j = 0; $j < 7; $j++)
+    			if(isset($_POST['START'.$i.$j]) && isset($_POST['END'.$i.$j]))
+                    $_SESSION['schedule'][$i][$j] = ["DAY-".$j, "START"=>$_POST['START' . $i . $j], "END"=>$_POST['END' . $i . $j]];
+
+        $weekStart = $_POST['startDate'];
+        $_SESSION['weekStart'] = $weekStart;
+        print_r($schedule);
+        $serializedArray = serialize($_SESSION['schedule']);
+        $sql = "UPDATE emp_schedule SET schedule_array = '$serializedArray', week_start = '$weekStart' WHERE pharm_id = '$pharmacy'";
+        mysqli_query($mySQLI, $sql);
+        header('location: schedules.php');
+	    exit();
     }
-    $schedule = array();
-    $start = null;
-    $end = null;
 ?>
 
 <link rel="stylesheet" href="css/schedule.css">
 <title>Employee Schedules</title>
 <div class="container">
-    <h1>WEEKLY SCHEDULE</h1>
-    <form method="post" action="" name="calender">
-        <div class="row align-items-center">
-            <div class="form-group col-sm-2">
-                <input type="date" class="form-control" name="date" value="<?php date_default_timezone_set('US/Eastern'); echo $_SESSION['schedule_date'];?>">
-            </div>
-            <div class="form-group col-sm-2">
-                <input type="submit" class="form-control" formtarget="calender" value="Set Week Start">
-            </div>
-        </div>
-    </form>
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th></th>
-            <?php for($i = 0; $i < 7; $i++): ?>
-                <th>
-                    <?php echo date("l", mktime(0, 0, 0, intval($month), intval($day+$i), intval($year)));?>
-                    <br>
-                    <?php echo date('m-d-Y', mktime(0, 0, 0, intval($month), intval($day+$i), intval($year))); ?>
-                </th>
-            <?php endfor; ?>
-        </tr>
-        </thead>
-        <tbody>
-        <?php $count = 0; while($record = mysqli_fetch_assoc($result)): ?>
-            <tr>
-                <th>
-                    <?php
-                        echo $record['emp_first'] . " " . $record['emp_last'];
-                        $schedule[$count] = array(
-                            "ID"=>$record['emp_id']
-                        );
-                    ?>
-                </th>
-                <?php for($i = 0; $i < 7; $i++): ?>
-                    <td>
-                        <div class="container" style="width: 150px;">
-                            <div class="form-row">
-                                <form action="" method="post" id="timeSchedule">
-                                    <input type="text" class="form-control" name="<?php echo "start$i"; ?>">
-                                    <input type="text" class="form-control" name="<?php echo "end$i"; ?>">
-                                </form>
-                            </div>
-                        </div>
-                    </td>
-                <?php
-                    if(isset($_POST["start$i"]))
-                        $start = $_POST["start$i"];
-                    if(isset($_POST["end$i"]))
-                        $end = $_POST["end$i"];
-                    endfor;
-                ?>
-            </tr>
-        <?php  array_push($schedule[$count], array("Start"=>$start, "End"=> $end)); $count++;?>
-        </tbody>
-    </table>
-    <button class="btn btn-primary" form="timeSchedule" name="save">Save Schedule</button>
+    <h1 style="text-align: center">EDIT SCHEDULE</h1>
+	<form action="" method="post" id="schedule">
+	    <div class="row">
+		    <div class="col-sm-2">
+			    <h3>Week Start:</h3>
+		    </div>
+	        <div class="form-group col-sm-2">
+	            <input type="date" class="form-control" name="startDate" id="dateSelector" value="<?php echo $_SESSION['weekStart']; ?>" required>
+	        </div>
+	    </div>
+		<div class="table-container">
+	    <table class="table table-bordered">
+	        <thead>
+		        <tr id="weekDaysRow">
+			        <th>Employee</th>
+			        <?php for($i = 0; $i < 7; $i++):?>
+						<th id="weekDaysHeading"></th>
+			        <?php endfor; ?>
+		        </tr>
+	        </thead>
+	        <tbody>
+	            <?php $i = 0; while($emp = mysqli_fetch_assoc($empResult)): ?>
+			        <tr>
+				        <th>
+	                        <?php echo $emp['emp_first'] . ' ' . $emp['emp_last']; ?>
+	                    </th>
+	                    <?php for($j = 0; $j < 7; $j++): ?>
+					        <td>
+						        From:
+						        <input type="time" class="form-control" name="START<?php echo $i.$j; ?>" value="<?php echo $schedule[$i][$j]['START']; ?>">
+						        To:
+						        <input type="time" class="form-control" name="END<?php echo $i.$j; ?>" value="<?php echo $schedule[$i][$j]['END']; ?>">
+					        </td>
+	                    <?php endfor; ?>
+			        </tr>
+	            <?php $i++; endwhile; ?>
+	        </tbody>
+	    </table>
+		</div>
+		<a href="schedules.php"><button type="button" class="btn btn-primary">Back</button></a>
+		<button type="submit" class="btn btn-primary" form="schedule" name="saveBtn">Save Schedule</button>
+	</form>
 </div>
-<?php
-    if(isset($_POST['save']))
-    {
-        print_r($schedule);
-    }
-?>
+<script src="scheduleScript.js"></script>
 <?php include_once '../../footer.php'; ?>

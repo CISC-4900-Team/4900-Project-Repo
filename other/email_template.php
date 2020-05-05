@@ -8,33 +8,30 @@
 						<br>
 						<hr>
 						<br>
-						<h4 style="text-align: center; font-family: sans-serif; font-size: 20px;">Account Login Information</h4><br>
+						<h4 style="text-align: center; font-family: sans-serif; font-size: 20px;">
+							Your Equinox account has been created!
+						</h4>
 						<p style="text-align: center; font-family: sans-serif; line-height: 1.6; font-size: 16px;">
-							Your account has been verified. Below are the login credentials for your account.
-							You will need these to sign onto your account.
-						</p>
-						<p style="font-family: sans-serif; line-height: 1.6; font-size: 16px;">
-							<strong>USER ID:</strong>
+							<strong>Employee ID:</strong>
 							<br>
-							<strong>COMPANY ID:</strong>
+							<strong>Temporary Password:</strong>
 						</p>
-						<p style="font-family: sans-serif; line-height: 1.6; font-size: 16px;">
-							Your company ID is tied to the pharmacy you have registered with. You may login to your Equinox account
-							with the above credentials and the password you set when you registered. Click the button below to go
-							to the login page.
+						<p style="text-align: center; font-family: sans-serif; line-height: 1.6; font-size: 16px;">
+							Use the above account information to login to your Equinox account.
+							You will have to verify your email before you can access your account. Please click the verify button below.
 						</p>
 						<p style="text-align: center; font-family: sans-serif;">
 						</p>
 						<br>
 						<button class=btn
 						        style="background-color: #47d147; padding: 5px 10px; font-size: 18px; outline: none; border-radius: 10px;">
-							<a href="$link/login.php" style="text-decoration: none; color: white;">LOGIN TO EQUINOX</a>
+						<a href=$link$hash style="text-decoration: none; color: white;">VERIFY EMAIL</a>
 						</button>
 						<br>
 						<hr>
 						<p style="text-align: center; font-family: sans-serif; line-height: 1.5; font-size: 12px;">
-							This message was sent from Equinox System Activation. If you believe this message was sent in error, please contact
-							the Equinox support team.
+                          This messages was sent from Equinox System Activation. If you believe this messages was sent in error, please contact
+                          the Equinox support team.
 						</p>
 					</td>
 				</tr>

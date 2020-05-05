@@ -15,9 +15,8 @@
 
 <?php if(isset($_GET['vkey'])): ?>
     <?php
-        require_once 'includes/database_info.inc.php';
         $vkey = $_GET['vkey'];
-        $result = $mySQLI->query("SELECT * FROM user_accounts WHERE u_hash = '$vkey'");
+        $result = $mySQLI->query("SELECT * FROM users WHERE user_hash = '$vkey'");
         if($result->num_rows > 0): ?>
             <div class="container header">
                 <h1><strong>Reset Your Password</strong></h1>

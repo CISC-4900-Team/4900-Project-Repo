@@ -1,58 +1,73 @@
 <?php include_once '../../header.php'; ?>
-<?php include '../../includes/database_info.inc.php'; ?>
 
 <?php
-	echo $year = substr($_SESSION['schedule_date'], 0, 4) . '-' .
-	$month = substr($_SESSION['schedule_date'], 5, 2) . '-' .
-	$day = substr($_SESSION['schedule_date'], 8, 2);
+    $pharmacy = $_SESSION['companyID'];
+    $fetchSchedule = "SELECT week_start, schedule_array FROM emp_schedule WHERE pharm_id = '$pharmacy'";
+    $result = mysqli_query($mySQLI, $fetchSchedule);
 
-	//Getting employees
-	echo $pharmacy = $_SESSION['companyID'];
-	$sql = "SELECT * FROM employees WHERE pharm_id = ?";
-	$stmt = mysqli_stmt_init($mySQLI);
-
-	if(mysqli_stmt_prepare($stmt, $sql))
+    //Getting the employees
+    $sql = "SELECT * FROM employee WHERE pharm_id = $pharmacy";
+    $empResult = mysqli_query($mySQLI, $sql);
+	if($empResult->num_rows > 0)
 	{
-        mysqli_stmt_bind_param($stmt, 's', $pharmacy);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
+        $scheduleRecord = mysqli_fetch_array($result);
+        $start = $scheduleRecord['week_start'];
+        $schedule = $scheduleRecord['schedule_array'];
+        $schedule = unserialize($schedule);
 	}
 
-	$_SESSION['schedule'] = array
-	(
-			array("Hammad", )
-	);
-
+    $year = substr($start, 0, 4) . '-' .
+    $month = substr($start, 5, 2) . '-' .
+    $day = substr($start, 8, 2);
 ?>
 
 <link rel="stylesheet" href="css/schedule.css">
 <title>Employee Schedules</title>
 <div class="container">
-	<h1>WEEKLY SCHEDULE</h1>
+	<h1 style="text-align: center">WEEKLY SCHEDULE</h1>
+	<div class="table-container">
 	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<th></th>
-				<?php for($i = 0; $i < 7; $i++): ?>
+				<th>Employee</th>
+	            <?php for($i = 0; $i < 7; $i++): ?>
 					<th>
-                        <?php echo date("l", mktime(0, 0, 0, intval($month), intval($day+$i), intval($year)));?>
-						<?php echo date('m-d-Y', mktime(0, 0, 0, intval($month), intval($day+$i), intval($year))); ?>
+	                    <?php echo date("l", mktime(0, 0, 0, intval($month), intval($day+$i), intval($year)));?>
+	                    <?php echo date('m-d-Y', mktime(0, 0, 0, intval($month), intval($day+$i), intval($year))); ?>
 					</th>
-				<?php endfor; ?>
+	            <?php endfor; ?>
 			</tr>
 		</thead>
 		<tbody>
-            <?php while($record = mysqli_fetch_assoc($result)): ?>
-                <tr>
-					<th><?php echo $record['emp_first'] . " " . $record['emp_last']; ?></th>
-	                <?php for($i = 0; $i < 7; $i++): ?>
-						<td>-</td>
-                    <?php endfor; ?>
-                </tr>
-            <?php endwhile; ?>
+            <?php $i = 0; while($emp = mysqli_fetch_assoc($empResult)): ?>
+			<tr>
+				<th>
+                    <?php echo $emp['emp_first'] . ' ' . $emp['emp_last']; ?>
+				</th>
+                <?php for($j = 0; $j < 7; $j++): ?>
+				<td>
+					<?php $from = $schedule[$i][$j]['START'];  $to = $schedule[$i][$j]['END'];?>
+					<p style="<?php if($from != null && $to != null)echo 'background-color: #abf300';
+                                    if($from == null || $to == null)echo 'background-color: #ffbd00';
+                                    if($from == '-' && $to == '-')echo 'background-color: '; ?>">
+						<strong>
+                            <?php if($from != null) echo date("h:i A", strtotime($from)); ?>
+							<br>
+							<strong>-</strong>
+							<br>
+                            <?php if($to != null) echo date("h:i A", strtotime($to)); ?>
+						</strong>
+					</p>
+				</td>
+                <?php endfor; ?>
+			</tr>
+	        <?php $i++; endwhile; ?>
 		</tbody>
 	</table>
-	<a href="edit_schedule.php"><button class="btn btn-primary">Edit Schedule</button></a>
+	</div>
+	<?php if($_SESSION['userType'] == 'ADMIN'): ?>
+		<a href="edit_schedule.php"><button class="btn btn-primary">Edit Schedule</button></a>
+	<?php endif; ?>
 </div>
 
 <?php include_once '../../footer.php'; ?>

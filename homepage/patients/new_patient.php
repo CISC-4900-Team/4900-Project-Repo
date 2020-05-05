@@ -1,22 +1,17 @@
 <?php include_once '../../header.php'; ?>
-
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
-	{
 	    if(isset($_POST['add']))
-	    {
-	        require_once 'includes/addpatient.inc.php';
-	    }
-	}
+	        require 'includes/newpatient.inc.php';
 ?>
 
 <link rel="stylesheet" href="css/new_patient.css">
-<title>Patient Information</title>
+<title>New Patient</title>
 <div class="container">
     <form class="card card-outline-secondary">
         <div class="card-header">
             <h3 class="mb-0">New Patient</h3>
-	        <p>* = </p>
+	        <p>* = Required</p>
         </div>
 	    <form autocomplete="off" name="new_patient" action="" method="post">
             <div class="card-body">
@@ -52,7 +47,7 @@
                 <div class="form-group row">
                     <label class="col-lg-2 col-form-label form-control-label">Address *</label>
                     <div class="col-lg-4">
-                        <input class="form-control" type="text" name="p_addr" pattern="[a-zA-Z0-9-\s]+"
+                        <input class="form-control" type="text" name="p_addr" pattern="[a-zA-Z0-9-\s.]+"
                                title="Only letters, numbers, and hyphens" >
                     </div>
 	                <label class="col-lg-2 col-form-label form-control-label">City *</label>
@@ -82,6 +77,13 @@
 		            </div>
 	            </div>
 	            <div class="form-group row">
+		            <label class="col-lg-2 col-form-label form-control-label">Allergies *</label>
+		            <div class="col-lg-10">
+			            <input class="form-control" type="text" name="p_allergies" pattern="[a-zA-Z,\s]+"
+			                   title="No symbols, numbers or special characters, except commas" placeholder="Type None if no allergies, and separate by commas if multiple" >
+		            </div>
+	            </div>
+	            <div class="form-group row">
 		            <label class="col-lg-2 col-form-label form-control-label">Email</label>
 		            <div class="col-lg-4">
 			            <input class="form-control" type="email" placeholder="janedoe@email.com" name="p_email">
@@ -89,13 +91,6 @@
 		            <label class="col-lg-2 col-form-label form-control-label">Phone Number</label>
 		            <div class="col-lg-4">
 			            <input type="tel" class="form-control" name="p_phone" placeholder="123-555-1234" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Phone number must match the following pattern: 000-000-0000">
-		            </div>
-	            </div>
-	            <div class="form-group row">
-		            <label class="col-lg-2 col-form-label form-control-label">Allergies *</label>
-		            <div class="col-lg-10">
-			            <input class="form-control" type="text" name="p_allergies" pattern="[a-zA-Z,\s]+"
-			                   title="No symbols, numbers or special characters, except commas" placeholder="Type None if no allergies, and separate by commas if multiple" >
 		            </div>
 	            </div>
 	            <p>
@@ -108,12 +103,12 @@
 			            <div class="form-group row">
 				            <label class="col-form-label form-control-label">Provider</label>
 				            <div class="col-lg-4">
-					            <input class="form-control" type="text" name="p_insurer" pattern="[a-zA-Z\s]+"
+					            <input class="form-control" type="text" name="insurer" pattern="[a-zA-Z\s]+"
 					                   title="No symbols, numbers or special characters, except hypens and spaces">
 				            </div>
 				            <label class="col-form-label">Policy Number</label>
 				            <div class="col-lg-3">
-					            <input class="form-control" type="number" name="policy_id" pattern="[a-zA-Z0-9-]+"
+					            <input class="form-control" type="text" name="policy_num" pattern="[a-zA-Z0-9-]+"
 					                   title="Only letters, numbers, and hyphens">
 				            </div>
 				            <label class="col-form-label">Deductible</label>
@@ -121,37 +116,21 @@
 					            <input class="form-control" type="text" name="deductible">
 				            </div>
 			            </div>
-		            </div>
-	            </div>
-	            <p>
-		            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#pcp_collapse" aria-expanded="false" aria-controls="pcp_collapse" style="width: 100%">
-			            Primary Care Physician
-		            </button>
-	            </p>
-	            <div class="collapse" id="pcp_collapse">
-		            <div class="card card-body">
 			            <div class="form-group row">
-				            <label class="col-form-label form-control-label">PCP Name</label>
-				            <div class="col-lg-3">
-					            <input class="form-control" type="text" name="pcp_name" pattern="[a-zA-Z.-\s]+"
-					                   title="No symbols, numbers or special characters, except hypens, dots, and spaces">
+				            <label class="col-form-label">Policy Start Date</label>
+				            <div class="col-lg-3 form-group">
+					            <input class="form-control" type="date" name="policy_start">
 				            </div>
-				            <label class="col-form-label">Office Address</label>
-				            <div class="col-lg-3">
-					            <input class="form-control" type="text" name="pcp_addr" pattern="[a-zA-Z0-9-\s]+"
-					                   title="No symbols or special characters except hyphens">
-				            </div>
-				            <label class="col-form-label">Phone</label>
-				            <div class="col-lg-3">
-					            <input type="tel" class="form-control" name="pcp_phone" placeholder="123-555-1234" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Phone number must match the following pattern: 000-000-0000">
+				            <label class="col-form-label">Policy Expiration</label>
+				            <div class="col-lg-3 form-group">
+					            <input class="form-control" type="date" name="policy_end">
 				            </div>
 			            </div>
 		            </div>
 	            </div>
-                <div class="form-group row">
-                    <label class="col-lg-5 col-form-label form-control-label"></label>
-                    <div class="col-lg-3">
-	                    <button type="submit" class="btn btn-primary" name="add" formmethod="post" formaction="" style="background-color: #2a2a2a;">Add</button>
+                <div class="form-row justify-content-center">
+                    <div class="col-lg-2">
+	                    <button type="submit" class="btn btn-primary add-btn" name="add" formmethod="post">Add Patient</button>
                     </div>
                 </div>
             </div>

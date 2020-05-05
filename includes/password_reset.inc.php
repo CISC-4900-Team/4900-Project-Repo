@@ -1,27 +1,21 @@
 <?php
-    require_once 'database_info.inc.php';
-
-    if(isset($_POST['request_reset_btn'])) {
+//    if(isset($_POST['request_reset_btn'])) {
         require_once 'mailer.inc.php';
         $link = HTTP.'reset_form.php?vkey=';
 
-        $emp_id = $mySQLI->escape_string($_POST['emp_id']);
-        $emp_email = $mySQLI->escape_string($_POST['emp_email']);
+        echo $user_id = $mySQLI->escape_string($_POST['emp_id']);
+        echo $user_email = $mySQLI->escape_string($_POST['emp_email']);
 
-        $sql = "SELECT * FROM user_accounts WHERE u_id = ? AND u_email = ?";
+        $sql = "SELECT * FROM users WHERE user_id = ? AND user_email = ?";
         $stmt = mysqli_stmt_init($mySQLI);
         if(mysqli_stmt_prepare($stmt, $sql)) {
-            mysqli_stmt_bind_param($stmt, 'ss', $emp_id, $emp_email);
+            mysqli_stmt_bind_param($stmt, 'ss', $user_id, $user_email);
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
-
             if($result->num_rows > 0) {
                 $user = mysqli_fetch_assoc($result);
-                $hash = $user['u_hash'];
-                try {
-                    $mail->SetFrom('equinoxpharmacysystems@gmail.com', 'Equinox Systems');
-                } catch (phpmailerException $e) {
-                }
+                $hash = $user['user_hash'];
+                $mail->SetFrom('equinoxpharmacysystems@gmail.com', 'Equinox Systems');
                 $mail->Subject = 'Equinox Account Password Reset';
                 $mail->Body =
                     "
@@ -58,37 +52,29 @@
                             </table>
                         </td>
                     </tr>
-                     </table>
+                    </table>
                     ";
                 $mail->AddAddress($emp_email);
-                try {
-                    if (!$mail->Send()) {
-                        $error = 'Mail error: ' . $mail->ErrorInfo;
-                    } else {
-                        $error = 'Message sent!';
-                    }
-                } catch (phpmailerException $e) {
-                }
+                $mail->Send();
                 header('location: reset_password.php?success');
-                exit();
-            } else {
-                header('location: reset_password.php?failure');
                 exit();
             }
         }
-    }
-
-    if(isset($_POST['reset_pass_btn'])) {
-        $hash = $_GET['vkey'];
-        $newPass = $mySQLI->escape_string($_POST['emp_pass']);
-        $hashedPass = $mySQLI->escape_string(password_hash($newPass, PASSWORD_BCRYPT));
-
-        $sql = "UPDATE user_accounts SET u_pass = ? WHERE u_hash = ?";
-        $stmt = mysqli_stmt_init($mySQLI);
-        if(mysqli_stmt_prepare($stmt, $sql)) {
-            mysqli_stmt_bind_param($stmt, 'ss', $hashedPass, $hash);
-            mysqli_stmt_execute($stmt);
-        }
-        header('location: main.php?reset_success');
-        exit();
-    }
+//    }
+//
+//    if(isset($_POST['reset_pass_btn'])) {
+//        $hash = $_GET['vkey'];
+//        $newPass = $mySQLI->escape_string($_POST['emp_pass']);
+//        $salt = uniqid(null, true);
+//
+//        $hashedPass = $mySQLI->escape_string(password_hash($newPass . $salt, PASSWORD_BCRYPT));
+//
+//        $sql = "UPDATE users SET password = ?, salt = ? WHERE user_hash = ?";
+//        $stmt = mysqli_stmt_init($mySQLI);
+//        if(mysqli_stmt_prepare($stmt, $sql)) {
+//            mysqli_stmt_bind_param($stmt, 'sss', $hashedPass, $salt, $hash);
+//            mysqli_stmt_execute($stmt);
+//        }
+//        header('location: main.php?reset_success');
+//        exit();
+//    }

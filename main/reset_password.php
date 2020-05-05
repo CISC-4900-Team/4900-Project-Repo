@@ -2,7 +2,7 @@
 
 <?php
 	if(isset($_POST['request_reset_btn'])) {
-        include_once 'includes/password_reset.inc.php';
+        include_once '../includes/password_reset.inc.php';
     }
 ?>
 
