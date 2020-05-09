@@ -1,13 +1,8 @@
-<?php
-	include_once '../../header.php';
-    include '../../includes/database_info.inc.php';
-?>
+<?php include_once '../../header.php';?>
 
 <?php
 	if(isset($_POST['add']))
-	{
 		require_once 'includes/newuser.inc.php';
-	}
 ?>
 <link rel="stylesheet" href="css/new_employee.css">
 <title>New Employee</title>

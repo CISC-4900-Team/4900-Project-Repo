@@ -7,14 +7,6 @@ html{
     height: 100%;
 }
 
-.row {
-    display: -ms-flexbox; /* IE10 */
-    display: flex;
-    -ms-flex-wrap: wrap; /* IE10 */
-    flex-wrap: wrap;
-    margin: 0 -16px;
-}
-
 #myContainer {
     background-color: #f2f2f2;
     border: 1px solid lightgrey;
@@ -54,32 +46,42 @@ span.price {
     color: grey;
 }
 
-
-table{
-    width: 100%;
+.voidBtn{
+    outline: none;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    padding: 0px;
+    color: red;
 }
 
-th, td {
-    color: #2a2a2a;
-    border-bottom: 1px solid #ddd;
+.voidBtn:hover{
+    color: #800000;
 }
 
-td {
-    padding: 8px;
-    max-width: 200px;
+.fa-ban{
+    font-size: 25px;
 }
 
-.quantity {
-    width: 50px;
+.fa-money-bill-alt:hover{
+    color: #006600;
 }
 
-.product {
-    width: 200px;
+.fa-credit-card:hover{
+    color: #000099;
 }
 
-.price {
-    width: 100px;
+table tbody, table thead
+{
+    display: block;
 }
+
+table tbody
+{
+    overflow: auto;
+    height: 342px;
+}
+
+
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
 @media (max-width: 800px) {

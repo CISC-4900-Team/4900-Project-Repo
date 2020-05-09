@@ -1,12 +1,10 @@
 <?php include_once '../../header.php'; ?>
-
-
 <?php
+	//Getting all patients from `patients` table but only for the specific pharmacy
     $dataResult = mysqli_query($mySQLI, "SELECT * FROM patients WHERE pharm_id = ".$_SESSION['companyID']);
 
-    if(isset($_POST['delete_patient'])) {
+    if(isset($_POST['delete_patient']))
         include_once 'includes/deletepatient.inc.php';
-    }
 ?>
 
 <link rel="stylesheet" href="css/patient_lookup.css">

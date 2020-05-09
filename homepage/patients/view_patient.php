@@ -1,11 +1,11 @@
 <?php include_once '../../header.php'; ?>
-<?php require_once '../../includes/database_info.inc.php'; ?>
 
 <?php
     $p_record = null;
+    //Check if the patient ID is set in the URL
 	if(isset($_GET['pid']))
 	{
-		//get the patient information
+		//Get the patient information from the database
 		$patient = $_GET['pid'];
         $sql = "SELECT * FROM patients WHERE p_id = ?";
 		$stmt = mysqli_stmt_init($mySQLI);

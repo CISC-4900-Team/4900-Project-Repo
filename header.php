@@ -1,11 +1,12 @@
 <?php
+	//Clear the output buffer to prevent header issues
     ob_start();
+    //Start session if not already started
     if(!session_start())
     	session_start();
 	include 'config.php';
-    if(isset($_POST['logout'])) {
+    if(isset($_POST['logout']))
 		require INCLUDES.'logout.inc.php';
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,14 +30,12 @@
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.20/af-2.3.4/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/cr-1.5.2/fc-3.3.0/fh-3.1.6/kt-2.5.1/r-2.2.3/rg-1.1.1/rr-1.2.6/sc-2.0.1/sp-1.0.1/sl-1.3.1/datatables.min.css"/>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-		<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/jszip-2.5.0/dt-1.10.20/af-2.3.4/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/cr-1.5.2/fc-3.3.0/fh-3.1.6/kt-2.5.1/r-2.2.3/rg-1.1.1/rr-1.2.6/sc-2.0.1/sp-1.0.1/sl-1.3.1/datatables.min.js"></script>
-
-		<!-- jsPDF -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous">
+		<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/jszip-2.5.0/dt-1.10.20/af-2.3.4/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/cr-1.5.2/fc-3.3.0/fh-3.1.6/kt-2.5.1/r-2.2.3/rg-1.1.1/rr-1.2.6/sc-2.0.1/sp-1.0.1/sl-1.3.1/datatables.min.js">
 	</head>
 </script>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2a2a2a;">
+	<!-- Nav displays certain elements if user is logged in, not logged in, and if user is admin -->
+	<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2a2a2a;">
 	<a class="navbar-brand" href="<?php if(isset($_SESSION['loggedIn'])){echo HTTP.'homepage/emp_page.php';}else{echo HTTP.'index.php';}?>"><i class="fas fa-prescription" style="padding-right: 4px;"></i>EQUINOX</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -70,7 +69,6 @@
 						<a class="dropdown-item" href="<?php echo HTTP.'homepage/employees/new_employee.php'?>">New Employee</a>
                     <?php endif;?>
 					<a class="dropdown-item" href="<?php echo HTTP.'homepage/employees/schedules.php'?>">Schedule</a>
-					<a class="dropdown-item" href="<?php echo HTTP.'homepage/employees/profile.php'?>">User Profile</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown">
@@ -87,7 +85,6 @@
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="<?php echo HTTP.'homepage/inventory/medication_inventory.php'?>">Medication inventory</a>
-					<!--<a class="dropdown-item" href="<?php echo HTTP.'homepage/inventory/product_inventory.php'?>">Product inventory</a>-->
 				</div>
 			</li>
 			<li class="nav-item dropdown">

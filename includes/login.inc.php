@@ -1,14 +1,11 @@
 <?php
-    require_once 'database_info.inc.php';
-
+    //Get the users ID and password, sanitize with escape_string
     $emp_id = $mySQLI->escape_string($_POST['emp_id']);
     $password = $mySQLI->escape_string($_POST['password']);
 
-    //Logic to check if user exists in the users table
+    //Check if user exists in the `users` table
     $sql = "SELECT * FROM users WHERE user_id = ?";
-
     $stmt = mysqli_stmt_init($mySQLI);
-
     if(mysqli_stmt_prepare($stmt, $sql))
     {
         mysqli_stmt_bind_param($stmt, 's', $emp_id);
@@ -40,6 +37,7 @@
                 $result = mysqli_query($mySQLI, $sql);
                 $emp = mysqli_fetch_assoc($result);
 
+                //Setting session variables
                 $_SESSION['emp_first'] = $emp['emp_first'];
                 $_SESSION['emp_last'] = $emp['emp_last'];
                 $_SESSION['emp_phone'] = $emp['emp_phone'];
@@ -57,12 +55,14 @@
                 $result = mysqli_query($mySQLI, "SELECT id FROM login_records WHERE user_id = '$userID' ORDER BY id DESC LIMIT 1;");
                 $loginRecord = mysqli_fetch_assoc($result);
                 echo $_SESSION['last_login_id'] = $loginRecord['id'];
+                //Redirect to the user homepage
                 header("location: ../homepage/emp_page.php?login=success");
                 exit();
             }
         }
         else
         {
+            //Redirect to login form with error in the URL to be checked
             header("location: login.php?error=wrongpassword");
             exit();
         }

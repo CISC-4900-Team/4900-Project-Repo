@@ -3,7 +3,6 @@
     $p_record = null;
     if(isset($_GET['pid']))
     {
-        //get the patient information
         $patientID = $_GET['pid'];
         $sql = "SELECT * FROM patients WHERE p_id = ?";
         $stmt = mysqli_stmt_init($mySQLI);
@@ -29,6 +28,8 @@
             $insurance['exp_date']  = '';
         }
     }
+
+    //If update button is pressed
     if(isset($_POST['updateButton']))
     	require_once 'includes/updatepatient.inc.php';
 

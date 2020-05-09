@@ -2,12 +2,8 @@
 <?php
 	//Check if form is being submitted
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
-	{
         if(isset($_POST['register']))
-        {
             require_once '../includes/register.inc.php';
-        }
-	}
 ?>
 
 <link rel="stylesheet" href="css/registration.css">
@@ -223,6 +219,6 @@
 		</form>
 	</div>
     <?php include 'messages/register_messages.php'; ?>
-	<script src="js/form_control.js"></script>
+	<script src="js/formControl.js"></script>
 </div>
 

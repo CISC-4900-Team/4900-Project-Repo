@@ -1,4 +1,6 @@
 <?php
+    //This script sets the PHPMailer variables to be used for emailing purposes
+    //PHPMailer is an open source PHP mailing library available on Github
     require_once ROOT.'/PHPMailer/PHPMailerAutoload.php';
     $mail = new PHPMailer();  // create a new object
     $mail->IsSMTP(); // enable SMTP
@@ -16,5 +18,5 @@
         )
     );
     $mail->isHTML(true);
-    $mail->Username = 'equinoxpharmacysystems@gmail.com';
-    $mail->Password = '2321456HTm';
+    $mail->Username = 'equinoxpharmacysystems@gmail.com'; //Your email
+    $mail->Password = '123456'; //Email account password, real password was removed

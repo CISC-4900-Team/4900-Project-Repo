@@ -1,5 +1,5 @@
 <?php
-    //Getting patient information from new patient form
+    //Getting patient information from new patient form, sanitize with escape_string
     if(isset($_POST['p_first']))$p_first = strtoupper($mySQLI->escape_string($_POST['p_first']));
     if(isset($_POST['p_last']))$p_last = strtoupper($mySQLI->escape_string($_POST['p_last']));
     if(isset($_POST['p_dob']))$p_dob = strtoupper($mySQLI->escape_string($_POST['p_dob']));

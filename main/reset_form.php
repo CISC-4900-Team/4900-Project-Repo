@@ -1,7 +1,8 @@
 <?php include_once '../header.php'; ?>
 
 <?php
-    if(isset($_POST['reset_pass_btn'])) {
+    if(isset($_POST['reset_pass_btn']))
+    {
         if($_POST['emp_pass'] == $_POST['confirm_pass']) {
             include_once 'includes/password_reset.inc.php';
         } else {
@@ -12,7 +13,6 @@
 ?>
 <link rel="stylesheet" href="css/reset_form.css">
 <title>Password Reset</title>
-
 <?php if(isset($_GET['vkey'])): ?>
     <?php
         $vkey = $_GET['vkey'];

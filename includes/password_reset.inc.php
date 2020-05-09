@@ -1,17 +1,21 @@
 <?php
-//    if(isset($_POST['request_reset_btn'])) {
+    //Check if password request button was pressed
+    if(isset($_POST['request_reset_btn'])) {
         require_once 'mailer.inc.php';
         $link = HTTP.'reset_form.php?vkey=';
 
-        echo $user_id = $mySQLI->escape_string($_POST['emp_id']);
-        echo $user_email = $mySQLI->escape_string($_POST['emp_email']);
+        //Get user ID and email, sanitize with escape_string
+        $user_id = $mySQLI->escape_string($_POST['emp_id']);
+        $user_email = $mySQLI->escape_string($_POST['emp_email']);
 
+        //Query database to check if user actually exists
         $sql = "SELECT * FROM users WHERE user_id = ? AND user_email = ?";
         $stmt = mysqli_stmt_init($mySQLI);
         if(mysqli_stmt_prepare($stmt, $sql)) {
             mysqli_stmt_bind_param($stmt, 'ss', $user_id, $user_email);
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
+            //Send reset link email if user exists
             if($result->num_rows > 0) {
                 $user = mysqli_fetch_assoc($result);
                 $hash = $user['user_hash'];
@@ -60,21 +64,20 @@
                 exit();
             }
         }
-//    }
-//
-//    if(isset($_POST['reset_pass_btn'])) {
-//        $hash = $_GET['vkey'];
-//        $newPass = $mySQLI->escape_string($_POST['emp_pass']);
-//        $salt = uniqid(null, true);
-//
-//        $hashedPass = $mySQLI->escape_string(password_hash($newPass . $salt, PASSWORD_BCRYPT));
-//
-//        $sql = "UPDATE users SET password = ?, salt = ? WHERE user_hash = ?";
-//        $stmt = mysqli_stmt_init($mySQLI);
-//        if(mysqli_stmt_prepare($stmt, $sql)) {
-//            mysqli_stmt_bind_param($stmt, 'sss', $hashedPass, $salt, $hash);
-//            mysqli_stmt_execute($stmt);
-//        }
-//        header('location: main.php?reset_success');
-//        exit();
-//    }
+    }
+
+    //Update the `users` table with the password if password reset button is pressed
+    if(isset($_POST['reset_pass_btn'])) {
+        $hash = $_GET['vkey'];
+        $newPass = $mySQLI->escape_string($_POST['emp_pass']);
+        $salt = uniqid(null, true);
+        $hashedPass = $mySQLI->escape_string(password_hash($newPass . $salt, PASSWORD_BCRYPT));
+        $sql = "UPDATE users SET password = ?, salt = ? WHERE user_hash = ?";
+        $stmt = mysqli_stmt_init($mySQLI);
+        if(mysqli_stmt_prepare($stmt, $sql)) {
+            mysqli_stmt_bind_param($stmt, 'sss', $hashedPass, $salt, $hash);
+            mysqli_stmt_execute($stmt);
+        }
+        header('location: main.php?reset_success');
+        exit();
+    }

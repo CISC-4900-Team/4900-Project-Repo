@@ -1,13 +1,12 @@
 <?php include_once '../../header.php'; ?>
-<?php include '../../includes/database_info.inc.php'; ?>
 
 <?php
+	//populate the table with medication inventory
     $sql = "SELECT * FROM medication_inventory WHERE pharm_id = ".$_SESSION['companyID'];
     $result = mysqli_query($mySQLI, $sql);
 
-    if(isset($_POST['add_btn'])) {
+    if(isset($_POST['add_btn']))
 		include_once 'includes/add_medication.inc.php';
-    }
 ?>
 <link rel="stylesheet" href="css/inventory_style.css">
 <div class="container mb-3 mt-3">

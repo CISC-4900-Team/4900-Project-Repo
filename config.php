@@ -1,7 +1,8 @@
 <?php
     //Configuration File
 
-    //Defining global variables
+    //Defining global variables. HTTP is defined based on server. This allows the links to change dynamically
+    //whether the the site is deployed or local
     define("ROOT", __DIR__ ."/");
     define("HTTP", ($_SERVER["SERVER_NAME"] == "localhost")
         ? "http://localhost/PharmaSystem/"

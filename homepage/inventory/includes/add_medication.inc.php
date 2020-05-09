@@ -1,4 +1,5 @@
 <?php
+    //Get the medication information from the form, sanitize with escape_string
     if(isset($_POST['med_name'])) echo $med_name = strtoupper($mySQLI->escape_string($_POST['med_name']));
     if(isset($_POST['mfg_name'])) echo $manufacturer = strtoupper($mySQLI->escape_string($_POST['mfg_name']));
     if(isset($_POST['mfg_addr'])) echo $mfg_addr = strtoupper($mySQLI->escape_string($_POST['mfg_addr']));
@@ -12,6 +13,7 @@
     if(isset($_POST['unit_price'])) echo $unit_price = $mySQLI->escape_string($_POST['unit_price']);
     if(isset($_POST['order_number'])) echo $order_number = $mySQLI->escape_string($_POST['order_number']);
 
+    //Add medication data into the `medication_inventory` table
     $sql = "INSERT INTO medication_inventory (med_name, manufacturer, mfg_address, mfg_phone, msrp, potency, side_effects,
                                   description, upc, qty_stock, unit_price, order_invoice, pharm_id)
             values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

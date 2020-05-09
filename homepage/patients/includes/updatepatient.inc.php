@@ -1,5 +1,7 @@
 <?php
+    //Get the ID of the patient to update
     $patientID = $_GET['pid'];
+    //Get the form values, sanitize them with escape_string
     if(isset($_POST['p_first']))$p_first = strtoupper($mySQLI->escape_string($_POST['p_first']));
     if(isset($_POST['p_last']))$p_last = strtoupper($mySQLI->escape_string($_POST['p_last']));
     if(isset($_POST['p_dob']))$p_dob = strtoupper($mySQLI->escape_string($_POST['p_dob']));
@@ -12,6 +14,7 @@
     if(isset($_POST['p_phone']))$p_phone = $mySQLI->escape_string($_POST['p_phone']); else $p_phone = 'N/A';
     if(isset($_POST['p_email']))$p_email = $mySQLI->escape_string($_POST['p_email']); else $p_email = 'N/A';
 
+    //Update patient information in the `patients` table
     $sql = "UPDATE patients SET patient_first = ?, patient_last = ?, dob = ?, sex = ?, allergies = ?, p_addr = ?, 
                     p_city = ?, p_state = ?, p_zip = ?, p_email = ?, phone = ? WHERE p_id = ?";
     $stmt = mysqli_stmt_init($mySQLI);
@@ -22,6 +25,7 @@
         mysqli_stmt_execute($stmt);
     }
 
+    //Updating patient insurance information in the `insurance` table
     $provider = "N/A"; $policy_num = 00000000; $deductible = 0;
     $start_date = "1970-01-01"; $end_date = "1970-01-01";
     if(isset($_POST['policy_num']))

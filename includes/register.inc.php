@@ -1,5 +1,4 @@
 <?php
-    //Check if form is submitted before running script
     require_once 'mailer.inc.php';
     $link = HTTP . 'main/verify.php?vkey=';
 
@@ -120,8 +119,8 @@
         $success = false;
     }
 
+    //Send verification email to user
     if($success) {
-        //Send verification email to user
         $mail->SetFrom('equinoxpharmacysystems@gmail.com', 'Equinox Systems');
         $mail->Subject = 'Equinox Account Verification';
         $mail->Body =
@@ -163,6 +162,8 @@
         $mail->send();
         //Create a default schedule table for each pharmacy
         mysqli_query($mySQLI, "INSERT INTO emp_schedule (pharm_id, week_start) VALUES ('$pharm_id', '$reg_date')");
+
+        //Redirect with succes messagge
         header('location: ../messages/registration_success.php');
         exit();
     }

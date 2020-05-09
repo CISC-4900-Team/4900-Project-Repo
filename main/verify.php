@@ -1,13 +1,16 @@
 <?php include_once '../header.php'; ?>
-<?php include '../includes/database_info.inc.php'; ?>
 
 <?php
+	//Get user's hash key from the URL
 	if(isset($_GET['vkey']))
 	{
         $verified = false;
         $vkey = $_GET['vkey'];
+
+        //Check if the hash key matches in the database
         $result = $mySQLI->query("SELECT is_verified, user_hash FROM users WHERE is_verified = 0 AND user_hash = '$vkey' LIMIT 1");
         if($result->num_rows == 1) {
+        	//If user is not verfieid, change the value to 1
 			$mySQLI->query("UPDATE users SET is_verified = 1 WHERE user_hash = '$vkey'");
 			$result = $mySQLI->query("SELECT * from users WHERE user_hash = '$vkey'");
 			$user = mysqli_fetch_assoc($result);
@@ -15,9 +18,11 @@
             $_SESSION['pharm_id'] = $user['pharm_id'];
 			$_SESSION['recepient'] = $user['user_email'];
 			$_SESSION['role'] = $user['role'];
+			//Email the login credentials to the user
 			require_once('../includes/sendcredentials.inc.php');
         }
         else
+        	//If user is already verified, set $verified to true so that the page content can change
             $verified = true;
     }
 ?>

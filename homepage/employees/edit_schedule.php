@@ -18,9 +18,9 @@
         $_SESSION['weekStart'] = $scheduleRecord['week_start'];
 	}
 
+	//Once save button is pressed fill the data in the array
     if(isset($_POST['saveBtn']))
     {
-
         for($i = 0; $i < 3; $i++)
     		for($j = 0; $j < 7; $j++)
     			if(isset($_POST['START'.$i.$j]) && isset($_POST['END'.$i.$j]))
@@ -28,7 +28,7 @@
 
         $weekStart = $_POST['startDate'];
         $_SESSION['weekStart'] = $weekStart;
-        print_r($schedule);
+        //Serialize array so it can be stored in the database table
         $serializedArray = serialize($_SESSION['schedule']);
         $sql = "UPDATE emp_schedule SET schedule_array = '$serializedArray', week_start = '$weekStart' WHERE pharm_id = '$pharmacy'";
         mysqli_query($mySQLI, $sql);
@@ -83,5 +83,5 @@
 		<button type="submit" class="btn btn-primary" form="schedule" name="saveBtn">Save Schedule</button>
 	</form>
 </div>
-<script src="scheduleScript.js"></script>
+<script src="js/scheduleScript.js"></script>
 <?php include_once '../../footer.php'; ?>

@@ -75,21 +75,5 @@
     <!-- Copyright -->
 
 </footer>
-
-<script>
-    // Function to check Whether both passwords entered match
-    function checkPassword(form) {
-        password1 = form.emp_pwd.value;
-        password2 = form.emp_pwd_confirm.value;
-
-        // If Not same return False.
-        if (password1 != password2) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-</script>
-
 </body>
 </html>

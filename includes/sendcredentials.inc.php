@@ -1,4 +1,5 @@
 <?php
+    //This script sends the users login credentials once they have verified their email
     require_once 'mailer.inc.php';
     $link = HTTP;
     $user_id = $_SESSION['userID'];

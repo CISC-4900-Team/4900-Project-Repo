@@ -22,7 +22,8 @@
     "require": {
         "ext-ctype": "*",
         "php": ">=5.0.0",
-      "ext-mysqli": "*"
+      "ext-mysqli": "*",
+      "ext-json": "*"
     },
     "require-dev": {
         "doctrine/annotations": "1.2.*",

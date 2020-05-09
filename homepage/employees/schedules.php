@@ -2,6 +2,7 @@
 
 <?php
     $pharmacy = $_SESSION['companyID'];
+    //Get the pharmacy schedule from the `emp_schedule` table
     $fetchSchedule = "SELECT week_start, schedule_array FROM emp_schedule WHERE pharm_id = '$pharmacy'";
     $result = mysqli_query($mySQLI, $fetchSchedule);
 

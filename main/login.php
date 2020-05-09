@@ -2,12 +2,10 @@
 
 <?php
 	//Check if form is being submitted
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
     	//Check if button was pressed
-		if(isset($_POST['login'])) {
+		if(isset($_POST['login']))
 		    require INCLUDES.'login.inc.php';
-		}
-    }
 ?>
 
 <link rel="stylesheet" href="css/login.css">
