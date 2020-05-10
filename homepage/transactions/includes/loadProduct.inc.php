@@ -1,4 +1,5 @@
 <?php
+    include '../../../config.php';
     //Get the product UPC and quantity from the URL
     $upc = $_GET['p'];
     $quantity = $_GET['q'];
